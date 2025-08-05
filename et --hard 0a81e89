@@ -1,0 +1,5 @@
+[33m0fdfc92[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbni-ui[m[33m)[m Remove venture.mp4 video file from the public directory.
+[33m5213237[m Enhance VentureSection component with video playback controls, mute functionality, and a popup modal for video display. Update layout and styling for improved user experience.
+[33m0a81e89[m Add hero background, venture images, and new components for Navbar, Hero, FeaturedOn, and VentureSection. Update layout metadata and main page structure.
+[33m26d2f03[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/bni-ui[m[33m, [m[1;32mmain[m[33m)[m Initial commit
+[33m7b33d44[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Initial commit: Add base files from Create Next App
