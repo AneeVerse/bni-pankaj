@@ -53,14 +53,32 @@ export default function EventSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
+  const [translateX, setTranslateX] = useState(0)
   const sliderRef = useRef<HTMLDivElement>(null)
-  const autoScrollRef = useRef<NodeJS.Timeout | null>(null)
+  const animationRef = useRef<number | null>(null)
+  const lastTimeRef = useRef<number>(0)
+  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  const goToSlide = (slideIndex: number) => {
+  // Manual navigation function
+  const goToSlide = (slideIndex: number, isManual: boolean = false) => {
     if (isTransitioning) return
     
     setIsTransitioning(true)
     setCurrentSlide(slideIndex)
+    setTranslateX(0)
+    
+    if (isManual) {
+      // Clear any existing pause timeout
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current)
+      }
+      
+      // Pause auto-scroll for longer when manually navigating
+      setIsPaused(true)
+      pauseTimeoutRef.current = setTimeout(() => {
+        setIsPaused(false)
+      }, 3000) // 3 seconds pause for manual navigation
+    }
     
     setTimeout(() => {
       setIsTransitioning(false)
@@ -69,62 +87,66 @@ export default function EventSlider() {
 
   const nextSlide = () => {
     const nextIndex = (currentSlide + 1) % events.length
-    goToSlide(nextIndex)
+    goToSlide(nextIndex, true)
   }
 
   const prevSlide = () => {
     const prevIndex = currentSlide === 0 ? events.length - 1 : currentSlide - 1
-    goToSlide(prevIndex)
+    goToSlide(prevIndex, true)
   }
 
-  // Continuous auto-scroll functionality
-  const [translateX, setTranslateX] = useState(0)
-
+  // Continuous auto-scroll animation
   useEffect(() => {
-    let animationFrame: number
-    let lastTime = 0
-    
     const animate = (currentTime: number) => {
-      if (!isPaused) {
-        // Use delta time for consistent animation regardless of framerate
-        const deltaTime = currentTime - lastTime
-        lastTime = currentTime
+      if (!isPaused && !isTransitioning) {
+        const deltaTime = currentTime - lastTimeRef.current
+        lastTimeRef.current = currentTime
         
-        setTranslateX(prev => {
-          // Smoother movement with time-based animation (60fps = ~16.67ms per frame)
-          const speed = 0.02 // Even slower for ultra-smooth movement
-          const newValue = prev - (speed * (deltaTime / 16.67))
-          
-          // Reset when we've moved past one full slide width
-          if (Math.abs(newValue) >= (100 / 3)) {
-            setCurrentSlide(current => (current + 1) % events.length)
-            return 0
-          }
-          return newValue
-        })
+        if (deltaTime > 0) {
+          setTranslateX(prev => {
+            const speed = 0.015 // Slower, smoother movement
+            const newValue = prev - (speed * (deltaTime / 16.67))
+            
+            // Auto-advance when we've moved one full slide width
+            if (Math.abs(newValue) >= (100 / 3)) {
+              // Use setTimeout to avoid state update conflicts
+              setTimeout(() => {
+                setCurrentSlide(current => (current + 1) % events.length)
+              }, 0)
+              return 0
+            }
+            return newValue
+          })
+        }
       } else {
-        lastTime = currentTime // Update lastTime even when paused to prevent jumps
+        lastTimeRef.current = currentTime // Keep time updated when paused
       }
       
-      animationFrame = requestAnimationFrame(animate)
+      animationRef.current = requestAnimationFrame(animate)
     }
     
-    animationFrame = requestAnimationFrame(animate)
+    animationRef.current = requestAnimationFrame(animate)
     
     return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame)
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current)
       }
     }
-  }, [isPaused, events.length])
+  }, [isPaused, isTransitioning])
 
-  const getVisibleSlides = () => {
-    const slides = []
-    for (let i = 0; i < 3; i++) {
-      const slideIndex = (currentSlide + i) % events.length
-      slides.push(events[slideIndex])
+  // Handle mouse interactions
+  const handleMouseEnter = () => {
+    setIsPaused(true)
+  }
+
+  const handleMouseLeave = () => {
+    // Only resume if not manually paused
+    if (!pauseTimeoutRef.current) {
+      setIsPaused(false)
     }
-    return slides
   }
 
   return (
@@ -147,24 +169,14 @@ export default function EventSlider() {
             {/* Navigation Arrows */}
             <div className="flex gap-3">
               <button
-                onClick={() => {
-                  setIsPaused(true)
-                  setTranslateX(0)
-                  prevSlide()
-                  setTimeout(() => setIsPaused(false), 1000)
-                }}
+                onClick={prevSlide}
                 disabled={isTransitioning}
                 className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all disabled:opacity-50"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
-                onClick={() => {
-                  setIsPaused(true)
-                  setTranslateX(0)
-                  nextSlide()
-                  setTimeout(() => setIsPaused(false), 1000)
-                }}
+                onClick={nextSlide}
                 disabled={isTransitioning}
                 className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all disabled:opacity-50"
               >
@@ -177,8 +189,8 @@ export default function EventSlider() {
         {/* Slider Container */}
         <div 
           className="relative"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <div 
             ref={sliderRef}
@@ -230,13 +242,9 @@ export default function EventSlider() {
           {events.map((_, index) => (
             <button
               key={index}
-              onClick={() => {
-                setIsPaused(true)
-                setTranslateX(0)
-                goToSlide(index)
-                setTimeout(() => setIsPaused(false), 1000)
-              }}
-              className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+              onClick={() => goToSlide(index, true)}
+              disabled={isTransitioning}
+              className={`w-2 h-2 rounded-full transition-colors duration-300 disabled:opacity-50 ${
                 index === currentSlide
                   ? 'bg-white'
                   : 'bg-gray-600 hover:bg-gray-400'

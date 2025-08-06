@@ -56,8 +56,8 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             }}
           ></div>
 
-                                           {/* Section 1 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) */}
-            <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl overflow-hidden md:col-span-2 z-30">
+            {/* Section 1 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) */}
+            <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl rounded-br-3xl overflow-hidden md:col-span-2 z-30">
              <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative z-30">
               <Image
                 src="/images/venture/ff445e7d753b31b4df15ae1abb0ec9a02f4d3b94.png"
@@ -251,7 +251,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
           ></div>
 
 
-                                                                                                                                       {/* Section 1 - Expert Guidance Text (Top Left) - Curved on Bottom Right - 3/5 width */}
+                    {/* Section 1 - Expert Guidance Text (Top Left) - Curved on Bottom Right - 3/5 width */}
                <div className="relative bg-[#efefef] rounded-tr-3xl rounded-br-3xl md:col-span-3 z-25">
                 <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 md:mb-8">
@@ -261,7 +261,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
              </div>
 
                        {/* Section 2 - Corporate Connections Logo (Top Right) - Curved on Top Left and Bottom Right - 2/5 width (small box) */}
-             <div className="relative bg-transparent rounded-tl-3xl rounded-br-3xl overflow-hidden md:col-span-2 z-30">
+             <div className="relative bg-transparent rounded-tl-3xl rounded-br-3xl rounded-bl-3xl overflow-hidden md:col-span-2 z-30">
                <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative ">
                 <Image
                   src="/images/venture/d7ddf110031b054df193d8ae5b7aab1295e2887a.png"
@@ -409,7 +409,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
           ></div>
 
                                            {/* Section 1 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) */}
-            <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl overflow-hidden md:col-span-2 z-30">
+            <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl rounded-br-3xl overflow-hidden md:col-span-2 z-30">
              <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative z-30">
               <Image
                 src="/images/venture/tab.png"
