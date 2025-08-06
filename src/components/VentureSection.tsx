@@ -88,47 +88,47 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
 
           {/* Section 3 - Our Ventures (Bottom Left) - Curved on Top Left and Top Right - 4/6 width */}
           <div className="relative bg-white rounded-tl-3xl rounded-tr-3xl md:col-span-4 z-25">
-            <div className="px-8 md:px-12 lg:px-16 py-6 md:py-8 flex flex-col justify-center min-h-[200px] md:min-h-[250px] relative z-30">
-              <h3 className="text-lg md:text-xl font-semibold text-gray-600 mb-4 md:mb-6">Our Ventures:</h3>
+            <div className="px-4 md:px-8 lg:px-12 py-6 md:py-8 flex flex-col justify-center min-h-[200px] md:min-h-[250px] relative z-30">
+              <h3 className="text-lg md:text-xl font-semibold text-gray-600 mb-4 md:mb-6 text-left">Our Ventures:</h3>
 
               {/* Single Row Layout for Logos - LARGER SIZES */}
-              <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 md:gap-8 lg:gap-12">
-                <div className="flex justify-center">
+              <div className="flex justify-start items-center gap-4 md:gap-6 lg:gap-8 overflow-x-auto">
+                <div className="flex justify-center flex-shrink-0">
                   <Image
                     src="/images/venture/3196da117abd22b30b9d753b8a9f6c31b50c4382.png"
                     alt="Venture 1"
-                    width={140}
-                    height={70}
+                    width={180}
+                    height={90}
                     className="max-w-full h-auto object-contain"
                   />
                 </div>
 
-                <div className="flex justify-center">
+                <div className="flex justify-center flex-shrink-0">
                   <Image
                     src="/images/venture/ff445e7d753b31b4df15ae1abb0ec9a02f4d3b94.png"
                     alt="Venture 2"
+                    width={180}
+                    height={90}
+                    className="max-w-full h-auto object-contain"
+                  />
+                </div>
+
+                <div className="flex justify-center flex-shrink-0">
+                  <Image
+                    src="/images/venture/d7ddf110031b054df193d8ae5b7aab1295e2887a.png"
+                    alt="Venture 3"
                     width={140}
                     height={70}
                     className="max-w-full h-auto object-contain"
                   />
                 </div>
 
-                <div className="flex justify-center">
+                <div className="flex justify-center flex-shrink-0">
                   <Image
-                    src="/images/venture/d7ddf110031b054df193d8ae5b7aab1295e2887a.png"
-                    alt="Venture 3"
-                    width={100}
-                    height={50}
-                    className="max-w-full h-auto object-contain"
-                  />
-                </div>
-
-                <div className="flex justify-center">
-                  <Image
-                    src="/images/venture/5762e34aca8b145a55270b53acf429fac1cee68c (1).png"
+                    src="/images/venture/tab.png"
                     alt="Venture 4"
-                    width={160}
-                    height={70}
+                    width={200}
+                    height={90}
                     className="max-w-full h-auto object-contain"
                   />
                 </div>

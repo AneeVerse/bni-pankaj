@@ -262,7 +262,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
                        {/* Section 2 - Corporate Connections Logo (Top Right) - Curved on Top Left and Bottom Right - 2/5 width (small box) */}
              <div className="relative bg-transparent rounded-tl-3xl rounded-br-3xl overflow-hidden md:col-span-2 z-30">
-               <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative z-30">
+               <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative ">
                 <Image
                   src="/images/venture/d7ddf110031b054df193d8ae5b7aab1295e2887a.png"
                   alt="Corporate Connections Logo"
@@ -400,7 +400,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
         {/* 2x2 Grid with Interlocking Curves - Reordered sections */}
         <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0  overflow-hidden  rounded-3xl">
           
-         {/* Background Image - Visible Only in Image and Video Sections */}
+          {/* Background Image - Visible Only in Image and Video Sections */}
           <div 
             className="absolute inset-0 w-200 h-100 left-68 top-20 -translate-x-1/2 -translate-y-1/2  z-15 mx-auto my-auto bg-cover bg-center bg-no-repeat"
             style={{
@@ -409,17 +409,18 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
           ></div>
 
                                            {/* Section 1 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) */}
-            <div className="relative bg-transparent rounded-tr-3xl rounded-bl-3xl overflow-hidden md:col-span-2 z-30">
+            <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl overflow-hidden md:col-span-2 z-30">
              <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative z-30">
               <Image
                 src="/images/venture/tab.png"
                 alt="BNI Logo"
                 width={200}
                 height={100}
-                className="max-w-full h-auto  object-contain"
+                className="max-w-full h-auto  object-contain z-30"
               />
             </div>
           </div>
+
 
                                            {/* Section 2 - Expert Guidance Text (Top Right) - Curved on Bottom Left - 3/5 width */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl md:col-span-3 z-25">

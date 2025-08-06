@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface EventCard {
@@ -52,7 +52,9 @@ const events: EventCard[] = [
 export default function EventSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
   const sliderRef = useRef<HTMLDivElement>(null)
+  const autoScrollRef = useRef<NodeJS.Timeout | null>(null)
 
   const goToSlide = (slideIndex: number) => {
     if (isTransitioning) return
@@ -75,6 +77,36 @@ export default function EventSlider() {
     goToSlide(prevIndex)
   }
 
+  // Continuous auto-scroll functionality
+  const [translateX, setTranslateX] = useState(0)
+
+  useEffect(() => {
+    let animationFrame: number
+    
+    const animate = () => {
+      if (!isPaused) {
+        setTranslateX(prev => {
+          const newValue = prev - 0.05 // Slow continuous movement
+          // Reset when we've moved past one full slide width
+          if (Math.abs(newValue) >= (100 / 3)) {
+            setCurrentSlide(current => (current + 1) % events.length)
+            return 0
+          }
+          return newValue
+        })
+      }
+      animationFrame = requestAnimationFrame(animate)
+    }
+    
+    animationFrame = requestAnimationFrame(animate)
+    
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame)
+      }
+    }
+  }, [isPaused, events.length])
+
   const getVisibleSlides = () => {
     const slides = []
     for (let i = 0; i < 3; i++) {
@@ -88,44 +120,60 @@ export default function EventSlider() {
     <section className="w-full bg-black py-12 md:py-16 lg:py-20 overflow-hidden">
       <div className="container mx-auto px-4 max-w-[1400px]">
         
-        {/* Header */}
+        {/* Header with Navigation */}
         <div className="flex items-center justify-between mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
             Events that liberate
           </h2>
-          <div className="flex items-center text-gray-400 hover:text-white transition-colors cursor-pointer">
-            <span className="text-sm md:text-base mr-2">Discover events</span>
-            <ChevronRight className="w-4 h-4" />
-          </div>
-        </div>
-
-        {/* Navigation Arrows */}
-        <div className="flex items-center justify-end mb-8">
-          <div className="flex gap-4">
-            <button
-              onClick={prevSlide}
-              disabled={isTransitioning}
-              className="w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-white transition-colors disabled:opacity-50"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={nextSlide}
-              disabled={isTransitioning}
-              className="w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-white transition-colors disabled:opacity-50"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+          
+          <div className="flex items-center gap-6">
+            {/* Discover Events Link */}
+            <div className="flex items-center text-gray-400 hover:text-white transition-colors cursor-pointer">
+              <span className="text-sm md:text-base mr-2">Discover events</span>
+              <ChevronRight className="w-4 h-4" />
+            </div>
+            
+            {/* Navigation Arrows */}
+            <div className="flex gap-3">
+              <button
+                onClick={() => {
+                  setIsPaused(true)
+                  setTranslateX(0)
+                  prevSlide()
+                  setTimeout(() => setIsPaused(false), 1000)
+                }}
+                disabled={isTransitioning}
+                className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all disabled:opacity-50"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => {
+                  setIsPaused(true)
+                  setTranslateX(0)
+                  nextSlide()
+                  setTimeout(() => setIsPaused(false), 1000)
+                }}
+                disabled={isTransitioning}
+                className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all disabled:opacity-50"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Slider Container */}
-        <div className="relative">
+        <div 
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <div 
             ref={sliderRef}
-            className="flex gap-6 transition-transform duration-500 ease-in-out"
+            className="flex gap-6"
             style={{
-              transform: `translateX(-${currentSlide * (100 / 3)}%)`
+              transform: `translateX(${-currentSlide * (100 / 3) + translateX}%)`
             }}
           >
             {events.map((event, index) => (
@@ -171,7 +219,12 @@ export default function EventSlider() {
           {events.map((_, index) => (
             <button
               key={index}
-              onClick={() => goToSlide(index)}
+              onClick={() => {
+                setIsPaused(true)
+                setTranslateX(0)
+                goToSlide(index)
+                setTimeout(() => setIsPaused(false), 1000)
+              }}
               className={`w-2 h-2 rounded-full transition-colors duration-300 ${
                 index === currentSlide
                   ? 'bg-white'
