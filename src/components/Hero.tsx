@@ -12,19 +12,34 @@ const AnimatedText = ({ text, delay = 0 }: { text: string; delay?: number }) => 
     setCurrentIndex(0);
     
     const timer = setTimeout(() => {
-      const interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => {
-          if (prevIndex < text.length) {
-            setDisplayedText(text.slice(0, prevIndex + 1));
-            return prevIndex + 1;
-          } else {
-            clearInterval(interval);
-            return prevIndex;
+      let animationFrame: number;
+      let lastTime = 0;
+      let charIndex = 0;
+      
+      const animate = (currentTime: number) => {
+        const deltaTime = currentTime - lastTime;
+        
+        // Smooth character reveal every ~60ms for natural typing feel
+        if (deltaTime >= 60) {
+          if (charIndex < text.length) {
+            setDisplayedText(text.slice(0, charIndex + 1));
+            charIndex++;
+            lastTime = currentTime;
           }
-        });
-      }, 40); // 80ms between each letter
-
-      return () => clearInterval(interval);
+        }
+        
+        if (charIndex < text.length) {
+          animationFrame = requestAnimationFrame(animate);
+        }
+      };
+      
+      animationFrame = requestAnimationFrame(animate);
+      
+      return () => {
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame);
+        }
+      };
     }, delay);
 
     return () => clearTimeout(timer);
@@ -39,7 +54,7 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-bg.jpg"
+          src="/images/hero-bg1.jpg"
           alt="Hero Background"
           fill
           className="object-cover"

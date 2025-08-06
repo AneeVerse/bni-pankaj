@@ -82,11 +82,19 @@ export default function EventSlider() {
 
   useEffect(() => {
     let animationFrame: number
+    let lastTime = 0
     
-    const animate = () => {
+    const animate = (currentTime: number) => {
       if (!isPaused) {
+        // Use delta time for consistent animation regardless of framerate
+        const deltaTime = currentTime - lastTime
+        lastTime = currentTime
+        
         setTranslateX(prev => {
-          const newValue = prev - 0.05 // Slow continuous movement
+          // Smoother movement with time-based animation (60fps = ~16.67ms per frame)
+          const speed = 0.02 // Even slower for ultra-smooth movement
+          const newValue = prev - (speed * (deltaTime / 16.67))
+          
           // Reset when we've moved past one full slide width
           if (Math.abs(newValue) >= (100 / 3)) {
             setCurrentSlide(current => (current + 1) % events.length)
@@ -94,7 +102,10 @@ export default function EventSlider() {
           }
           return newValue
         })
+      } else {
+        lastTime = currentTime // Update lastTime even when paused to prevent jumps
       }
+      
       animationFrame = requestAnimationFrame(animate)
     }
     

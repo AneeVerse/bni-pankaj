@@ -58,7 +58,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
           {/* Section 1 - Photo (Top Left) - Curved on Top Right, Bottom Right, and Bottom Left - 4/6 width */}
           <div className="relative bg-white rounded-tr-3xl rounded-br-3xl rounded-bl-3xl overflow-hidden md:col-span-4 z-10 min-h-[500px]">
             <Image
-              src="/images/hero-bg.jpg"
+              src="/images/hero-bg1.jpg"
               alt="Mr. Pankaj Harwansh"
               fill
               className="object-cover object-center"
