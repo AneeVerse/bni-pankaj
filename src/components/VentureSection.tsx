@@ -48,14 +48,15 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8">Mr. Pankaj Harwansh</h1>
           </div>
 
-        {/* 2x2 Grid with Interlocking Curves - 60/40 split */}
-        <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0  overflow-hidden rounded-3xl">
+        {/* 2x2 Grid with Interlocking Curves - No Gaps */}
+        <div className="relative grid grid-cols-1 md:grid-cols-6 gap-0 overflow-hidden rounded-3xl"
+             style={{ gridGap: '0px' }}>
           
-          {/* Background Gradient - Visible Only in Image and Video Sections */}
-          <div className="absolute inset-0 w-1/3 h-1/3 left-100 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-[#245cd9] via-[#245cd9]/100 to-[#245cd9]/90 rounded-full z-15 mx-auto my-auto"></div>
+          {/* Background Gradient - Subtle angled effect */}
+          <div className="absolute w-[60%] h-[40%] left-[40%] top-[30%] bg-gradient-to-bl from-[#245cd9]/60 via-[#245cd9]/40 to-[#245cd9]/20 rounded-full transform rotate-[-15deg] z-15"></div>
 
-          {/* Section 1 - Photo (Top Left) - Curved on Top Right and Bottom Left - 3/5 width */}
-          <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl overflow-hidden md:col-span-3 z-10 min-h-[500px]">
+          {/* Section 1 - Photo (Top Left) - Curved on Bottom Right - 4/6 width */}
+          <div className="relative bg-white rounded-br-3xl overflow-hidden md:col-span-4 z-10 min-h-[500px]">
             <Image
               src="/images/hero-bg.jpg"
               alt="Mr. Pankaj Harwansh"
@@ -66,10 +67,10 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
 
           </div>
 
-          {/* Section 2 - Description (Top Right) - Curved on Bottom Left - 2/5 width */}
-          <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl md:col-span-2 z-25">
+          {/* Section 2 - Description (Top Right) - Curved on Bottom Left - 2/6 width */}
+          <div className="relative bg-white rounded-bl-3xl md:col-span-2 z-25">
             <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[500px] relative z-30">
-              <div className="w-6/8 mx-auto ml-6">
+              <div className="w-full mx-auto">
                 <p className="text-gray-800 text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8 font-medium">
                   At BNI Navi Mumbai, we believe in the power of relationships and the exponential growth that comes from
                   genuine connections. For over a decade, we have been the driving force behind countless success stories,
@@ -85,8 +86,8 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
             </div>
           </div>
 
-          {/* Section 3 - Our Ventures (Bottom Left) - Curved on Top Right - 3/5 width */}
-          <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl md:col-span-3 z-25">
+          {/* Section 3 - Our Ventures (Bottom Left) - Curved on Top Right - 4/6 width */}
+          <div className="relative bg-white rounded-tr-3xl md:col-span-4 z-25">
             <div className="px-8 md:px-12 lg:px-16 py-6 md:py-8 flex flex-col justify-center min-h-[200px] md:min-h-[250px] relative z-30">
               <h3 className="text-lg md:text-xl font-semibold text-gray-600 mb-4 md:mb-6">Our Ventures:</h3>
 
@@ -135,13 +136,13 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
             </div>
           </div>
 
-          {/* Section 4 - Video (Bottom Right) - Curved on Top Left - 2/5 width */}
+          {/* Section 4 - Video (Bottom Right) - Curved on Top Left - 2/6 width */}
           <div className="relative bg-white rounded-tl-3xl md:col-span-2 overflow-hidden z-10">
                         {videoUrl ? (
               <div className="relative w-full h-full min-h-[200px] md:min-h-[250px] flex items-center justify-center z-30">
                 {/* Video Container with Unified Gradient Integration */}
                 <div 
-                  className="relative w-6/8 h-15/16 rounded-3xl overflow-hidden mr-35 -top-2"
+                  className="relative w-full h-full rounded-3xl overflow-hidden"
                   style={{
                     borderRadius: '1.5rem',
                     WebkitBorderRadius: '1.5rem',
