@@ -3,15 +3,21 @@ import Hero from '@/components/Hero';
 import FeaturedOn from '@/components/FeaturedOn';
 import VentureSection from '@/components/VentureSection';
 import VentureDetail from '@/components/VentureDetail';
+import Testimonials from '@/components/Testimonials';
+import EventSlider from '@/components/EventSlider';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-800">
+    <div className="min-h-screen">
       <Navbar />
       <Hero />
       <FeaturedOn />
       <VentureSection videoUrl="/video/venture.mp4" />
       <VentureDetail videoUrl="/video/venture.mp4" />
+      <Testimonials />
+      <EventSlider />
+      <Footer />
     </div>
   );
 }
