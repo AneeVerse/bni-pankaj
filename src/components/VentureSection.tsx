@@ -15,18 +15,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
   const videoRef = useRef<HTMLVideoElement>(null)
   const popupVideoRef = useRef<HTMLVideoElement>(null)
 
-  const handleVideoToggle = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause()
-        setIsPlaying(false)
-      } else {
-        videoRef.current.play()
-        setIsPlaying(true)
-      }
-    }
-    onVideoPlay?.()
-  }
+  // Removed unused handleVideoToggle function
 
   const handleMuteToggle = () => {
     if (videoRef.current) {
@@ -53,20 +42,20 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
   }
       return (
       <section className="w-full bg-white py-12 md:py-16 lg:py-20">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-0 max-w-[1400px]">
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8">Mr. Pankaj Harwansh</h1>
           </div>
 
         {/* 2x2 Grid with Interlocking Curves - 60/40 split */}
-        <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0 shadow-2xl overflow-hidden bg-gradient-to-br from-[#245cd9] via-[#245cd9]/100 to-[#245cd9]/100 rounded-3xl">
+        <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0  overflow-hidden rounded-3xl">
           
           {/* Background Gradient - Visible Only in Image and Video Sections */}
           <div className="absolute inset-0 w-1/3 h-1/3 left-100 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-[#245cd9] via-[#245cd9]/100 to-[#245cd9]/90 rounded-full z-15 mx-auto my-auto"></div>
 
-          {/* Section 1 - Photo (Top Left) - Curved on Bottom Right - 3/5 width */}
-          <div className="relative bg-white rounded-tl-3xl rounded-br-3xl overflow-hidden md:col-span-3 z-10">
+          {/* Section 1 - Photo (Top Left) - Curved on Top Right and Bottom Left - 3/5 width */}
+          <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl overflow-hidden md:col-span-3 z-10 min-h-[500px]">
             <Image
               src="/images/hero-bg.jpg"
               alt="Mr. Pankaj Harwansh"
@@ -79,18 +68,20 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
 
           {/* Section 2 - Description (Top Right) - Curved on Bottom Left - 2/5 width */}
           <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl md:col-span-2 z-25">
-            <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[400px] relative z-30">
-              <p className="text-gray-800 text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8 font-medium">
-                At BNI Navi Mumbai, we believe in the power of relationships and the exponential growth that comes from
-                genuine connections. For over a decade, we have been the driving force behind countless success stories,
-                connecting business professionals and fostering thriving networks that propel businesses to new heights.
-              </p>
+            <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[500px] relative z-30">
+              <div className="w-6/8 mx-auto ml-6">
+                <p className="text-gray-800 text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8 font-medium">
+                  At BNI Navi Mumbai, we believe in the power of relationships and the exponential growth that comes from
+                  genuine connections. For over a decade, we have been the driving force behind countless success stories,
+                  connecting business professionals and fostering thriving networks that propel businesses to new heights.
+                </p>
 
-              <button
-                className="bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300 w-fit px-6 md:px-8 py-2 md:py-3 rounded-xl font-semibold text-sm md:text-base transition-colors"
-              >
-                Meet Pankaj Harwansh
-              </button>
+                <button
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300 w-fit px-6 md:px-8 py-2 md:py-3 rounded-xl font-semibold text-sm md:text-base transition-colors"
+                >
+                  Meet Pankaj Harwansh
+                </button>
+              </div>
             </div>
           </div>
 
@@ -107,7 +98,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     alt="Venture 1"
                     width={140}
                     height={70}
-                    className="max-w-full h-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    className="max-w-full h-auto object-contain"
                   />
                 </div>
 
@@ -117,7 +108,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     alt="Venture 2"
                     width={140}
                     height={70}
-                    className="max-w-full h-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    className="max-w-full h-auto object-contain"
                   />
                 </div>
 
@@ -127,7 +118,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     alt="Venture 3"
                     width={100}
                     height={50}
-                    className="max-w-full h-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    className="max-w-full h-auto object-contain"
                   />
                 </div>
 
@@ -137,7 +128,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     alt="Venture 4"
                     width={160}
                     height={70}
-                    className="max-w-full h-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    className="max-w-full h-auto object-contain"
                   />
                 </div>
               </div>
@@ -150,7 +141,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
               <div className="relative w-full h-full min-h-[200px] md:min-h-[250px] flex items-center justify-center z-30">
                 {/* Video Container with Unified Gradient Integration */}
                 <div 
-                  className="relative w-3/5 h-4/5 rounded-3xl overflow-hidden mr-60 -top-8"
+                  className="relative w-6/8 h-15/16 rounded-3xl overflow-hidden mr-35 -top-2"
                   style={{
                     borderRadius: '1.5rem',
                     WebkitBorderRadius: '1.5rem',
@@ -264,7 +255,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
 
               {/* Video Title */}
               <div className="absolute top-4 left-4 text-white text-lg font-semibold z-10 bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm">
-                "What is the force that controls the quality of our lives?"
+                &ldquo;What is the force that controls the quality of our lives?&rdquo;
               </div>
             </div>
 
