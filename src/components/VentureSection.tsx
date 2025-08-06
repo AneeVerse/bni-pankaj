@@ -55,8 +55,8 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
           {/* Background Gradient - Subtle angled effect */}
           <div className="absolute w-[60%] h-[40%] left-[40%] top-[30%] bg-gradient-to-bl from-[#245cd9]/60 via-[#245cd9]/40 to-[#245cd9]/20 rounded-full transform rotate-[-15deg] z-15"></div>
 
-          {/* Section 1 - Photo (Top Left) - Curved on Bottom Right - 4/6 width */}
-          <div className="relative bg-white rounded-br-3xl overflow-hidden md:col-span-4 z-10 min-h-[500px]">
+          {/* Section 1 - Photo (Top Left) - Curved on Top Right, Bottom Right, and Bottom Left - 4/6 width */}
+          <div className="relative bg-white rounded-tr-3xl rounded-br-3xl rounded-bl-3xl overflow-hidden md:col-span-4 z-10 min-h-[500px]">
             <Image
               src="/images/hero-bg.jpg"
               alt="Mr. Pankaj Harwansh"
@@ -67,8 +67,8 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
 
           </div>
 
-          {/* Section 2 - Description (Top Right) - Curved on Bottom Left - 2/6 width */}
-          <div className="relative bg-white rounded-bl-3xl md:col-span-2 z-25">
+          {/* Section 2 - Description (Top Right) - Curved on Top Left and Bottom Left - 2/6 width */}
+          <div className="relative bg-white rounded-tl-3xl rounded-bl-3xl md:col-span-2 z-25">
             <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[500px] relative z-30">
               <div className="w-full mx-auto">
                 <p className="text-gray-800 text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8 font-medium">
@@ -86,8 +86,8 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
             </div>
           </div>
 
-          {/* Section 3 - Our Ventures (Bottom Left) - Curved on Top Right - 4/6 width */}
-          <div className="relative bg-white rounded-tr-3xl md:col-span-4 z-25">
+          {/* Section 3 - Our Ventures (Bottom Left) - Curved on Top Left and Top Right - 4/6 width */}
+          <div className="relative bg-white rounded-tl-3xl rounded-tr-3xl md:col-span-4 z-25">
             <div className="px-8 md:px-12 lg:px-16 py-6 md:py-8 flex flex-col justify-center min-h-[200px] md:min-h-[250px] relative z-30">
               <h3 className="text-lg md:text-xl font-semibold text-gray-600 mb-4 md:mb-6">Our Ventures:</h3>
 
@@ -136,8 +136,8 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
             </div>
           </div>
 
-          {/* Section 4 - Video (Bottom Right) - Curved on Top Left - 2/6 width */}
-          <div className="relative bg-white rounded-tl-3xl md:col-span-2 overflow-hidden z-10">
+          {/* Section 4 - Video (Bottom Right) - Curved on Top Left and Bottom Left - 2/6 width */}
+          <div className="relative bg-white rounded-tl-3xl rounded-bl-3xl md:col-span-2 overflow-hidden z-10">
                         {videoUrl ? (
               <div className="relative w-full h-full min-h-[200px] md:min-h-[250px] flex items-center justify-center z-30">
                 {/* Video Container with Unified Gradient Integration */}
