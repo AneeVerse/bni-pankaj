@@ -193,11 +193,7 @@ export default function Footer() {
             
             {/* Left Side - Language and Copyright */}
             <div className="flex flex-col space-y-3 sm:space-y-4">
-              {/* Language Selector */}
-              <div className="flex items-center space-x-2">
-                <span className="text-white text-sm font-medium">English</span>
-                <ChevronDown className="w-4 h-4 text-white" />
-              </div>
+            
             
               {/* Copyright and Links */}
               <div className="flex flex-col md:flex-row md:items-center md:space-x-6 space-y-2 md:space-y-0 text-xs sm:text-sm text-gray-400">
