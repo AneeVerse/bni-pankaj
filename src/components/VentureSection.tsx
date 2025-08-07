@@ -53,7 +53,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
              style={{ gridGap: '0px' }}>
           
           {/* Background Gradient - Subtle angled effect */}
-          <div className="absolute w-[60%] h-[40%] left-[40%] top-[30%] bg-gradient-to-bl from-[#245cd9]/60 via-[#245cd9]/40 to-[#245cd9]/20 rounded-full transform rotate-[-15deg] z-15"></div>
+          <div className="absolute w-[60%] h-[40%] left-[40%] top-[30%] bg-gradient-to-bl from-[#245cd9]/60 via-[#245cd9]/40 to-[#245cd9]/20 rounded-full transform rotate-[-15deg] z-15 hidden sm:block"></div>
 
           {/* Section 1 - Photo (Top Left) - Curved on Top Right, Bottom Right, and Bottom Left - 4/6 width */}
           <div className="relative bg-white rounded-tr-2xl rounded-br-2xl rounded-bl-2xl sm:rounded-tr-3xl sm:rounded-br-3xl sm:rounded-bl-3xl overflow-hidden md:col-span-4 z-10 min-h-[300px] sm:min-h-[400px] md:min-h-[500px]">
@@ -87,12 +87,12 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
           </div>
 
           {/* Section 3 - Our Ventures (Bottom Left) - Curved on Top Left and Top Right - 4/6 width */}
-          <div className="relative bg-white rounded-tl-2xl rounded-tr-2xl sm:rounded-tl-3xl sm:rounded-tr-3xl md:col-span-4 z-25">
+          <div className="relative bg-white rounded-tl-2xl rounded-tr-2xl sm:rounded-tl-3xl sm:rounded-tr-3xl md:col-span-4 z-25 order-2 md:order-2 ">
             <div className="px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-6 md:py-8 flex flex-col justify-center min-h-[180px] sm:min-h-[200px] md:min-h-[250px] relative z-30">
               <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-600 mb-3 sm:mb-4 md:mb-6 text-left">Our Ventures:</h3>
 
               {/* Single Row Layout for Logos - LARGER SIZES */}
-              <div className="flex justify-start items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto pb-2">
+              <div className="flex justify-start items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8  pb-2">
                 <div className="flex justify-center flex-shrink-0">
                   <Image
                     src="/images/venture/3196da117abd22b30b9d753b8a9f6c31b50c4382.png"
@@ -137,7 +137,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
           </div>
 
           {/* Section 4 - Video (Bottom Right) - Curved on Top Left and Bottom Left - 2/6 width */}
-          <div className="relative bg-white rounded-tl-2xl rounded-bl-2xl sm:rounded-tl-3xl sm:rounded-bl-3xl md:col-span-2 overflow-hidden z-10">
+          <div className="relative bg-white rounded-tl-2xl rounded-bl-2xl sm:rounded-tl-3xl sm:rounded-bl-3xl md:col-span-2 overflow-hidden z-10 order-1 md:order-4">
                         {videoUrl ? (
               <div className="relative w-full h-full min-h-[180px] sm:min-h-[200px] md:min-h-[250px] flex items-center justify-center z-30">
                 {/* Video Container with Unified Gradient Integration */}
