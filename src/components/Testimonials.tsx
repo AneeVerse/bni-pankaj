@@ -71,20 +71,20 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="w-full bg-white py-12 md:py-16 lg:py-20">
-      <div className="container mx-auto px-4 md:px-0 max-w-[1400px]">
+    <section className="w-full bg-white py-8 sm:py-10 md:py-16 lg:py-20">
+      <div className="container mx-auto px-4 sm:px-6 md:px-0 max-w-[1400px]">
         
         {/* Masonry Grid Layout with Pattern Control */}
         <Masonry
           breakpointCols={breakpointColumns}
-          className="flex -ml-4 md:-ml-6"
-          columnClassName="pl-4 md:pl-6"
+          className="flex -ml-3 sm:-ml-4 md:-ml-6"
+          columnClassName="pl-3 sm:pl-4 md:pl-6"
         >
           {testimonials.map((testimonial, index) => {
             const size = getImageSize(index);
             return (
-              <div key={testimonial.id} className="mb-4 md:mb-6">
-                <div className={`relative overflow-hidden rounded-2xl bg-gray-100 ${
+              <div key={testimonial.id} className="mb-3 sm:mb-4 md:mb-6">
+                <div className={`relative overflow-hidden rounded-xl sm:rounded-2xl bg-gray-100 ${
                   size === 'large' 
                     ? 'aspect-[4/5]' // Taller aspect ratio for large images
                     : 'aspect-[4/3]' // Shorter aspect ratio for small images
@@ -93,7 +93,7 @@ export default function Testimonials() {
                     src={testimonial.src}
                     alt={testimonial.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 33vw"
                     className="object-cover"
                   />
                 </div>

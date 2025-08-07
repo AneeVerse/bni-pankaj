@@ -13,28 +13,28 @@ const FeaturedOn = () => {
   ];
 
   return (
-    <section className="bg-[#efefef] py-16">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-[#efefef] py-12 sm:py-14 md:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Title */}
-        <div className="text-center mb-8">
-          <h2 className="text-lg font-bold text-gray-500 uppercase tracking-wide">
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-base sm:text-lg font-bold text-gray-500 uppercase tracking-wide">
             As Featured On
           </h2>
         </div>
 
-        {/* Logos in Single Line */}
-        <div className="flex justify-center items-center space-x-12">
+        {/* Logos - Responsive Layout */}
+        <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 max-w-md sm:max-w-lg md:max-w-none mx-auto">
           {logos.map((logo, index) => (
             <div 
               key={index} 
-              className="flex-shrink-0 opacity-50 hover:opacity-80 transition-opacity duration-300"
+              className="flex justify-center opacity-50 hover:opacity-80 transition-opacity duration-300"
             >
               <Image
                 src={logo.src}
                 alt={logo.alt}
                 width={80}
                 height={40}
-                className="h-8 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-8 sm:h-10 md:h-12 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
               />
             </div>
           ))}

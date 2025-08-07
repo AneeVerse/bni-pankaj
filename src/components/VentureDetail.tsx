@@ -42,11 +42,11 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
   return (
     <div className="w-full">
       <section className="w-full bg-[#efefef]">
-      <div className="container mx-auto px-4 md:px-0 max-w-[1400px] py-6 md:py-8 lg:py-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-0 max-w-[1400px] py-4 sm:py-6 md:py-8 lg:py-10">
        
 
         {/* 2x2 Grid with Interlocking Curves - Reordered sections */}
-        <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0  overflow-hidden  rounded-3xl">
+        <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0 overflow-hidden rounded-2xl sm:rounded-3xl">
           
           {/* Background Image - Visible Only in Image and Video Sections */}
           <div 
@@ -57,8 +57,8 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
           ></div>
 
             {/* Section 1 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) */}
-            <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl rounded-br-3xl overflow-hidden md:col-span-2 z-30">
-             <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative z-30">
+            <div className="relative bg-white rounded-tr-2xl rounded-bl-2xl rounded-br-2xl sm:rounded-tr-3xl sm:rounded-bl-3xl sm:rounded-br-3xl overflow-hidden md:col-span-2 z-30">
+             <div className="p-4 sm:p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[200px] sm:min-h-[250px] relative z-30">
               <Image
                 src="/images/venture/ff445e7d753b31b4df15ae1abb0ec9a02f4d3b94.png"
                 alt="BNI Logo"
@@ -111,9 +111,9 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
            </div>
 
           {/* Section 4 - Video (Bottom Right) - Curved on Top Left - 3/5 width (big video section) */}
-          <div className="relative bg-[#efefef]  rounded-tl-3xl md:col-span-3 overflow-hidden z-10">
+          <div className="relative bg-[#efefef] rounded-tl-2xl sm:rounded-tl-3xl md:col-span-3 overflow-hidden z-10">
             {videoUrl ? (
-              <div className="relative w-full h-full min-h-[250px] flex items-center justify-center z-30">
+              <div className="relative w-full h-full min-h-[200px] sm:min-h-[250px] flex items-center justify-center z-30">
                 {/* Video Container with Unified Gradient Integration */}
                                  <div 
                    className="relative w-full h-11/12 rounded-3xl overflow-hidden -mt-10 -ml-0"

@@ -57,7 +57,10 @@ const Hero = () => {
           src="/images/hero-bg1.jpg"
           alt="Hero Background"
           fill
-          className="object-cover"
+          className="object-cover sm:object-cover object-center sm:object-center"
+          style={{
+            objectPosition: 'center 30%'
+          }}
           priority
         />
         {/* Overlay for better text readability */}
@@ -65,22 +68,22 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 w-full">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Side - Text Content */}
-          <div className="text-white space-y-6">
+          <div className="text-white space-y-4 sm:space-y-6">
             <div className="space-y-2">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="text-2xl md:text-3xl lg:text-4xl font-normal block mb-2">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal block mb-2">
                   <AnimatedText text="awareness is" delay={0} />
                 </span>
-                <span className="text-5xl md:text-7xl lg:text-8xl font-bold">
+                <span className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold">
                   <AnimatedText text="everything" delay={1000} />
                 </span>
               </h1>
             </div>
             
-            <p className="text-lg md:text-xl text-gray-200 max-w-lg leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-lg leading-relaxed">
               <AnimatedText 
                 text="Make sure all the choices you make in life come from a point of awareness and not ignorance." 
                 delay={2500} 

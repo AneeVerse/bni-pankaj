@@ -150,37 +150,37 @@ export default function EventSlider() {
   }
 
   return (
-    <section className="w-full bg-black py-12 md:py-16 lg:py-20 overflow-hidden">
-      <div className="container mx-auto px-4 max-w-[1400px]">
+    <section className="w-full bg-black py-8 sm:py-10 md:py-16 lg:py-20 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 max-w-[1400px]">
         
         {/* Header with Navigation */}
-        <div className="flex items-center justify-between mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+        <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
             Events that liberate
           </h2>
           
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
             {/* Discover Events Link */}
-            <div className="flex items-center text-gray-400 hover:text-white transition-colors cursor-pointer">
+            <div className="hidden sm:flex items-center text-gray-400 hover:text-white transition-colors cursor-pointer">
               <span className="text-sm md:text-base mr-2">Discover events</span>
               <ChevronRight className="w-4 h-4" />
             </div>
             
             {/* Navigation Arrows */}
-            <div className="flex gap-3">
+            <div className="flex gap-2 sm:gap-3">
               <button
                 onClick={prevSlide}
                 disabled={isTransitioning}
-                className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all disabled:opacity-50"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all disabled:opacity-50"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
               <button
                 onClick={nextSlide}
                 disabled={isTransitioning}
-                className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all disabled:opacity-50"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all disabled:opacity-50"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
           </div>
@@ -202,7 +202,7 @@ export default function EventSlider() {
             {events.map((event, index) => (
               <div
                 key={event.id}
-                className="flex-shrink-0 w-full sm:w-[480px] md:w-[420px] lg:w-[380px] xl:w-[420px] relative rounded-2xl overflow-hidden h-[400px] md:h-[500px] lg:h-[600px]"
+                className="flex-shrink-0 w-full sm:w-[320px] md:w-[380px] lg:w-[420px] xl:w-[420px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
               >
                 {/* Video Background */}
                 <video
@@ -219,15 +219,15 @@ export default function EventSlider() {
                 <div className="absolute inset-0 bg-black/40" />
                 
                 {/* Content */}
-                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 text-white">
-                  <div className="space-y-2">
-                    <p className="text-xs md:text-sm font-medium tracking-wider opacity-90">
+                <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 md:p-8 text-white">
+                  <div className="space-y-1 sm:space-y-2">
+                    <p className="text-xs sm:text-xs md:text-sm font-medium tracking-wider opacity-90">
                       {event.subtitle}
                     </p>
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
                       {event.title}
                     </h3>
-                    <p className="text-sm md:text-base opacity-90 mt-2">
+                    <p className="text-sm sm:text-sm md:text-base opacity-90 mt-1 sm:mt-2">
                       {event.description}
                     </p>
                   </div>
@@ -238,7 +238,7 @@ export default function EventSlider() {
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center mt-8 gap-2">
+        <div className="flex justify-center mt-6 sm:mt-8 gap-2">
           {events.map((_, index) => (
             <button
               key={index}
