@@ -168,7 +168,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl md:col-span-2 z-25 order-4 md:order-3">
               <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
                 {/* Statistics - Side by side with better spacing */}
-                <div className="flex justify-start gap-8 mb-8">
+                <div className="flex justify-start gap-8 mb-8 ml-2">
                   <div className="text-left">
                     <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
                     <div className="text-gray-700 text-base md:text-lg font-medium leading-snug">improved time<br />management</div>
@@ -180,7 +180,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
                   </div>
                 </div>
 
-                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 font-medium text-left max-w-none">
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 font-medium text-left max-w-none ml-2">
                   Achieve lasting transformation in all areas of your life. Discover the support you need to do more, be more and serve more with one-on-one strategy sessions with our expert results coaches.
                 </p>
 
@@ -363,7 +363,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             <div className="relative bg-[#efefef]  rounded-tl-3xl rounded-br-3xl rounded-tr-3xl md:col-span-2 z-25">
               <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
                 {/* Statistics - Side by side with better spacing */}
-                <div className="flex justify-start gap-8 mb-8">
+                <div className="flex justify-start gap-8 mb-8 ml-2">
                   <div className="text-left">
                     <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
                     <div className="text-gray-700 text-base md:text-lg font-medium leading-snug">improved time<br />management</div>
@@ -375,7 +375,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
                   </div>
                 </div>
 
-                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 font-medium text-left max-w-none">
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 font-medium text-left max-w-none ml-2">
                   Achieve lasting transformation in all areas of your life. Discover the support you need to do more, be more and serve more with one-on-one strategy sessions with our expert results coaches.
                 </p>
 
@@ -435,7 +435,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl  rounded-tl-3xl md:col-span-2 z-25 order-4 md:order-3">
               <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
                 {/* Statistics - Side by side with better spacing */}
-                <div className="flex justify-start gap-8 mb-8">
+                <div className="flex justify-start gap-8 mb-8 ml-2">
                   <div className="text-left">
                     <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
                     <div className="text-gray-700 text-base md:text-lg font-medium leading-snug">improved time<br />management</div>
@@ -447,7 +447,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
                   </div>
                 </div>
 
-                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 font-medium text-left max-w-none">
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 font-medium text-left max-w-none ml-2">
                   Achieve lasting transformation in all areas of your life. Discover the support you need to do more, be more and serve more with one-on-one strategy sessions with our expert results coaches.
                 </p>
 

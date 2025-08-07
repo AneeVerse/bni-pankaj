@@ -23,7 +23,7 @@ const FeaturedOn = () => {
         </div>
 
         {/* Logos - Responsive Layout */}
-        <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 max-w-md sm:max-w-lg md:max-w-none mx-auto">
+        <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8 lg:gap-10 max-w-md sm:max-w-lg lg:max-w-none mx-auto">
           {logos.map((logo, index) => (
             <div 
               key={index} 

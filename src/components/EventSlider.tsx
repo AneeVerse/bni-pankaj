@@ -58,6 +58,11 @@ export default function EventSlider() {
   const animationRef = useRef<number | null>(null)
   const lastTimeRef = useRef<number>(0)
   const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  
+  // Touch/Swipe state
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
+  const [isDragging, setIsDragging] = useState(false)
 
   // Manual navigation function
   const goToSlide = (slideIndex: number, isManual: boolean = false) => {
@@ -98,17 +103,17 @@ export default function EventSlider() {
   // Continuous auto-scroll animation
   useEffect(() => {
     const animate = (currentTime: number) => {
-      if (!isPaused && !isTransitioning) {
+      if (!isPaused && !isTransitioning && !isDragging) {
         const deltaTime = currentTime - lastTimeRef.current
         lastTimeRef.current = currentTime
         
         if (deltaTime > 0) {
           setTranslateX(prev => {
-            const speed = 0.015 // Slower, smoother movement
+            const speed = 0.5 // Pixels per frame at 60fps
             const newValue = prev - (speed * (deltaTime / 16.67))
             
-            // Auto-advance when we've moved one full slide width
-            if (Math.abs(newValue) >= (100 / 3)) {
+            // Auto-advance when we've moved one full slide width (220px + 24px gap = 244px total)
+            if (Math.abs(newValue) >= 244) {
               // Use setTimeout to avoid state update conflicts
               setTimeout(() => {
                 setCurrentSlide(current => (current + 1) % events.length)
@@ -135,7 +140,7 @@ export default function EventSlider() {
         clearTimeout(pauseTimeoutRef.current)
       }
     }
-  }, [isPaused, isTransitioning])
+  }, [isPaused, isTransitioning, isDragging])
 
   // Handle mouse interactions
   const handleMouseEnter = () => {
@@ -147,6 +152,47 @@ export default function EventSlider() {
     if (!pauseTimeoutRef.current) {
       setIsPaused(false)
     }
+  }
+
+  // Touch/Swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null) // Reset touchEnd
+    setTouchStart(e.targetTouches[0].clientX)
+    setIsDragging(true)
+    setIsPaused(true)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd || !isDragging) {
+      setIsDragging(false)
+      return
+    }
+    
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) {
+      nextSlide()
+    } else if (isRightSwipe) {
+      prevSlide()
+    } else {
+      // Resume auto-scroll if no significant swipe
+      setTimeout(() => {
+        if (!pauseTimeoutRef.current) {
+          setIsPaused(false)
+        }
+      }, 500)
+    }
+    
+    setIsDragging(false)
+    setTouchStart(null)
+    setTouchEnd(null)
   }
 
   return (
@@ -191,18 +237,21 @@ export default function EventSlider() {
           className="relative"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <div 
             ref={sliderRef}
             className="flex gap-6"
             style={{
-              transform: `translateX(${-currentSlide * (100 / 3) + translateX}%)`
+              transform: `translateX(calc(${-currentSlide * 244}px + ${translateX}px))`
             }}
           >
             {events.map((event, index) => (
               <div
                 key={event.id}
-                className="flex-shrink-0 w-full sm:w-[320px] md:w-[380px] lg:w-[420px] xl:w-[420px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
+                className="flex-shrink-0 w-[220px] sm:w-[320px] md:w-[380px] lg:w-[420px] xl:w-[420px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
               >
                 {/* Video Background */}
                 <video
