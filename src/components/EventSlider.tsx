@@ -50,149 +50,128 @@ const events: EventCard[] = [
 ]
 
 export default function EventSlider() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const [isPaused, setIsPaused] = useState(false)
-  const [translateX, setTranslateX] = useState(0)
+  // Rendered duplicates for seamless loop
+  const DUPLICATES = 3
+  const renderedEvents = Array.from({ length: DUPLICATES })
+    .flatMap((_, dupIdx) => events.map((e) => ({ ...e, __dup: dupIdx })))
+
+  // Measurements and animation state
+  const [slideSize, setSlideSize] = useState<number>(244) // px per card incl. gap
+  const [activeIndex, setActiveIndex] = useState<number>(0) // 0..events.length-1
+  const [renderTranslateX, setRenderTranslateX] = useState<number>(0)
   const sliderRef = useRef<HTMLDivElement>(null)
   const animationRef = useRef<number | null>(null)
   const lastTimeRef = useRef<number>(0)
-  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null)
-  
-  // Touch/Swipe state
-  const [touchStart, setTouchStart] = useState<number | null>(null)
-  const [touchEnd, setTouchEnd] = useState<number | null>(null)
-  const [isDragging, setIsDragging] = useState(false)
 
-  // Manual navigation function
-  const goToSlide = (slideIndex: number, isManual: boolean = false) => {
-    if (isTransitioning) return
-    
-    setIsTransitioning(true)
-    setCurrentSlide(slideIndex)
-    setTranslateX(0)
-    
-    if (isManual) {
-      // Clear any existing pause timeout
-      if (pauseTimeoutRef.current) {
-        clearTimeout(pauseTimeoutRef.current)
-      }
-      
-      // Pause auto-scroll for longer when manually navigating
-      setIsPaused(true)
-      pauseTimeoutRef.current = setTimeout(() => {
-        setIsPaused(false)
-      }, 3000) // 3 seconds pause for manual navigation
-    }
-    
-    setTimeout(() => {
-      setIsTransitioning(false)
-    }, 500)
-  }
+  // Continuous position in px relative to the start of the middle copy
+  // Negative values move left. We wrap this value within one copy width.
+  const basePositionRef = useRef<number>(0)
 
+  // Pointer drag state (mouse/touch unified)
+  const isPointerDownRef = useRef<boolean>(false)
+  const dragStartXRef = useRef<number>(0)
+  const dragDeltaRef = useRef<number>(0)
+
+  // Manual navigation helpers (adjust base position by one card)
   const nextSlide = () => {
-    const nextIndex = (currentSlide + 1) % events.length
-    goToSlide(nextIndex, true)
+    basePositionRef.current -= slideSize
   }
 
   const prevSlide = () => {
-    const prevIndex = currentSlide === 0 ? events.length - 1 : currentSlide - 1
-    goToSlide(prevIndex, true)
+    basePositionRef.current += slideSize
   }
 
-  // Continuous auto-scroll animation
+  // Measure slide size responsively from actual DOM
   useEffect(() => {
-    const animate = (currentTime: number) => {
-      if (!isPaused && !isTransitioning && !isDragging) {
-        const deltaTime = currentTime - lastTimeRef.current
-        lastTimeRef.current = currentTime
-        
-        if (deltaTime > 0) {
-          setTranslateX(prev => {
-            const speed = 0.5 // Pixels per frame at 60fps
-            const newValue = prev - (speed * (deltaTime / 16.67))
-            
-            // Auto-advance when we've moved one full slide width (220px + 24px gap = 244px total)
-            if (Math.abs(newValue) >= 244) {
-              // Use setTimeout to avoid state update conflicts
-              setTimeout(() => {
-                setCurrentSlide(current => (current + 1) % events.length)
-              }, 0)
-              return 0
-            }
-            return newValue
-          })
-        }
-      } else {
-        lastTimeRef.current = currentTime // Keep time updated when paused
+    const computeSlideSize = () => {
+      const track = sliderRef.current
+      if (!track) return
+      const cards = track.querySelectorAll('[data-card="true"]')
+      if (cards.length < 2) return
+      const first = (cards[0] as HTMLElement).getBoundingClientRect()
+      const second = (cards[1] as HTMLElement).getBoundingClientRect()
+      const delta = Math.abs(second.left - first.left)
+      if (delta > 0) {
+        setSlideSize(delta)
       }
-      
+    }
+    computeSlideSize()
+    window.addEventListener('resize', computeSlideSize)
+    return () => window.removeEventListener('resize', computeSlideSize)
+  }, [])
+
+  // Continuous auto-scroll animation (never pauses, seamless wrap)
+  useEffect(() => {
+    const speedPxPerSec = 30 // slow, smooth
+    const copyWidth = events.length * slideSize
+
+    const animate = (currentTime: number) => {
+      const last = lastTimeRef.current || currentTime
+      const deltaMs = currentTime - last
+      lastTimeRef.current = currentTime
+
+      const deltaPx = (speedPxPerSec * deltaMs) / 1000
+      basePositionRef.current -= deltaPx
+
+      // Seamless wrap within [-copyWidth, 0)
+      if (basePositionRef.current <= -copyWidth) {
+        basePositionRef.current += copyWidth
+      } else if (basePositionRef.current >= 0) {
+        basePositionRef.current -= copyWidth
+      }
+
+      // Apply drag delta (if any) and render transform relative to middle copy
+      const x = -copyWidth + basePositionRef.current + dragDeltaRef.current
+      setRenderTranslateX(x)
+
+      // Derive active index for dots
+      const rawIndex = Math.round((-basePositionRef.current) / slideSize)
+      const normalized = ((rawIndex % events.length) + events.length) % events.length
+      if (normalized !== activeIndex) {
+        setActiveIndex(normalized)
+      }
+
       animationRef.current = requestAnimationFrame(animate)
     }
-    
+
     animationRef.current = requestAnimationFrame(animate)
-    
     return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-      }
-      if (pauseTimeoutRef.current) {
-        clearTimeout(pauseTimeoutRef.current)
-      }
+      if (animationRef.current) cancelAnimationFrame(animationRef.current)
     }
-  }, [isPaused, isTransitioning, isDragging])
+  }, [slideSize, activeIndex])
 
-  // Handle mouse interactions
-  const handleMouseEnter = () => {
-    setIsPaused(true)
+  // Pointer (mouse/touch) unified handlers for smooth drag without pausing
+  const onPointerDown = (e: React.PointerEvent) => {
+    isPointerDownRef.current = true
+    dragStartXRef.current = e.clientX
+    dragDeltaRef.current = 0
+    ;(e.target as HTMLElement).setPointerCapture?.(e.pointerId)
   }
 
-  const handleMouseLeave = () => {
-    // Only resume if not manually paused
-    if (!pauseTimeoutRef.current) {
-      setIsPaused(false)
-    }
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!isPointerDownRef.current) return
+    dragDeltaRef.current = e.clientX - dragStartXRef.current
   }
 
-  // Touch/Swipe handlers
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null) // Reset touchEnd
-    setTouchStart(e.targetTouches[0].clientX)
-    setIsDragging(true)
-    setIsPaused(true)
+  const snapToNearestCard = () => {
+    // Merge the drag delta into the base position and snap to nearest card
+    basePositionRef.current += dragDeltaRef.current
+    dragDeltaRef.current = 0
+    const snapped = Math.round(basePositionRef.current / slideSize) * slideSize
+    basePositionRef.current = snapped
   }
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return
-    setTouchEnd(e.targetTouches[0].clientX)
+  const onPointerUp = (e: React.PointerEvent) => {
+    if (!isPointerDownRef.current) return
+    isPointerDownRef.current = false
+    ;(e.target as HTMLElement).releasePointerCapture?.(e.pointerId)
+    snapToNearestCard()
   }
 
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd || !isDragging) {
-      setIsDragging(false)
-      return
-    }
-    
-    const distance = touchStart - touchEnd
-    const isLeftSwipe = distance > 50
-    const isRightSwipe = distance < -50
-
-    if (isLeftSwipe) {
-      nextSlide()
-    } else if (isRightSwipe) {
-      prevSlide()
-    } else {
-      // Resume auto-scroll if no significant swipe
-      setTimeout(() => {
-        if (!pauseTimeoutRef.current) {
-          setIsPaused(false)
-        }
-      }, 500)
-    }
-    
-    setIsDragging(false)
-    setTouchStart(null)
-    setTouchEnd(null)
+  const onPointerLeave = () => {
+    if (!isPointerDownRef.current) return
+    isPointerDownRef.current = false
+    snapToNearestCard()
   }
 
   return (
@@ -216,15 +195,13 @@ export default function EventSlider() {
             <div className="flex gap-2 sm:gap-3">
               <button
                 onClick={prevSlide}
-                disabled={isTransitioning}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all disabled:opacity-50"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all"
               >
                 <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
               <button
                 onClick={nextSlide}
-                disabled={isTransitioning}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all disabled:opacity-50"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all"
               >
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
@@ -235,23 +212,23 @@ export default function EventSlider() {
         {/* Slider Container */}
         <div 
           className="relative"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerLeave={onPointerLeave}
         >
           <div 
             ref={sliderRef}
             className="flex gap-6"
             style={{
-              transform: `translateX(calc(${-currentSlide * 244}px + ${translateX}px))`
+              transform: `translateX(${renderTranslateX}px)`
             }}
           >
-            {events.map((event, index) => (
+            {renderedEvents.map((event, index) => (
               <div
-                key={event.id}
+                key={`${event.__dup}-${event.id}-${index}`}
                 className="flex-shrink-0 w-[220px] sm:w-[320px] md:w-[380px] lg:w-[420px] xl:w-[420px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
+                data-card="true"
               >
                 {/* Video Background */}
                 <video
@@ -291,10 +268,12 @@ export default function EventSlider() {
           {events.map((_, index) => (
             <button
               key={index}
-              onClick={() => goToSlide(index, true)}
-              disabled={isTransitioning}
+              onClick={() => {
+                // Jump to selected index within middle copy
+                basePositionRef.current = -index * slideSize
+              }}
               className={`w-2 h-2 rounded-full transition-colors duration-300 disabled:opacity-50 ${
-                index === currentSlide
+                index === activeIndex
                   ? 'bg-white'
                   : 'bg-gray-600 hover:bg-gray-400'
               }`}
