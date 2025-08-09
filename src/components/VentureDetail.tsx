@@ -49,7 +49,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
            <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0 overflow-hidden rounded-2xl sm:rounded-3xl">
 
       {/* Background Gradient - Subtle angled effect */}
-      <div className="absolute w-[40%] h-[40%] left-[12%] top-[10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-40deg] z-15 hidden sm:block  blur-lg"></div> 
+      <div className="absolute w-[20%] h-[30%] left-[28%] top-[20%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-40deg] z-15 hidden sm:block  blur-lg"></div> 
 
             {/* Section 1 - Expert Guidance Text (Top Right) - Curved on Bottom Left - 3/5 width - MOBILE FIRST */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl rounded-br-3xl md:col-span-3 z-25 order-1 md:order-2">
@@ -61,7 +61,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             </div>
 
             {/* Section 2 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) - MOBILE SECOND */}
-            <div className="relative bg-white rounded-tr-2xl rounded-bl-2xl rounded-br-2xl sm:rounded-tr-3xl sm:rounded-bl-3xl sm:rounded-br-3xl overflow-hidden md:col-span-2 z-30 order-2 md:order-1">
+            <div className="relative bg-white rounded-tr-2xl rounded-bl-2xl rounded-br-2xl rounded-tl-2xl rounded-br-2xl sm:rounded-tr-3xl sm:rounded-bl-3xl sm:rounded-br-3xl overflow-hidden md:col-span-2 z-30 order-2 md:order-1">
               <div className="p-4 sm:p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[200px] sm:min-h-[250px] relative z-30">
                 <Image
                   src="/images/venture/ff445e7d753b31b4df15ae1abb0ec9a02f4d3b94.png"
@@ -76,10 +76,10 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             {/* Section 3 - Video (Bottom Right) - Curved on Top Left - 3/5 width (big video section) - MOBILE THIRD */}
             <div className="relative bg-[#efefef] rounded-tl-2xl sm:rounded-tl-3xl  rounded-br-3xl md:col-span-3 overflow-hidden z-10 order-3 md:order-4">
               {videoUrl ? (
-                <div className="relative w-full h-full min-h-[200px] sm:min-h-[250px] flex items-center justify-center z-30">
+                <div className="relative w-full h-full min-h-[220px] sm:min-h-[200px] flex items-center justify-center z-30">
                   {/* Video Container with Unified Gradient Integration */}
                   <div
-                    className="relative w-full h-11/12 rounded-3xl overflow-hidden -mt-10 -ml-0"
+                    className="relative w-full h-11/12 rounded-3xl overflow-hidden -mt-8 -ml-0"
                     style={{
                       borderRadius: '1.5rem',
                       WebkitBorderRadius: '1.5rem',
@@ -161,30 +161,30 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
             {/* Section 4 - Statistics and Coaching Info (Bottom Left) - Curved on Top Right - 2/5 width - MOBILE FOURTH */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl md:col-span-2 z-25 order-4 md:order-3">
-              <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
+              <div className="px-6 py-5 md:px-8 md:py-6 lg:px-10 lg:py-8 flex flex-col justify-center min-h-[240px] md:min-h-[280px] lg:min-h-[300px] relative z-30">
                 {/* Statistics - Side by side with better spacing */}
-                <div className="flex justify-start gap-8 mb-8 ml-2">
+                <div className="flex justify-start gap-6 mb-4 ml-2">
                   <div className="text-left">
-                    <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
-                    <div className="text-gray-700 text-base md:text-lg font-medium leading-snug">improved time<br />management</div>
+                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
+                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">improved time<br />management</div>
                   </div>
 
                   <div className="text-left">
-                    <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 leading-tight">70%</div>
-                    <div className="text-gray-700 text-base md:text-lg font-medium leading-snug">increased work<br />performance</div>
+                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">70%</div>
+                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">increased work<br />performance</div>
                   </div>
                 </div>
 
-                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 font-medium text-left max-w-none ml-2">
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
                   Achieve lasting transformation in all areas of your life. Discover the support you need to do more, be more and serve more with one-on-one strategy sessions with our expert results coaches.
                 </p>
 
                 {/* Buttons - Stacked vertically with better styling */}
                 <div className="flex flex-col gap-3">
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
+                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
                     Results coaching
                   </button>
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
+                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
                     Business coaching
                   </button>
                 </div>
@@ -239,7 +239,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
             
       {/* Background Gradient - Subtle angled effect */}
-      <div className="absolute w-[40%] h-[40%] left-[48%] top-[10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-135deg] z-15 hidden sm:block  blur-lg"></div> 
+      <div className="absolute w-[30%] h-[40%] left-[48%] top-[10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-135deg] z-15 hidden sm:block  blur-lg"></div> 
 
             {/* Section 1 - Expert Guidance Text (Top Left) - Curved on Bottom Right - 3/5 width */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-br-3xl rounded-tl-3xl rounded-bl-3xl md:col-span-3 z-25">
@@ -251,7 +251,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             </div>
 
             {/* Section 2 - Corporate Connections Logo (Top Right) - Curved on Top Left and Bottom Right - 2/5 width (small box) */}
-            <div className="relative bg-transparent rounded-tl-3xl rounded-br-3xl rounded-bl-3xl overflow-hidden md:col-span-2 z-30">
+            <div className="relative bg-white rounded-tl-3xl rounded-br-3xl rounded-bl-3xl overflow-hidden md:col-span-2 z-30">
               <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative ">
                 <Image
                   src="/images/venture/d7ddf110031b054df193d8ae5b7aab1295e2887a.png"
@@ -266,10 +266,10 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             {/* Section 3 - Video (Bottom Left) - Curved on Top Right - 3/5 width (big video section) */}
             <div className="relative bg-[#efefef]  rounded-tr-3xl rounded-bl-3xl md:col-span-3 overflow-hidden z-10">
               {videoUrl ? (
-                <div className="relative w-full h-full min-h-[250px] flex items-center justify-center z-30">
+                <div className="relative w-full h-full min-h-[220px] sm:min-h-[200px] flex items-center justify-center z-30">
                   {/* Video Container with Unified Gradient Integration */}
                   <div
-                    className="relative w-full h-11/12 rounded-3xl overflow-hidden -mt-10 -ml-0"
+                    className="relative w-full h-11/12 rounded-3xl overflow-hidden -mt-8 -ml-0"
                     style={{
                       borderRadius: '1.5rem',
                       WebkitBorderRadius: '1.5rem',
@@ -351,30 +351,30 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
             {/* Section 4 - Statistics and Coaching Info (Bottom Right) - Curved on Top Left - 2/5 width */}
             <div className="relative bg-[#efefef]  rounded-tl-3xl rounded-br-3xl rounded-tr-3xl md:col-span-2 z-25">
-              <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
+              <div className="px-6 py-5 md:px-8 md:py-6 lg:px-10 lg:py-8 flex flex-col justify-center min-h-[240px] md:min-h-[280px] lg:min-h-[300px] relative z-30">
                 {/* Statistics - Side by side with better spacing */}
-                <div className="flex justify-start gap-8 mb-8 ml-2">
+                <div className="flex justify-start gap-6 mb-4 ml-2">
                   <div className="text-left">
-                    <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
-                    <div className="text-gray-700 text-base md:text-lg font-medium leading-snug">improved time<br />management</div>
+                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
+                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">improved time<br />management</div>
                   </div>
 
                   <div className="text-left">
-                    <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 leading-tight">70%</div>
-                    <div className="text-gray-700 text-base md:text-lg font-medium leading-snug">increased work<br />performance</div>
+                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">70%</div>
+                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">increased work<br />performance</div>
                   </div>
                 </div>
 
-                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 font-medium text-left max-w-none ml-2">
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
                   Achieve lasting transformation in all areas of your life. Discover the support you need to do more, be more and serve more with one-on-one strategy sessions with our expert results coaches.
                 </p>
 
                 {/* Buttons - Stacked vertically with better styling */}
                 <div className="flex flex-col gap-3">
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
+                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
                     Results coaching
                   </button>
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
+                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
                     Business coaching
                   </button>
                 </div>
@@ -392,7 +392,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
            
       {/* Background Gradient - Subtle angled effect */}
-      <div className="absolute w-[40%] h-[40%] left-[12%] top-[10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-40deg] z-15 hidden sm:block  blur-lg"></div> 
+      <div className="absolute w-[20%] h-[30%] left-[28%] top-[20%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-40deg] z-15 hidden sm:block  blur-lg"></div> 
             {/* Section 1 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) */}
             <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl rounded-br-3xl overflow-hidden md:col-span-2 z-30 order-2 md:order-1">
               <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative z-30">
@@ -418,30 +418,30 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
             {/* Section 3 - Statistics and Coaching Info (Bottom Left) - Curved on Top Right - 2/5 width */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl  rounded-tl-3xl md:col-span-2 z-25 order-4 md:order-3">
-              <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
+              <div className="px-6 py-5 md:px-8 md:py-6 lg:px-10 lg:py-8 flex flex-col justify-center min-h-[240px] md:min-h-[280px] lg:min-h-[300px] relative z-30">
                 {/* Statistics - Side by side with better spacing */}
-                <div className="flex justify-start gap-8 mb-8 ml-2">
+                <div className="flex justify-start gap-6 mb-4 ml-2">
                   <div className="text-left">
-                    <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
-                    <div className="text-gray-700 text-base md:text-lg font-medium leading-snug">improved time<br />management</div>
+                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
+                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">improved time<br />management</div>
                   </div>
 
                   <div className="text-left">
-                    <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 leading-tight">70%</div>
-                    <div className="text-gray-700 text-base md:text-lg font-medium leading-snug">increased work<br />performance</div>
+                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">70%</div>
+                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">increased work<br />performance</div>
                   </div>
                 </div>
 
-                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 font-medium text-left max-w-none ml-2">
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
                   Achieve lasting transformation in all areas of your life. Discover the support you need to do more, be more and serve more with one-on-one strategy sessions with our expert results coaches.
                 </p>
 
                 {/* Buttons - Stacked vertically with better styling */}
                 <div className="flex flex-col gap-3">
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
+                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
                     Results coaching
                   </button>
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
+                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
                     Business coaching
                   </button>
                 </div>
@@ -451,10 +451,10 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             {/* Section 4 - Video (Bottom Right) - Curved on Top Left - 3/5 width (big video section) */}
             <div className="relative bg-[#efefef] rounded-tl-3xl rounded-br-3xl rounded-tr-3xl md:col-span-3 overflow-hidden z-10 order-3 md:order-4">
               {videoUrl ? (
-                <div className="relative w-full h-full min-h-[250px] flex items-center justify-center z-30">
+                <div className="relative w-full h-full min-h-[220px] sm:min-h-[200px] flex items-center justify-center z-30">
                   {/* Video Container with Unified Gradient Integration */}
                   <div
-                    className="relative w-full h-11/12 rounded-3xl overflow-hidden -mt-10 -ml-0"
+                    className="relative w-full h-11/12 rounded-3xl overflow-hidden -mt-8 -ml-0"
                     style={{
                       borderRadius: '1.5rem',
                       WebkitBorderRadius: '1.5rem',
