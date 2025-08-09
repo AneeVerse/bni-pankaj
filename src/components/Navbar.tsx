@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-[#121212] py-3 sm:py-4 md:py-6 px-4 sm:px-6">
-      <div className="max-w-8xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* White Rounded Navbar Container */}
         <div className="bg-white rounded-lg shadow-lg px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 flex items-center">
           {/* Left Section - Name Only */}

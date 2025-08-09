@@ -72,7 +72,7 @@ export default function Testimonials() {
 
   return (
     <section className="w-full bg-white py-8 sm:py-10 md:py-16 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-6 md:px-0 max-w-[1400px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Masonry Grid Layout with Pattern Control */}
         <Masonry

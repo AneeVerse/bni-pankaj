@@ -42,7 +42,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
   return (
     <div className="w-full">
       <section className="w-full bg-white">
-        <div className="container mx-auto px-4 sm:px-6 md:px-0 max-w-[1400px] py-4 sm:py-6 md:py-8 lg:py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 md:py-8 lg:py-10">
 
 
                      {/* 2x2 Grid with Interlocking Curves - Reordered sections */}
@@ -236,7 +236,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
       </section>
       {/* Second VentureDetail Section - Mirrored Layout */}
       <section className="w-full bg-white">
-        <div className="container mx-auto px-4 md:px-0 max-w-[1400px] py-6 md:py-8 lg:py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-8 lg:py-10">
 
 
           {/* 2x2 Grid with Interlocking Curves - Mirrored sections */}
@@ -394,7 +394,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
         </div>
       </section>
       <section className="w-full bg-white">
-        <div className="container mx-auto px-4 md:px-0 max-w-[1400px] py-6 md:py-8 lg:py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-8 lg:py-10">
 
 
           {/* 2x2 Grid with Interlocking Curves - Reordered sections */}

@@ -176,7 +176,7 @@ export default function EventSlider() {
 
   return (
     <section className="w-full bg-black py-8 sm:py-10 md:py-16 lg:py-20 overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 max-w-[1400px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header with Navigation */}
         <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-12">
