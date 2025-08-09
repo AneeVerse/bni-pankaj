@@ -41,20 +41,15 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
   return (
     <div className="w-full">
-      <section className="w-full bg-white">
+      <section className="w-full bg-[#efefef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 md:py-8 lg:py-10">
 
 
                      {/* 2x2 Grid with Interlocking Curves - Reordered sections */}
            <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0 overflow-hidden rounded-2xl sm:rounded-3xl">
 
-             {/* Background Image - Visible Only in Image and Video Sections */}
-             <div
-               className="absolute inset-0 w-200 h-100 left-68 top-20 -translate-x-1/2 -translate-y-1/2  z-15 mx-auto my-auto bg-cover bg-center bg-no-repeat hidden sm:block"
-               style={{
-                 backgroundImage: 'url(/images/gradient/01.png)'
-               }}
-             ></div>
+      {/* Background Gradient - Subtle angled effect */}
+      <div className="absolute w-[40%] h-[40%] left-[12%] top-[10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-40deg] z-15 hidden sm:block  blur-lg"></div> 
 
             {/* Section 1 - Expert Guidance Text (Top Right) - Curved on Bottom Left - 3/5 width - MOBILE FIRST */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl rounded-br-3xl md:col-span-3 z-25 order-1 md:order-2">
@@ -235,21 +230,16 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
         )}
       </section>
       {/* Second VentureDetail Section - Mirrored Layout */}
-      <section className="w-full bg-white">
+      <section className="w-full bg-[#efefef] ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-8 lg:py-10">
 
 
           {/* 2x2 Grid with Interlocking Curves - Mirrored sections */}
           <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0  overflow-hidden  rounded-3xl">
 
-            {/* Background Image - Visible Only in Image and Video Sections */}
-            <div
-              className="absolute inset-0 w-200 h-100 -right-330 top-20 -translate-x-1/2 -translate-y-1/2  z-15 mx-auto my-auto bg-cover bg-center bg-no-repeat hidden sm:block"
-              style={{
-                backgroundImage: 'url(/images/gradient/02.png)'
-              }}
-            ></div>
-
+            
+      {/* Background Gradient - Subtle angled effect */}
+      <div className="absolute w-[40%] h-[40%] left-[48%] top-[10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-135deg] z-15 hidden sm:block  blur-lg"></div> 
 
             {/* Section 1 - Expert Guidance Text (Top Left) - Curved on Bottom Right - 3/5 width */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-br-3xl rounded-tl-3xl rounded-bl-3xl md:col-span-3 z-25">
@@ -393,21 +383,16 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
           </div>
         </div>
       </section>
-      <section className="w-full bg-white">
+      <section className="w-full bg-[#efefef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-8 lg:py-10">
 
 
           {/* 2x2 Grid with Interlocking Curves - Reordered sections */}
           <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0  overflow-hidden  rounded-3xl">
 
-            {/* Background Image - Visible Only in Image and Video Sections */}
-            <div
-              className="absolute inset-0 w-200 h-100 left-68 top-20 -translate-x-1/2 -translate-y-1/2  z-15 mx-auto my-auto bg-cover bg-center bg-no-repeat hidden sm:block"
-              style={{
-                backgroundImage: 'url(/images/gradient/01.png)'
-              }}
-            ></div>
-
+           
+      {/* Background Gradient - Subtle angled effect */}
+      <div className="absolute w-[40%] h-[40%] left-[12%] top-[10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-40deg] z-15 hidden sm:block  blur-lg"></div> 
             {/* Section 1 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) */}
             <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl rounded-br-3xl overflow-hidden md:col-span-2 z-30 order-2 md:order-1">
               <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative z-30">
