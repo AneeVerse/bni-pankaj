@@ -92,46 +92,51 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
               <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-600 mb-3 sm:mb-4 md:mb-6 text-left">Our Ventures:</h3>
 
               {/* Single Row Layout for Logos - LARGER SIZES */}
-              <div className="flex justify-start items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8  pb-2">
-                <div className="flex justify-center flex-shrink-0">
-                  <Image
-                    src="/images/venture/3196da117abd22b30b9d753b8a9f6c31b50c4382.png"
-                    alt="Venture 1"
-                    width={180}
-                    height={90}
-                    className="max-w-full h-auto object-contain w-20 sm:w-24 md:w-32 lg:w-auto"
-                  />
-                </div>
-
-                <div className="flex justify-center flex-shrink-0">
-                  <Image
-                    src="/images/venture/ff445e7d753b31b4df15ae1abb0ec9a02f4d3b94.png"
-                    alt="Venture 2"
-                    width={180}
-                    height={90}
-                    className="max-w-full h-auto object-contain w-20 sm:w-24 md:w-32 lg:w-auto"
-                  />
-                </div>
-
-                <div className="flex justify-center flex-shrink-0">
-                  <Image
-                    src="/images/venture/d7ddf110031b054df193d8ae5b7aab1295e2887a.png"
-                    alt="Venture 3"
-                    width={140}
-                    height={70}
-                    className="max-w-full h-auto object-contain w-16 sm:w-20 md:w-24 lg:w-auto"
-                  />
-                </div>
-
-                <div className="flex justify-center flex-shrink-0">
+              <div className="flex justify-start items-center gap-2 sm:gap-3 md:gap-4 lg:gap-5 pb-2 -ml-2">
+              <div className="flex justify-center flex-shrink-0 mr-2">
                   <Image
                     src="/images/venture/tab.png"
                     alt="Venture 4"
                     width={200}
                     height={90}
-                    className="max-w-full h-auto object-contain w-24 sm:w-28 md:w-36 lg:w-auto"
+                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
                   />
                 </div>
+               
+               
+               
+                <div className="flex justify-center flex-shrink-0 -mr-2 sm:-mr-3 md:-mr-2">
+                  <Image
+                    src="/images/venture/d7ddf110031b054df193d8ae5b7aab1295e2887a.png"
+                    alt="Venture 3"
+                    width={200}
+                    height={90}
+                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
+                  />
+                </div>
+                <div className="flex justify-center flex-shrink-0 -mr-2 sm:-mr-3 md:-mr-6">
+                  <Image
+                    src="/images/venture/ff445e7d753b31b4df15ae1abb0ec9a02f4d3b94.png"
+                    alt="Venture 2"
+                    width={180}
+                    height={90}
+                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
+                  />
+                </div>
+
+               
+                <div className="flex justify-center flex-shrink-0 -ml-2 sm:-ml-3 md:-ml-4">
+                  <Image
+                    src="/images/venture/3196da117abd22b30b9d753b8a9f6c31b50c4382.png"
+                    alt="Venture 1"
+                    width={180}
+                    height={90}
+                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
+                  />
+                </div>
+
+               
+                
               </div>
             </div>
           </div>
