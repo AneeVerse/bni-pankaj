@@ -13,17 +13,20 @@ const FeaturedOn = () => {
   ];
 
   return (
-    <section className="bg-[#efefef] py-12 sm:py-14 md:py-16">
+    <section className="bg-[#efefef] py-12 sm:py-14 md:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Title */}
         <div className="text-center mb-6 sm:mb-8">
-          <h2 className="text-base sm:text-lg font-bold text-gray-500 uppercase tracking-wide">
-            As Featured On
+          <h2
+            className="text-xs sm:text-sm md:text-base text-[#0201016E] font-semibold tracking-wider"
+            style={{ fontFamily: 'var(--font-poppins)' }}
+          >
+            AS FEATURED ON
           </h2>
         </div>
 
         {/* Logos - Responsive Layout */}
-        <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8 lg:gap-10 max-w-md sm:max-w-lg lg:max-w-none mx-auto">
+        <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8 lg:gap-10 max-w-md sm:max-w-lg lg:max-w-none mx-auto -mt-4">
           {logos.map((logo, index) => (
             <div 
               key={index} 
@@ -34,7 +37,7 @@ const FeaturedOn = () => {
                 alt={logo.alt}
                 width={80}
                 height={40}
-                className="h-8 sm:h-10 md:h-12 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-8 sm:h-10 md:h-10 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
               />
             </div>
           ))}
