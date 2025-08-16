@@ -29,7 +29,7 @@ const AnimatedText = ({ text }: { text: string }) => {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[85vh] flex items-center">
+    <section className="relative min-h-[90vh] flex items-center">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
