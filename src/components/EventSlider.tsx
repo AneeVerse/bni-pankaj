@@ -72,6 +72,13 @@ export default function EventSlider() {
   const dragStartXRef = useRef<number>(0)
   const dragDeltaRef = useRef<number>(0)
 
+  // Hover tracking to pause auto-scroll (no mouse-follow)
+  const isHoveringRef = useRef<boolean>(false)
+
+  // Smooth snapping animation state
+  const isSnappingRef = useRef<boolean>(false)
+  const snapAnimationRef = useRef<number | null>(null)
+
   // Manual navigation helpers (adjust base position by one card)
   const nextSlide = () => {
     basePositionRef.current -= slideSize
@@ -102,7 +109,7 @@ export default function EventSlider() {
 
   // Continuous auto-scroll animation (never pauses, seamless wrap)
   useEffect(() => {
-    const speedPxPerSec = 30 // slow, smooth
+    const speedPxPerSec = 26 // slow, smooth
     const copyWidth = events.length * slideSize
 
     const animate = (currentTime: number) => {
@@ -111,7 +118,12 @@ export default function EventSlider() {
       lastTimeRef.current = currentTime
 
       const deltaPx = (speedPxPerSec * deltaMs) / 1000
-      basePositionRef.current -= deltaPx
+
+      // Auto-move only when not interacting with mouse and not snapping
+      const shouldAutoMove = !isHoveringRef.current && !isPointerDownRef.current && !isSnappingRef.current
+      if (shouldAutoMove) {
+        basePositionRef.current -= deltaPx
+      }
 
       // Seamless wrap within [-copyWidth, 0)
       if (basePositionRef.current <= -copyWidth) {
@@ -140,7 +152,11 @@ export default function EventSlider() {
     }
   }, [slideSize, activeIndex])
 
-  // Pointer (mouse/touch) unified handlers for smooth drag without pausing
+  // Pointer (mouse/touch) unified handlers for smooth drag and pause only
+  const onPointerEnter = () => {
+    isHoveringRef.current = true
+  }
+
   const onPointerDown = (e: React.PointerEvent) => {
     isPointerDownRef.current = true
     dragStartXRef.current = e.clientX
@@ -153,12 +169,38 @@ export default function EventSlider() {
     dragDeltaRef.current = e.clientX - dragStartXRef.current
   }
 
+  const smoothSnapTo = (target: number) => {
+    // Smoothly animate basePosition to target using easing
+    isSnappingRef.current = true
+    const durationMs = 250
+    const start = basePositionRef.current
+    const delta = target - start
+    let startTime: number | null = null
+
+    const step = (t: number) => {
+      if (startTime === null) startTime = t
+      const elapsed = t - startTime
+      const progress = Math.min(1, elapsed / durationMs)
+      // easeOutCubic
+      const eased = 1 - Math.pow(1 - progress, 3)
+      basePositionRef.current = start + delta * eased
+      if (progress < 1) {
+        snapAnimationRef.current = requestAnimationFrame(step)
+      } else {
+        isSnappingRef.current = false
+      }
+    }
+
+    if (snapAnimationRef.current) cancelAnimationFrame(snapAnimationRef.current)
+    snapAnimationRef.current = requestAnimationFrame(step)
+  }
+
   const snapToNearestCard = () => {
     // Merge the drag delta into the base position and snap to nearest card
     basePositionRef.current += dragDeltaRef.current
     dragDeltaRef.current = 0
     const snapped = Math.round(basePositionRef.current / slideSize) * slideSize
-    basePositionRef.current = snapped
+    smoothSnapTo(snapped)
   }
 
   const onPointerUp = (e: React.PointerEvent) => {
@@ -169,9 +211,12 @@ export default function EventSlider() {
   }
 
   const onPointerLeave = () => {
-    if (!isPointerDownRef.current) return
-    isPointerDownRef.current = false
-    snapToNearestCard()
+    // End any interaction and resume auto
+    isHoveringRef.current = false
+    if (isPointerDownRef.current) {
+      isPointerDownRef.current = false
+      snapToNearestCard()
+    }
   }
 
   return (
@@ -212,6 +257,7 @@ export default function EventSlider() {
         {/* Slider Container */}
         <div 
           className="relative"
+          onPointerEnter={onPointerEnter}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
@@ -229,11 +275,18 @@ export default function EventSlider() {
                 key={`${event.__dup}-${event.id}-${index}`}
                 className="flex-shrink-0 w-[220px] sm:w-[320px] md:w-[380px] lg:w-[420px] xl:w-[420px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
                 data-card="true"
+                onMouseEnter={(e) => {
+                  const v = e.currentTarget.querySelector('video') as HTMLVideoElement | null
+                  v?.play()?.catch(() => {})
+                }}
+                onMouseLeave={(e) => {
+                  const v = e.currentTarget.querySelector('video') as HTMLVideoElement | null
+                  if (v) { v.pause(); try { v.currentTime = 0 } catch {} }
+                }}
               >
                 {/* Video Background */}
                 <video
                   className="absolute inset-0 w-full h-full object-cover"
-                  autoPlay
                   muted
                   loop
                   playsInline
@@ -241,8 +294,27 @@ export default function EventSlider() {
                   <source src={event.videoUrl} type="video/mp4" />
                 </video>
                 
-                {/* Overlay */}
+                {/* Overlay shade */}
                 <div className="absolute inset-0 bg-black/40" />
+
+                {/* Watch button */}
+                <button
+                  className="absolute top-3 left-3 z-10 flex items-center gap-2 text-white bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-full px-3 py-1 border border-white/30"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    const card = (e.currentTarget.closest('[data-card="true"]') as HTMLElement) || undefined
+                    const v = card?.querySelector('video') as HTMLVideoElement | null
+                    if (v) {
+                      v.play().catch(() => {})
+                      // Try fullscreen if available
+                      const anyV: any = v
+                      if (anyV.requestFullscreen) anyV.requestFullscreen()
+                    }
+                  }}
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <span className="text-xs font-semibold uppercase tracking-wide">Watch</span>
+                </button>
                 
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 md:p-8 text-white">

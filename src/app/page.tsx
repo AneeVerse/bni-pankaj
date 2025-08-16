@@ -5,6 +5,7 @@ import VentureSection from '@/components/VentureSection';
 import VentureDetail from '@/components/VentureDetail';
 import Testimonials from '@/components/Testimonials';
 import EventSlider from '@/components/EventSlider';
+import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <VentureDetail videoUrl="/video/venture.mp4" />
       <Testimonials />
       <EventSlider />
+      <CTASection />
       <Footer />
     </div>
   );
