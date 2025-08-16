@@ -307,8 +307,8 @@ export default function EventSlider() {
                     if (v) {
                       v.play().catch(() => {})
                       // Try fullscreen if available
-                      const anyV: any = v
-                      if (anyV.requestFullscreen) anyV.requestFullscreen()
+                      const el = v as HTMLElement
+                      el.requestFullscreen?.()
                     }
                   }}
                 >
