@@ -55,7 +55,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl rounded-br-3xl md:col-span-3 z-25 order-1 md:order-2">
               <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 md:mb-8">
-                  Expert guidance for your path
+                  BNI NAVI MUMBAI - Structured Referral Engine
                 </h2>
               </div>
             </div>
@@ -162,30 +162,17 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             {/* Section 4 - Statistics and Coaching Info (Bottom Left) - Curved on Top Right - 2/5 width - MOBILE FOURTH */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl md:col-span-2 z-25 order-4 md:order-3">
               <div className="px-6 py-5 md:px-8 md:py-6 lg:px-10 lg:py-8 flex flex-col justify-center min-h-[240px] md:min-h-[280px] lg:min-h-[300px] relative z-30">
-                {/* Statistics - Side by side with better spacing */}
-                <div className="flex justify-start gap-6 mb-4 ml-2">
-                  <div className="text-left">
-                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
-                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">improved time<br />management</div>
-                  </div>
-
-                  <div className="text-left">
-                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">70%</div>
-                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">increased work<br />performance</div>
-                  </div>
-                </div>
-
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
-                  Achieve lasting transformation in all areas of your life. Discover the support you need to do more, be more and serve more with one-on-one strategy sessions with our expert results coaches.
+                  Word-of-mouth is still the best marketing. But it only works when it's systematic. BNI gives you a proven weekly structure to generate qualified referrals with trusted business professionals.
+                </p>
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
+                  Our members passed over ₹100 crores in referrals last year. Because when everyone succeeds, everyone wins. One referral can change your entire year.
                 </p>
 
                 {/* Buttons - Stacked vertically with better styling */}
                 <div className="flex flex-col gap-3">
                   <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
-                    Results coaching
-                  </button>
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
-                    Business coaching
+                    Visit a BNI Chapter Meeting
                   </button>
                 </div>
               </div>
@@ -245,7 +232,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-br-3xl rounded-tl-3xl rounded-bl-3xl md:col-span-3 z-25">
               <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 md:mb-8">
-                  Expert guidance for your path
+                  CORPORATE CONNECTIONS - Executive Influence Network
                 </h2>
               </div>
             </div>
@@ -352,30 +339,17 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             {/* Section 4 - Statistics and Coaching Info (Bottom Right) - Curved on Top Left - 2/5 width */}
             <div className="relative bg-[#efefef]  rounded-tl-3xl rounded-br-3xl rounded-tr-3xl md:col-span-2 z-25">
               <div className="px-6 py-5 md:px-8 md:py-6 lg:px-10 lg:py-8 flex flex-col justify-center min-h-[240px] md:min-h-[280px] lg:min-h-[300px] relative z-30">
-                {/* Statistics - Side by side with better spacing */}
-                <div className="flex justify-start gap-6 mb-4 ml-2">
-                  <div className="text-left">
-                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
-                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">improved time<br />management</div>
-                  </div>
-
-                  <div className="text-left">
-                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">70%</div>
-                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">increased work<br />performance</div>
-                  </div>
-                </div>
-
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
-                  Achieve lasting transformation in all areas of your life. Discover the support you need to do more, be more and serve more with one-on-one strategy sessions with our expert results coaches.
+                  Your network determines your net worth. But building the right connections takes time you don't have. Corporate Connections brings together Navi Mumbai's most influential executives, decision-makers, and industry leaders in private forums.
+                </p>
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
+                  Skip the small talk. Build relationships that matter. Access opportunities that transform your business and expand your influence across industries.
                 </p>
 
                 {/* Buttons - Stacked vertically with better styling */}
                 <div className="flex flex-col gap-3">
                   <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
-                    Results coaching
-                  </button>
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
-                    Business coaching
+                    Join the Executive Circle
                   </button>
                 </div>
               </div>
@@ -411,7 +385,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-br-3xl rounded-tl-3xl md:col-span-3 z-25 order-1 md:order-2">
               <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 md:mb-8">
-                  Expert guidance for your path
+                  THE ALTERNATIVE BOARD - Strategic Leadership Circle
                 </h2>
               </div>
             </div>
@@ -419,30 +393,17 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             {/* Section 3 - Statistics and Coaching Info (Bottom Left) - Curved on Top Right - 2/5 width */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl  rounded-tl-3xl md:col-span-2 z-25 order-4 md:order-3">
               <div className="px-6 py-5 md:px-8 md:py-6 lg:px-10 lg:py-8 flex flex-col justify-center min-h-[240px] md:min-h-[280px] lg:min-h-[300px] relative z-30">
-                {/* Statistics - Side by side with better spacing */}
-                <div className="flex justify-start gap-6 mb-4 ml-2">
-                  <div className="text-left">
-                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">81%</div>
-                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">improved time<br />management</div>
-                  </div>
-
-                  <div className="text-left">
-                    <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">70%</div>
-                    <div className="text-gray-700 text-sm md:text-base font-medium leading-snug">increased work<br />performance</div>
-                  </div>
-                </div>
-
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
-                  Achieve lasting transformation in all areas of your life. Discover the support you need to do more, be more and serve more with one-on-one strategy sessions with our expert results coaches.
+                  Your toughest business decisions shouldn't be made alone. TAB connects you with 10-12 fellow CEOs and business owners in monthly confidential sessions. Share real challenges. Get practical solutions. Plus one-on-one coaching to turn insights into action.
+                </p>
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
+                  Members report 23% average revenue growth and clearer long-term vision within 12 months. Because great leaders make great decisions when they have the right support.
                 </p>
 
                 {/* Buttons - Stacked vertically with better styling */}
                 <div className="flex flex-col gap-3">
                   <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
-                    Results coaching
-                  </button>
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
-                    Business coaching
+                    Apply for TAB Membership
                   </button>
                 </div>
               </div>
