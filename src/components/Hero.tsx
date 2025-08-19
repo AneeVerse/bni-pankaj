@@ -123,12 +123,12 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-bg1.jpg"
+          src="/images/bbg1.png"
           alt="Hero Background"
           fill
           className="object-cover sm:object-cover object-center sm:object-center"
           style={{
-            objectPosition: 'center 30%'
+            objectPosition: 'center 2%'
           }}
           priority
         />
