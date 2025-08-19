@@ -26,7 +26,7 @@ export default function CTASection() {
               Stop Guessing.Start Growing.
             </h2>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/90">
-              Every day you delay connecting with the right business leaders costs you opportunities, insights, and revenue. The most successful entrepreneurs in Navi Mumbai are already part of these networks. Your competition isn't waiting. Neither should you.
+              Every day you delay connecting with the right business leaders costs you opportunities, insights, and revenue. The most successful entrepreneurs in Navi Mumbai are already part of these networks. Your competition isn&apos;t waiting. Neither should you.
             </p>
 
             <div className="mt-6 sm:mt-8">

@@ -82,14 +82,12 @@ const SlideUpButton = ({ text, delay = 0 }: { text: string; delay?: number }) =>
 
 const Hero = () => {
   const [showSubheadline, setShowSubheadline] = useState(false);
-  const [showNavbar, setShowNavbar] = useState(false);
-  const [showSecondLine, setShowSecondLine] = useState(false);
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     // Trigger animations after component mounts
     const timer = setTimeout(() => {
-      setShowNavbar(true);
+      // Animation trigger placeholder
     }, 100);
     
     // Calculate total animation time for headline
