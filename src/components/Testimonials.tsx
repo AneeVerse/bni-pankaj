@@ -8,47 +8,47 @@ export default function Testimonials() {
   const testimonials = [
     {
       id: 1,
-      src: "/images/testimonals/1.webp",
+      src: "/images/IMAGES/Copy of DSC00550.JPG",
       alt: "Testimonial 1",
     },
     {
       id: 2,
-      src: "/images/testimonals/2.webp",
+      src: "/images/IMAGES/Copy of WhatsApp Image 2025-08-14 at 16.32.12.jpeg",
       alt: "Testimonial 2", 
     },
     {
       id: 3,
-      src: "/images/testimonals/3.webp",
+      src: "/images/IMAGES/Copy of WhatsApp Image 2025-08-14 at 16.32.12 (1).jpeg",
       alt: "Testimonial 3",
     },
     {
       id: 4,
-      src: "/images/testimonals/4.webp",
+      src: "/images/IMAGES/Copy of WhatsApp Image 2025-08-14 at 16.32.13.jpeg",
       alt: "Testimonial 4",
     },
     {
       id: 5,
-      src: "/images/testimonals/5.webp",
+      src: "/images/IMAGES/Copy of WhatsApp Image 2025-08-14 at 16.32.08.jpeg",
       alt: "Testimonial 5",
     },
     {
       id: 6,
-      src: "/images/testimonals/6.webp",
+      src: "/images/IMAGES/Copy of CC.jpg",
       alt: "Testimonial 6",
     },
     {
       id: 7,
-      src: "/images/testimonals/7.webp",
+      src: "/images/IMAGES/Copy of WhatsApp Image 2025-08-14 at 16.32.07.jpeg",
       alt: "Testimonial 7",
     },
     {
       id: 8,
-      src: "/images/testimonals/8.webp",
+      src: "/images/IMAGES/Copy of WhatsApp Image 2025-08-14 at 16.32.09.jpeg",
       alt: "Testimonial 8",
     },
     {
       id: 9,
-      src: "/images/testimonals/5.webp",
+      src: "/images/IMAGES/Copy of CC3.jpg",
       alt: "Testimonial 9",
     },
     
