@@ -42,10 +42,10 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
   }
       return (
       <section className="w-full bg-white py-4 sm:py-6 md:py-8 lg:py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col">
+        <div className="max-w-[1420px] mx-auto px-4 sm:px-6 flex flex-col">
           {/* Header */}
           <div className="mb-2 sm:mb-3">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-0 mt-10">Mr. Pankaj Harwansh</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 mt-8">Mr. Pankaj Harwansh</h1>
           </div>
 
         {/* 2x2 Grid with Interlocking Curves - No Gaps */}
@@ -53,15 +53,18 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
              style={{ gridGap: '0px' }}>
           
          {/* Background Gradient - Subtle angled effect */}
-          <div className="absolute w-[40%] h-[40%] left-[40%] top-[40%] bg-gradient-to-bl from-[#9eb0cb] via-[#3973cb] to-[#3470cb] rounded-full transform rotate-[-40deg] z-15 hidden sm:block opacity-95 blur-lg"></div> 
+          <div className="absolute w-[38%] h-[38%] left-[48%] top-[40%] bg-gradient-to-bl from-[#3973cb] via-[#3973cb] to-[#3973cb] rounded-full transform rotate-[-40deg] z-15 hidden sm:block opacity-100 blur-lg"></div> 
 
           {/* Section 1 - Photo (Top Left) - Curved on Top Right, Bottom Right, and Bottom Left - 4/6 width */}
-          <div className="relative bg-white rounded-tr-2xl rounded-br-2xl rounded-bl-2xl sm:rounded-tr-3xl sm:rounded-br-3xl sm:rounded-bl-3xl overflow-hidden md:col-span-4 z-10 min-h-[240px] sm:min-h-[300px] md:h-[360px] lg:h-[400px]">
+          <div className="relative bg-white rounded-tr-2xl rounded-br-2xl rounded-bl-2xl sm:rounded-tr-3xl sm:rounded-br-3xl sm:rounded-bl-3xl overflow-hidden md:col-span-4 z-10 min-h-[300px] sm:min-h-[400px] md:h-[480px] lg:h-[540px]">
             <Image
-              src="/images/hero-bg1.jpg"
+              src="/images/bbg2.png"
               alt="Mr. Pankaj Harwansh"
               fill
               className="object-cover object-center"
+              style={{
+                objectPosition: 'center 1%'
+              }}
               sizes="(max-width: 768px) 100vw, 60vw"
             />
 
@@ -69,18 +72,16 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
 
           {/* Section 2 - Description (Top Right) - Curved on Top Left and Bottom Left - 2/6 width */}
           <div className="relative bg-white rounded-tl-2xl rounded-bl-2xl sm:rounded-tl-3xl sm:rounded-bl-3xl md:col-span-2 z-25">
-            <div className="p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[220px] sm:min-h-[280px] md:h-[360px] lg:h-[400px] relative z-30">
+            <div className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center min-h-[300px] sm:min-h-[360px] md:h-[440px] lg:h-[500px] relative z-30">
               <div className="w-full mx-auto">
-                <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-4 sm:mb-6 md:mb-8 font-medium">
-                  At BNI Navi Mumbai, we believe in the power of relationships and the exponential growth that comes from
-                  genuine connections. For over a decade, we have been the driving force behind countless success stories,
-                  connecting business professionals and fostering thriving networks that propel businesses to new heights.
+                <p className=" max-w-[350px] text-gray-800 text-xs sm:text-sm md:text-base lg:text-[22x] leading-relaxed mb-6 sm:mb-8 md:mb-10 font-medium">
+                  Every turning point in life starts with a single step: awareness. That's where real change happens. Discover honest conversations, practical tools, and a space where your questions are welcome no matter how big or small. Transform the way you think, feel, and succeed.
                 </p>
 
                 <button
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300 w-fit px-4 sm:px-6 md:px-8 py-2 sm:py-2 md:py-3 rounded-xl font-semibold text-xs sm:text-sm md:text-base transition-colors"
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-900 w-fit px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-4 rounded-full font-semibold text-xs sm:text-xs md:text-sm transition-colors shadow-sm"
                 >
-                  Meet Pankaj Harwansh
+                  Start Your Journey
                 </button>
               </div>
             </div>
@@ -88,7 +89,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
 
           {/* Section 3 - Our Ventures (Bottom Left) - Curved on Top Left and Top Right - 4/6 width */}
           <div className="relative bg-white rounded-tl-2xl rounded-tr-2xl sm:rounded-tl-3xl sm:rounded-tr-3xl md:col-span-4 z-25 order-2 md:order-2">
-            <div className="pl-3 sm:pl-4 md:pl-6 lg:pl-6 pr-4 sm:pr-6 md:pr-8 lg:pr-10 py-3 sm:py-5 md:py-6 flex flex-col justify-center min-h-[140px] sm:min-h-[160px] md:h-[190px] lg:h-[210px] relative z-30">
+            <div className="pl-3 sm:pl-4 md:pl-6 lg:pl-6 pr-4 sm:pr-6 md:pr-8 lg:pr-10 py-4 sm:py-6 md:py-8 flex flex-col justify-center min-h-[180px] sm:min-h-[200px] md:h-[250px] lg:h-[280px] relative z-30">
               <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-600 mb-3 sm:mb-4 md:mb-6 text-left">Our Ventures:</h3>
 
               {/* Single Row Layout for Logos - LARGER SIZES */}
@@ -144,7 +145,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
           {/* Section 4 - Video (Bottom Right) - Curved on Top Left and Bottom Left - 2/6 width */}
           <div className="relative bg-white rounded-tl-2xl rounded-bl-2xl sm:rounded-tl-3xl sm:rounded-bl-3xl md:col-span-2 overflow-hidden z-10 order-1 md:order-4">
                         {videoUrl ? (
-              <div className="relative w-full h-full min-h-[140px] sm:min-h-[160px] md:h-[190px] lg:h-[210px] flex items-center justify-center z-30">
+              <div className="relative w-full h-full min-h-[180px] sm:min-h-[200px] md:h-[250px] lg:h-[280px] flex items-center justify-center z-30">
                 {/* Video Container with Unified Gradient Integration */}
                 <div 
                   className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden"

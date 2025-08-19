@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="bg-black text-white px-4 sm:px-6"
+      className="sticky top-0 z-50 bg-black text-white px-4 sm:px-6 shadow-lg"
       style={{ fontFamily: 'var(--font-poppins)' }}
     >
       <div className="max-w-[1230px] mx-auto h-16 md:h-18 flex items-center">
