@@ -48,10 +48,10 @@ const SlideUpText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
   }, [delay]);
 
   return (
-    <p className={`text-base sm:text-lg md:text-xl text-gray-200 max-w-lg sm:max-w-3xl md:max-w-xl lg:max-w-[590px] leading-relaxed transform transition-all duration-1600 ease-in-out ${
+    <p className={`text-base sm:text-lg md:text-xl text-gray-200 max-w-lg sm:max-w-3xl md:max-w-xl lg:max-w-[590px] leading-relaxed transform transition-all duration-1500 ease-in-out ${
       isVisible 
         ? 'translate-y-0 opacity-100' 
-        : 'translate-y-4 opacity-0'
+        : 'translate-y-12 opacity-0'
     }`}>
       {text}
     </p>
@@ -70,10 +70,10 @@ const SlideUpButton = ({ text, delay = 0 }: { text: string; delay?: number }) =>
   }, [delay]);
 
   return (
-    <button className={`bg-yellow-300 text-gray-900 font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-full hover:bg-yellow-400 transition-all duration-200 transform transition-all duration-2000 ease-in-out ${
+    <button className={`bg-yellow-300 text-gray-900 font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-full hover:bg-yellow-400 transition-all duration-200 transform transition-all duration-1500 ease-in-out ${
       isVisible 
         ? 'translate-y-0 opacity-100' 
-        : 'translate-y-4 opacity-0'
+        : 'translate-y-12 opacity-0'
     }`}>
       {text}
     </button>
@@ -98,20 +98,15 @@ const Hero = () => {
     const firstLineDuration = headlineLines[0].length * 50; // 50ms per character
     const totalDelay = firstLineDelay + firstLineDuration + 500; // extra 500ms buffer
     
-    const subTimer = setTimeout(() => {
+    // Show both subheadline and button together simultaneously
+    const contentTimer = setTimeout(() => {
       setShowSubheadline(true);
-    }, totalDelay);
-    
-    const buttonDelay = totalDelay + 1600; // Wait for paragraph animation to complete
-    
-    const buttonTimer = setTimeout(() => {
       setShowButton(true);
-    }, buttonDelay);
+    }, totalDelay);
     
     return () => {
       clearTimeout(timer);
-      clearTimeout(subTimer);
-      clearTimeout(buttonTimer);
+      clearTimeout(contentTimer);
     }
   }, []);
 
@@ -156,12 +151,10 @@ const Hero = () => {
             )}
 
             {showButton && (
-              <div className="relative h-16">
-                <div className="absolute top-0 left-0">
-                  <SlideUpButton 
-                    text="Connect With Pankaj Today" 
-                  />
-                </div>
+              <div className="pt-4">
+                <SlideUpButton 
+                  text="Connect With Pankaj Today" 
+                />
               </div>
             )}
           </div>
