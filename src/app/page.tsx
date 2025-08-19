@@ -15,9 +15,9 @@ export default function Home() {
       <Hero />
       <FeaturedOn />
       <VentureSection videoUrl="/video/venture.mp4" />
+      <EventSlider />
       <VentureDetail videoUrl="/video/venture.mp4" />
       <Testimonials />
-      <EventSlider />
       <CTASection />
       <Footer />
     </div>

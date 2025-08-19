@@ -17,35 +17,42 @@ const events: EventCard[] = [
     title: "BUSINESS MASTERY",
     subtitle: "TONY ROBBINS",
     description: "Grow your business exponentially",
-    videoUrl: "/video/venture.mp4"
+    videoUrl: "/video/VIDEOS/Copy of CC Experience meet August.mp4"
   },
   {
     id: 2,
     title: "LEADERSHIP ACADEMY",
     subtitle: "TONY ROBBINS", 
     description: "Become a great leader",
-    videoUrl: "/video/venture.mp4"
+    videoUrl: "/video/VIDEOS/Copy of Untitled design 45.mp4"
   },
   {
     id: 3,
     title: "DATE WITH DESTINY",
     subtitle: "TONY ROBBINS",
     description: "Create life according to your terms",
-    videoUrl: "/video/venture.mp4"
+    videoUrl: "/video/VIDEOS/Copy of Amit Pawar BNI AGNI.mp4"
   },
   {
     id: 4,
     title: "UNLEASH THE POWER WITHIN",
     subtitle: "TONY-ROBBINS",
     description: "Experience explosive growth",
-    videoUrl: "/video/venture.mp4"
+    videoUrl: "/video/VIDEOS/Copy of ADV Swati KUmar.mp4"
   },
   {
     id: 5,
     title: "LIFE MASTERY",
     subtitle: "TONY ROBBINS",
     description: "Master mind and body",
-    videoUrl: "/video/venture.mp4"
+    videoUrl: "/video/VIDEOS/Copy of Prof. Ravi Aahlawat.mp4"
+  },
+  {
+    id: 6,
+    title: "COLLABORATION",
+    subtitle: "TONY ROBBINS",
+    description: "Build powerful partnerships",
+    videoUrl: "/video/VIDEOS/Copy of COLLABORATION.mp4"
   }
 ]
 
@@ -273,7 +280,7 @@ export default function EventSlider() {
             {renderedEvents.map((event, index) => (
               <div
                 key={`${event.__dup}-${event.id}-${index}`}
-                className="flex-shrink-0 w-[220px] sm:w-[320px] md:w-[380px] lg:w-[420px] xl:w-[420px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
+                className="group flex-shrink-0 w-[180px] sm:w-[260px] md:w-[300px] lg:w-[320px] xl:w-[320px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[240px] sm:h-[320px] md:h-[380px] lg:h-[420px]"
                 data-card="true"
                 onMouseEnter={(e) => {
                   const v = e.currentTarget.querySelector('video') as HTMLVideoElement | null
@@ -299,7 +306,7 @@ export default function EventSlider() {
 
                 {/* Watch button */}
                 <button
-                  className="absolute top-3 left-3 z-10 flex items-center gap-2 text-white bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-full px-3 py-1 border border-white/30"
+                  className="absolute top-3 left-3 z-10 flex items-center gap-2 text-white bg-white/20 backdrop-blur-md rounded-full px-6 py-4 b hover:bg-white/30 transition-all duration-300 opacity-0 group-hover:opacity-100"
                   onClick={(e) => {
                     e.stopPropagation()
                     const card = (e.currentTarget.closest('[data-card="true"]') as HTMLElement) || undefined
@@ -313,23 +320,10 @@ export default function EventSlider() {
                   }}
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                  <span className="text-xs font-semibold uppercase tracking-wide">Watch</span>
+                  <span className="text-sm font-medium">Watch</span>
                 </button>
                 
-                {/* Content */}
-                <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 md:p-8 text-white">
-                  <div className="space-y-1 sm:space-y-2">
-                    <p className="text-xs sm:text-xs md:text-sm font-medium tracking-wider opacity-90">
-                      {event.subtitle}
-                    </p>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
-                      {event.title}
-                    </h3>
-                    <p className="text-sm sm:text-sm md:text-base opacity-90 mt-1 sm:mt-2">
-                      {event.description}
-                    </p>
-                  </div>
-                </div>
+
               </div>
             ))}
           </div>
