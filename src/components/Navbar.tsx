@@ -148,7 +148,7 @@ const Navbar = () => {
             <div className="pt-6">
               <Link
                 href="/contact"
-                className="inline-block bg-yellow-300 text-gray-900 font-semibold py-4 px-8 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105"
+                className="inline-block bg-[#3470cc] text-white font-semibold py-4 px-8 rounded-lg hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 CONTACT
