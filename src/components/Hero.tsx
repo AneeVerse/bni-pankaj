@@ -62,7 +62,7 @@ const Hero = () => {
           <div className="text-white space-y-4 sm:space-y-6">
             <div className="space-y-2">
               <h1 className="max-w-[700px] text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-tight">
-                <span className="text-2xl sm:text-3xl md:text-5xl lg:text-[49px] font-normal block mb-2">
+                <span className="text-[27px] sm:text-3xl md:text-5xl lg:text-[49px] font-normal block mb-2">
                   {headlineLines.map((line, lineIdx) => (
                     <span key={lineIdx} className="block">
                       {line.split('').map((char, charIdx) => (
