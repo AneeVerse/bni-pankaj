@@ -105,7 +105,7 @@ const Hero = () => {
                 transitionDelay: showButton ? '0s' : '0.6s'
               }}
             >
-              <button className="bg-[#3470cc] text-white font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-full hover:bg-yellow-400 transition-all duration-200">
+              <button className="bg-[#3470cc] text-white font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-full hover:bg-white hover:text-black transition-all duration-200">
                 Connect With Pankaj Today
               </button>
             </div>

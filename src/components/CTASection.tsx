@@ -30,7 +30,7 @@ export default function CTASection() {
             </p>
 
             <div className="mt-6 sm:mt-8">
-              <button className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-900 rounded-full font-semibold shadow-lg hover:bg-white/90 transition-colors">
+              <button className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-900 rounded-full font-semibold shadow-lg hover:bg-[#3470cc] hover:text-white transition-colors">
                 Book Your Free Network Consultation
               </button>
             </div>
