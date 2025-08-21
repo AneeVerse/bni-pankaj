@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 
 interface VentureSectionProps {
   videoUrl?: string
@@ -10,19 +10,11 @@ interface VentureSectionProps {
 
 export default function VentureSection({ videoUrl, onVideoPlay }: VentureSectionProps = {}) {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(true)
   const [showPopup, setShowPopup] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const popupVideoRef = useRef<HTMLVideoElement>(null)
 
   // Removed unused handleVideoToggle function
-
-  const handleMuteToggle = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-      setIsMuted(!isMuted)
-    }
-  }
 
   const openVideoPopup = () => {
     setShowPopup(true)
@@ -40,8 +32,67 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
       popupVideoRef.current.pause()
     }
   }
+
+  // Disable right-click and prevent image saving
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault()
+      return false
+    }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Prevent F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+        (e.ctrlKey && e.key === 'u') ||
+        (e.ctrlKey && e.key === 's')
+      ) {
+        e.preventDefault()
+        return false
+      }
+      
+      // Close video popup with Escape key
+      if (e.key === 'Escape' && showPopup) {
+        closeVideoPopup()
+      }
+    }
+
+    const handleDragStart = (e: DragEvent) => {
+      e.preventDefault()
+      return false
+    }
+
+    const handleSelectStart = (e: Event) => {
+      e.preventDefault()
+      return false
+    }
+
+    // Add event listeners
+    document.addEventListener('contextmenu', handleContextMenu)
+    document.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('dragstart', handleDragStart)
+    document.addEventListener('selectstart', handleSelectStart)
+
+    // Cleanup
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu)
+      document.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('dragstart', handleDragStart)
+      document.removeEventListener('selectstart', handleSelectStart)
+    }
+  }, [showPopup, closeVideoPopup])
       return (
-      <section className="w-full bg-white py-4 sm:py-6 md:py-8 lg:py-10">
+      <section 
+        className="w-full bg-white py-4 sm:py-6 md:py-8 lg:py-10"
+        onContextMenu={(e) => e.preventDefault()}
+        style={{
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+          MozUserSelect: 'none',
+          msUserSelect: 'none'
+        }}
+      >
         <div className="max-w-[1420px] mx-auto px-4 sm:px-6 flex flex-col">
           {/* Header */}
           <div className="mb-2 sm:mb-3">
@@ -53,7 +104,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
              style={{ gridGap: '0px' }}>
           
          {/* Background Gradient - Subtle angled effect */}
-          <div className="absolute w-[38%] h-[38%] left-[48%] top-[40%] bg-gradient-to-bl from-[#3973cb] via-[#3973cb] to-[#3973cb] rounded-full transform rotate-[-40deg] z-15 hidden sm:block opacity-100 blur-lg"></div> 
+          <div className="absolute w-[38%] h-[38%] left-[48%] top-[50%] bg-gradient-to-bl from-[#3973cb] via-[#3973cb] to-[#3973cb] rounded-full transform rotate-[-50deg] z-15 hidden sm:block opacity-100 blur-lg"></div> 
 
           {/* Section 1 - Photo (Top Left) - Curved on Top Right, Bottom Right, and Bottom Left - 4/6 width */}
           <div className="relative bg-white rounded-tr-2xl rounded-br-2xl rounded-bl-2xl sm:rounded-tr-3xl sm:rounded-br-3xl sm:rounded-bl-3xl overflow-hidden md:col-span-4 z-10 min-h-[300px] sm:min-h-[400px] md:h-[480px] lg:h-[540px]">
@@ -61,11 +112,18 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
               src="/images/bbg2.png"
               alt="Mr. Pankaj Harwansh"
               fill
-              className="object-cover object-center"
+              className="object-cover object-center pointer-events-none"
               style={{
-                objectPosition: 'center 1%'
+                objectPosition: 'center 1%',
+                userSelect: 'none',
+                WebkitUserSelect: 'none',
+                MozUserSelect: 'none',
+                msUserSelect: 'none',
+                pointerEvents: 'none'
               }}
               sizes="(max-width: 768px) 100vw, 60vw"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
             />
 
           </div>
@@ -100,7 +158,16 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     alt="Venture 4"
                     width={200}
                     height={90}
-                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
+                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48 pointer-events-none"
+                    style={{
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none',
+                      MozUserSelect: 'none',
+                      msUserSelect: 'none',
+                      pointerEvents: 'none'
+                    }}
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </div>
                
@@ -112,7 +179,16 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     alt="Venture 3"
                     width={200}
                     height={90}
-                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
+                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48 pointer-events-none"
+                    style={{
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none',
+                      MozUserSelect: 'none',
+                      msUserSelect: 'none',
+                      pointerEvents: 'none'
+                    }}
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </div>
                 <div className="flex justify-center flex-shrink-0 -mr-2 sm:-mr-3 md:-mr-6">
@@ -121,7 +197,16 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     alt="Venture 2"
                     width={180}
                     height={90}
-                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
+                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48 pointer-events-none"
+                    style={{
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none',
+                      MozUserSelect: 'none',
+                      msUserSelect: 'none',
+                      pointerEvents: 'none'
+                    }}
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </div>
 
@@ -132,7 +217,16 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     alt="Venture 1"
                     width={180}
                     height={90}
-                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
+                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48 pointer-events-none"
+                    style={{
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none',
+                      MozUserSelect: 'none',
+                      msUserSelect: 'none',
+                      pointerEvents: 'none'
+                    }}
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </div>
 
@@ -157,11 +251,16 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                 >
                   <video 
                     ref={videoRef}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover pointer-events-none"
                     style={{
                       borderRadius: '1rem',
                       WebkitBorderRadius: '1rem',
-                      MozBorderRadius: '1rem'
+                      MozBorderRadius: '1rem',
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none',
+                      MozUserSelect: 'none',
+                      msUserSelect: 'none',
+                      pointerEvents: 'none'
                     }}
                     muted
                     autoPlay
@@ -170,6 +269,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
                     onEnded={() => setIsPlaying(false)}
+                    onContextMenu={(e) => e.preventDefault()}
                   >
                     <source src={videoUrl} type="video/mp4" />
                     Your browser does not support the video tag.
@@ -191,22 +291,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                   </div>
                 
                   
-                  {/* Mute/Unmute Button Overlay */}
-                  <button
-                    className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:bg-white/20 p-1.5 sm:p-2 rounded-full border border-white/30 hover:border-white/50 transition-all backdrop-blur-sm"
-                    onClick={handleMuteToggle}
-                  >
-                    {isMuted ? (
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 fill-current" viewBox="0 0 24 24">
-                        <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
-                      </svg>
-                    ) : (
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 fill-current" viewBox="0 0 24 24">
-                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-                      </svg>
-                    )}
-                    <span className="sr-only">{isMuted ? 'Unmute' : 'Mute'}</span>
-                  </button>
+                  
                 </div>
               </div>
             ) : (
@@ -235,12 +320,21 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
 
       {/* Video Popup Modal */}
       {showPopup && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="relative bg-white rounded-2xl overflow-hidden max-w-4xl w-full max-h-[90vh]">
+        <div 
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-2 sm:p-4"
+          onContextMenu={(e) => e.preventDefault()}
+          onClick={(e) => {
+            // Close popup when clicking on the background
+            if (e.target === e.currentTarget) {
+              closeVideoPopup();
+            }
+          }}
+        >
+          <div className="relative bg-black rounded-3xl overflow-hidden w-full h-full max-w-6xl max-h-[80vh] flex flex-col">
             {/* Close Button */}
             <button
               onClick={closeVideoPopup}
-              className="absolute top-4 right-4 z-20 text-white hover:text-gray-300 transition-colors"
+              className="absolute top-4 right-4 z-30 text-white hover:text-gray-300 transition-colors bg-black/50 hover:bg-black/70 rounded-full p-2 backdrop-blur-sm"
             >
               <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
@@ -248,25 +342,27 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
             </button>
 
             {/* Video Player */}
-            <div className="relative">
+            <div className="relative flex-1 flex items-center justify-center">
               <video
                 ref={popupVideoRef}
-                className="w-full h-auto max-h-[70vh] object-contain"
+                className="w-full h-full object-contain rounded-3xl"
+                style={{
+                  userSelect: 'none',
+                  WebkitUserSelect: 'none',
+                  MozUserSelect: 'none',
+                  msUserSelect: 'none',
+                  pointerEvents: 'none',
+                  borderRadius: '1.5rem'
+                }}
                 controls
                 autoPlay
                 muted={false}
+                onContextMenu={(e) => e.preventDefault()}
               >
                 <source src={videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-
-              {/* Video Title */}
-              <div className="absolute top-4 left-4 text-white text-lg font-semibold z-10 bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm">
-                &ldquo;What is the force that controls the quality of our lives?&rdquo;
-              </div>
             </div>
-
-          
           </div>
         </div>
       )}

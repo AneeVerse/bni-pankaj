@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 
 interface VentureDetailProps {
   videoUrl?: string
@@ -10,17 +10,9 @@ interface VentureDetailProps {
 
 export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailProps = {}) {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(true)
   const [showPopup, setShowPopup] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const popupVideoRef = useRef<HTMLVideoElement>(null)
-
-  const handleMuteToggle = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-      setIsMuted(!isMuted)
-    }
-  }
 
   const openVideoPopup = () => {
     setShowPopup(true)
@@ -39,6 +31,24 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
     }
   }
 
+  // Add keyboard support for closing popup
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Close video popup with Escape key
+      if (e.key === 'Escape' && showPopup) {
+        closeVideoPopup()
+      }
+    }
+
+    // Add event listener
+    document.addEventListener('keydown', handleKeyDown)
+
+    // Cleanup
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [showPopup, closeVideoPopup])
+
   return (
     <div className="w-full">
       <section className="w-full bg-[#efefef]">
@@ -49,13 +59,15 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
            <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0 overflow-hidden rounded-2xl sm:rounded-3xl">
 
       {/* Background Gradient - Subtle angled effect */}
-      <div className="absolute w-[20%] h-[30%] left-[28%] top-[20%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-40deg] z-15 hidden sm:block  blur-lg"></div> 
+      <div className="absolute w-[80%] h-[60%] left-[5%] top-[-10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-55deg] z-15 hidden sm:block  blur-lg"></div> 
 
             {/* Section 1 - Expert Guidance Text (Top Right) - Curved on Bottom Left - 3/5 width - MOBILE FIRST */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl rounded-br-3xl md:col-span-3 z-25 order-1 md:order-2">
               <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 md:mb-8">
-                  BNI NAVI MUMBAI - Structured Referral Engine
+                  <span className="font-bold uppercase">BNI NAVI MUMBAI</span>
+                  <br />
+                  <span className="font-normal lowercase">Structured Referral Engine</span>
                 </h2>
               </div>
             </div>
@@ -118,23 +130,6 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
                         <span className="sr-only">Open video in popup</span>
                       </button>
                     </div>
-
-                    {/* Mute/Unmute Button Overlay */}
-                    <button
-                      className="absolute top-4 right-4 text-white hover:bg-white/20 p-2 rounded-full border border-white/30 hover:border-white/50 transition-all backdrop-blur-sm"
-                      onClick={handleMuteToggle}
-                    >
-                      {isMuted ? (
-                        <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                          <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
-                        </svg>
-                      ) : (
-                        <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
-                        </svg>
-                      )}
-                      <span className="sr-only">{isMuted ? 'Unmute' : 'Mute'}</span>
-                    </button>
                   </div>
                 </div>
               ) : (
@@ -182,12 +177,20 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
         {/* Video Popup Modal */}
         {showPopup && (
-          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-            <div className="relative bg-white rounded-2xl overflow-hidden max-w-4xl w-full max-h-[90vh]">
+          <div 
+            className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-2 sm:p-4"
+            onClick={(e) => {
+              // Close popup when clicking on the background
+              if (e.target === e.currentTarget) {
+                closeVideoPopup();
+              }
+            }}
+          >
+            <div className="relative bg-black rounded-3xl overflow-hidden w-full h-full max-w-6xl max-h-[80vh] flex flex-col">
               {/* Close Button */}
               <button
                 onClick={closeVideoPopup}
-                className="absolute top-4 right-4 z-20 text-white hover:text-gray-300 transition-colors"
+                className="absolute top-4 right-4 z-30 text-white hover:text-gray-300 transition-colors bg-black/50 hover:bg-black/70 rounded-full p-2 backdrop-blur-sm"
               >
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
@@ -195,10 +198,13 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
               </button>
 
               {/* Video Player */}
-              <div className="relative">
+              <div className="relative flex-1 flex items-center justify-center">
                 <video
                   ref={popupVideoRef}
-                  className="w-full h-auto max-h-[70vh] object-contain"
+                  className="w-full h-full object-contain rounded-3xl"
+                  style={{
+                    borderRadius: '1.5rem'
+                  }}
                   controls
                   autoPlay
                   muted={false}
@@ -206,11 +212,6 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
                   <source src={videoUrl} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-
-                {/* Video Title */}
-                <div className="absolute top-4 left-4 text-white text-lg font-semibold z-10 bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm">
-                  &ldquo;What is the force that controls the quality of our lives?&rdquo;
-                </div>
               </div>
             </div>
           </div>
@@ -226,13 +227,15 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
             
       {/* Background Gradient - Subtle angled effect */}
-      <div className="absolute w-[30%] h-[40%] left-[48%] top-[10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-135deg] z-15 hidden sm:block  blur-lg"></div> 
+      <div className="absolute w-[70%] h-[60%] left-[26%] top-[10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-130deg] z-15 hidden sm:block  blur-lg"></div> 
 
             {/* Section 1 - Expert Guidance Text (Top Left) - Curved on Bottom Right - 3/5 width */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-br-3xl rounded-tl-3xl rounded-bl-3xl md:col-span-3 z-25">
               <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 md:mb-8">
-                  CORPORATE CONNECTIONS - Executive Influence Network
+                  <span className="font-bold uppercase">CORPORATE CONNECTIONS</span>
+                  <br />
+                  <span className="font-normal lowercase">Executive Influence Network</span>
                 </h2>
               </div>
             </div>
@@ -295,23 +298,6 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
                         <span className="sr-only">Open video in popup</span>
                       </button>
                     </div>
-
-                    {/* Mute/Unmute Button Overlay */}
-                    <button
-                      className="absolute top-4 right-4 text-white hover:bg-white/20 p-2 rounded-full border border-white/30 hover:border-white/50 transition-all backdrop-blur-sm"
-                      onClick={handleMuteToggle}
-                    >
-                      {isMuted ? (
-                        <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                          <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
-                        </svg>
-                      ) : (
-                        <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
-                        </svg>
-                      )}
-                      <span className="sr-only">{isMuted ? 'Unmute' : 'Mute'}</span>
-                    </button>
                   </div>
                 </div>
               ) : (
@@ -356,6 +342,48 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             </div>
           </div>
         </div>
+
+        {/* Video Popup Modal */}
+        {showPopup && (
+          <div 
+            className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-2 sm:p-4"
+            onClick={(e) => {
+              // Close popup when clicking on the background
+              if (e.target === e.currentTarget) {
+                closeVideoPopup();
+              }
+            }}
+          >
+            <div className="relative bg-black rounded-3xl overflow-hidden w-full h-full max-w-6xl max-h-[80vh] flex flex-col">
+              {/* Close Button */}
+              <button
+                onClick={closeVideoPopup}
+                className="absolute top-4 right-4 z-30 text-white hover:text-gray-300 transition-colors bg-black/50 hover:bg-black/70 rounded-full p-2 backdrop-blur-sm"
+              >
+                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+              </button>
+
+              {/* Video Player */}
+              <div className="relative flex-1 flex items-center justify-center">
+                <video
+                  ref={popupVideoRef}
+                  className="w-full h-full object-contain rounded-3xl"
+                  style={{
+                    borderRadius: '1.5rem'
+                  }}
+                  controls
+                  autoPlay
+                  muted={false}
+                >
+                  <source src={videoUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
       <section className="w-full bg-[#efefef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-8 lg:py-10">
@@ -366,7 +394,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
            
       {/* Background Gradient - Subtle angled effect */}
-      <div className="absolute w-[20%] h-[30%] left-[28%] top-[20%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-40deg] z-15 hidden sm:block  blur-lg"></div> 
+      <div className="absolute w-[80%] h-[60%] left-[5%] top-[-10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-55deg] z-15 hidden sm:block  blur-lg"></div> 
             {/* Section 1 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) */}
             <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl rounded-br-3xl overflow-hidden md:col-span-2 z-30 order-2 md:order-1">
               <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative z-30">
@@ -385,7 +413,9 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-br-3xl rounded-tl-3xl md:col-span-3 z-25 order-1 md:order-2">
               <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center min-h-[250px] relative z-30">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 md:mb-8">
-                  THE ALTERNATIVE BOARD - Strategic Leadership Circle
+                  <span className="font-bold uppercase">THE ALTERNATIVE BOARD</span>
+                  <br />
+                  <span className="font-normal lowercase">Strategic Leadership Circle</span>
                 </h2>
               </div>
             </div>
@@ -454,23 +484,6 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
                         <span className="sr-only">Open video in popup</span>
                       </button>
                     </div>
-
-                    {/* Mute/Unmute Button Overlay */}
-                    <button
-                      className="absolute top-4 right-4 text-white hover:bg-white/20 p-2 rounded-full border border-white/30 hover:border-white/50 transition-all backdrop-blur-sm"
-                      onClick={handleMuteToggle}
-                    >
-                      {isMuted ? (
-                        <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                          <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
-                        </svg>
-                      ) : (
-                        <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
-                        </svg>
-                      )}
-                      <span className="sr-only">{isMuted ? 'Unmute' : 'Mute'}</span>
-                    </button>
                   </div>
                 </div>
               ) : (
@@ -499,12 +512,20 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
         {/* Video Popup Modal */}
         {showPopup && (
-          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-            <div className="relative bg-white rounded-2xl overflow-hidden max-w-4xl w-full max-h-[90vh]">
+          <div 
+            className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-2 sm:p-4"
+            onClick={(e) => {
+              // Close popup when clicking on the background
+              if (e.target === e.currentTarget) {
+                closeVideoPopup();
+              }
+            }}
+          >
+            <div className="relative bg-black rounded-3xl overflow-hidden w-full h-full max-w-6xl max-h-[80vh] flex flex-col">
               {/* Close Button */}
               <button
                 onClick={closeVideoPopup}
-                className="absolute top-4 right-4 z-20 text-white hover:text-gray-300 transition-colors"
+                className="absolute top-4 right-4 z-30 text-white hover:text-gray-300 transition-colors bg-black/50 hover:bg-black/70 rounded-full p-2 backdrop-blur-sm"
               >
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
@@ -512,10 +533,13 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
               </button>
 
               {/* Video Player */}
-              <div className="relative">
+              <div className="relative flex-1 flex items-center justify-center">
                 <video
                   ref={popupVideoRef}
-                  className="w-full h-auto max-h-[70vh] object-contain"
+                  className="w-full h-full object-contain rounded-3xl"
+                  style={{
+                    borderRadius: '1.5rem'
+                  }}
                   controls
                   autoPlay
                   muted={false}
@@ -523,11 +547,6 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
                   <source src={videoUrl} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-
-                {/* Video Title */}
-                <div className="absolute top-4 left-4 text-white text-lg font-semibold z-10 bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm">
-                  &ldquo;What is the force that controls the quality of our lives?&rdquo;
-                </div>
               </div>
             </div>
           </div>

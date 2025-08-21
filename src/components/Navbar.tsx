@@ -45,7 +45,7 @@ const Navbar = () => {
           <div className="flex-shrink-0 ml-4 sm:ml-6 md:ml-8">
             <Link
               href="/contact"
-              className="bg-yellow-300 text-gray-900 font-medium py-2 px-3 sm:py-2.5 sm:px-4 md:py-2 md:px-5 rounded-md hover:bg-yellow-400 transition-colors text-xs sm:text-sm md:text-base"
+              className="bg-[#3470cc] text-white font-medium py-2 px-3 sm:py-2.5 sm:px-4 md:py-2 md:px-5 rounded-md hover:bg-yellow-400 transition-colors text-xs sm:text-sm md:text-base"
             >
               CONTACT
             </Link>
