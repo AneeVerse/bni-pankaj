@@ -86,6 +86,35 @@ export default function EventSlider() {
   const isSnappingRef = useRef<boolean>(false)
   const snapAnimationRef = useRef<number | null>(null)
 
+  // Set video thumbnails to 7 seconds and handle hover play
+  useEffect(() => {
+    const videos = document.querySelectorAll('video')
+    const cleanupFunctions: (() => void)[] = []
+    
+    videos.forEach((video) => {
+      // Set initial thumbnail to 7 seconds
+      video.currentTime = 7
+      
+      // Add event listener to restart from 7 seconds when video loops
+      const handleTimeUpdate = () => {
+        if (video.currentTime < 7) {
+          video.currentTime = 7
+        }
+      }
+      
+      video.addEventListener('timeupdate', handleTimeUpdate)
+      
+      // Store cleanup function
+      cleanupFunctions.push(() => {
+        video.removeEventListener('timeupdate', handleTimeUpdate)
+      })
+    })
+
+    return () => {
+      cleanupFunctions.forEach(cleanup => cleanup())
+    }
+  }, [])
+
   // Manual navigation helpers (adjust base position by one card)
   const nextSlide = () => {
     basePositionRef.current -= slideSize
@@ -226,6 +255,27 @@ export default function EventSlider() {
     }
   }
 
+  // Enhanced touch handling for mobile
+  const onTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault()
+    isPointerDownRef.current = true
+    dragStartXRef.current = e.touches[0].clientX
+    dragDeltaRef.current = 0
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault()
+    if (!isPointerDownRef.current) return
+    dragDeltaRef.current = e.touches[0].clientX - dragStartXRef.current
+  }
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    e.preventDefault()
+    if (!isPointerDownRef.current) return
+    isPointerDownRef.current = false
+    snapToNearestCard()
+  }
+
   return (
     <section className="w-full bg-black py-8 sm:py-10 md:py-16 lg:py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -263,32 +313,49 @@ export default function EventSlider() {
 
         {/* Slider Container */}
         <div 
-          className="relative"
+          className="relative touch-pan-x overflow-hidden"
           onPointerEnter={onPointerEnter}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerLeave={onPointerLeave}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          style={{ 
+            touchAction: 'pan-x',
+            WebkitOverflowScrolling: 'touch'
+          }}
         >
           <div 
             ref={sliderRef}
             className="flex gap-6"
             style={{
-              transform: `translateX(${renderTranslateX}px)`
+              transform: `translateX(${renderTranslateX}px)`,
+              touchAction: 'pan-x',
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              WebkitTouchCallout: 'none'
             }}
           >
             {renderedEvents.map((event, index) => (
-              <div
+                            <div
                 key={`${event.__dup}-${event.id}-${index}`}
                 className="group flex-shrink-0 w-[180px] sm:w-[260px] md:w-[300px] lg:w-[320px] xl:w-[320px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[240px] sm:h-[320px] md:h-[380px] lg:h-[420px]"
                 data-card="true"
                 onMouseEnter={(e) => {
-                  const v = e.currentTarget.querySelector('video') as HTMLVideoElement | null
-                  v?.play()?.catch(() => {})
+                  const video = e.currentTarget.querySelector('video') as HTMLVideoElement | null
+                  if (video) {
+                    video.currentTime = 7
+                    video.play().catch(() => {})
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  const v = e.currentTarget.querySelector('video') as HTMLVideoElement | null
-                  if (v) { v.pause(); try { v.currentTime = 0 } catch {} }
+                  const video = e.currentTarget.querySelector('video') as HTMLVideoElement | null
+                  if (video) {
+                    video.pause()
+                    video.currentTime = 7
+                  }
                 }}
               >
                 {/* Video Background */}

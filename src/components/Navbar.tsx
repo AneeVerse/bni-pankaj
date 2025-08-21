@@ -17,8 +17,8 @@ const Navbar = () => {
     >
       <div className="max-w-[1230px] mx-auto h-16 md:h-18 flex items-center">
         {/* Left Section - Brand */}
-        <div className="flex-shrink-0">
-          <Link href="/" className="text-white text-xl sm:text-2xl md:text-3xl font-normal tracking-wider hover:opacity-90 sacramento-regular" style={{ letterSpacing: '0.05em' }}>
+        <div className="flex-shrink-0 mb-2">
+          <Link href="/" className=" text-white text-xl sm:text-2xl md:text-[2.5rem] font-normal tracking-wider hover:opacity-90 sacramento-regular" style={{ letterSpacing: '0.05em' }}>
             pankaj harwansh
           </Link>
         </div>
