@@ -79,12 +79,12 @@ export default function EventSlider() {
   const dragStartXRef = useRef<number>(0)
   const dragDeltaRef = useRef<number>(0)
 
-  // Hover tracking to pause auto-scroll (no mouse-follow)
-  const isHoveringRef = useRef<boolean>(false)
-
-  // Smooth snapping animation state
+  // Smooth snap animation state
   const isSnappingRef = useRef<boolean>(false)
-  const snapAnimationRef = useRef<number | null>(null)
+  const snapStartRef = useRef<number>(0)
+  const snapTargetRef = useRef<number>(0)
+  const snapStartTimeRef = useRef<number>(0)
+  const snapDurationMsRef = useRef<number>(300)
 
   // Set video thumbnails to 7 seconds and handle hover play
   useEffect(() => {
@@ -153,19 +153,30 @@ export default function EventSlider() {
       const deltaMs = currentTime - last
       lastTimeRef.current = currentTime
 
-      const deltaPx = (speedPxPerSec * deltaMs) / 1000
+      // Update position when not dragging
+      if (!isPointerDownRef.current) {
+        if (isSnappingRef.current) {
+          // Smoothly interpolate to target
+          const t = Math.min(1, (currentTime - snapStartTimeRef.current) / snapDurationMsRef.current)
+          const easeOutCubic = (x: number) => 1 - Math.pow(1 - x, 3)
+          const eased = easeOutCubic(t)
+          basePositionRef.current = snapStartRef.current + (snapTargetRef.current - snapStartRef.current) * eased
+          if (t >= 1) {
+            basePositionRef.current = snapTargetRef.current
+            isSnappingRef.current = false
+          }
+        } else {
+          // Continuous auto-scroll
+          const deltaPx = (speedPxPerSec * deltaMs) / 1000
+          basePositionRef.current -= deltaPx
 
-      // Auto-move only when not interacting with mouse and not snapping
-      const shouldAutoMove = !isHoveringRef.current && !isPointerDownRef.current && !isSnappingRef.current
-      if (shouldAutoMove) {
-        basePositionRef.current -= deltaPx
-      }
-
-      // Seamless wrap within [-copyWidth, 0)
-      if (basePositionRef.current <= -copyWidth) {
-        basePositionRef.current += copyWidth
-      } else if (basePositionRef.current >= 0) {
-        basePositionRef.current -= copyWidth
+          // Seamless wrap within [-copyWidth, 0)
+          if (basePositionRef.current <= -copyWidth) {
+            basePositionRef.current += copyWidth
+          } else if (basePositionRef.current >= 0) {
+            basePositionRef.current -= copyWidth
+          }
+        }
       }
 
       // Apply drag delta (if any) and render transform relative to middle copy
@@ -188,11 +199,7 @@ export default function EventSlider() {
     }
   }, [slideSize, activeIndex])
 
-  // Pointer (mouse/touch) unified handlers for smooth drag and pause only
-  const onPointerEnter = () => {
-    isHoveringRef.current = true
-  }
-
+  // Pointer (mouse/touch) unified handlers for smooth drag without pausing
   const onPointerDown = (e: React.PointerEvent) => {
     isPointerDownRef.current = true
     dragStartXRef.current = e.clientX
@@ -205,76 +212,116 @@ export default function EventSlider() {
     dragDeltaRef.current = e.clientX - dragStartXRef.current
   }
 
-  const smoothSnapTo = (target: number) => {
-    // Smoothly animate basePosition to target using easing
-    isSnappingRef.current = true
-    const durationMs = 250
-    const start = basePositionRef.current
-    const delta = target - start
-    let startTime: number | null = null
-
-    const step = (t: number) => {
-      if (startTime === null) startTime = t
-      const elapsed = t - startTime
-      const progress = Math.min(1, elapsed / durationMs)
-      // easeOutCubic
-      const eased = 1 - Math.pow(1 - progress, 3)
-      basePositionRef.current = start + delta * eased
-      if (progress < 1) {
-        snapAnimationRef.current = requestAnimationFrame(step)
-      } else {
-        isSnappingRef.current = false
-      }
-    }
-
-    if (snapAnimationRef.current) cancelAnimationFrame(snapAnimationRef.current)
-    snapAnimationRef.current = requestAnimationFrame(step)
-  }
-
-  const snapToNearestCard = () => {
-    // Merge the drag delta into the base position and snap to nearest card
+  const startSnapToNearestCard = () => {
+    // Merge drag delta into the base position and animate to the nearest card
     basePositionRef.current += dragDeltaRef.current
     dragDeltaRef.current = 0
+
+    const copyWidth = events.length * slideSize
+    // Normalize position into [-copyWidth, 0)
+    if (basePositionRef.current <= -copyWidth) {
+      const wraps = Math.ceil((-basePositionRef.current) / copyWidth)
+      basePositionRef.current += wraps * copyWidth
+    } else if (basePositionRef.current >= 0) {
+      const wraps = Math.ceil(basePositionRef.current / copyWidth)
+      basePositionRef.current -= wraps * copyWidth
+    }
+
     const snapped = Math.round(basePositionRef.current / slideSize) * slideSize
-    smoothSnapTo(snapped)
+
+    isSnappingRef.current = true
+    snapStartRef.current = basePositionRef.current
+    snapTargetRef.current = snapped
+    snapStartTimeRef.current = performance.now()
   }
 
   const onPointerUp = (e: React.PointerEvent) => {
     if (!isPointerDownRef.current) return
     isPointerDownRef.current = false
     ;(e.target as HTMLElement).releasePointerCapture?.(e.pointerId)
-    snapToNearestCard()
+    startSnapToNearestCard()
   }
 
   const onPointerLeave = () => {
-    // End any interaction and resume auto
-    isHoveringRef.current = false
-    if (isPointerDownRef.current) {
-      isPointerDownRef.current = false
-      snapToNearestCard()
-    }
-  }
-
-  // Enhanced touch handling for mobile
-  const onTouchStart = (e: React.TouchEvent) => {
-    e.preventDefault()
-    isPointerDownRef.current = true
-    dragStartXRef.current = e.touches[0].clientX
-    dragDeltaRef.current = 0
-  }
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    e.preventDefault()
-    if (!isPointerDownRef.current) return
-    dragDeltaRef.current = e.touches[0].clientX - dragStartXRef.current
-  }
-
-  const onTouchEnd = (e: React.TouchEvent) => {
-    e.preventDefault()
     if (!isPointerDownRef.current) return
     isPointerDownRef.current = false
-    snapToNearestCard()
+    startSnapToNearestCard()
   }
+
+  // Add touch event listeners with proper options to handle passive event listener issue
+  useEffect(() => {
+    const container = sliderRef.current
+    if (!container) return
+
+    const handleTouchStart = (e: TouchEvent) => {
+      e.preventDefault() // Prevent default to avoid conflicts
+      if (e.touches.length === 1) {
+        isPointerDownRef.current = true
+        dragStartXRef.current = e.touches[0].clientX
+        dragDeltaRef.current = 0
+        lastTimeRef.current = performance.now()
+      }
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault() // Prevent default to avoid conflicts
+      if (!isPointerDownRef.current || e.touches.length !== 1) return
+      
+      const currentX = e.touches[0].clientX
+      const deltaX = currentX - dragStartXRef.current
+      dragDeltaRef.current = deltaX
+    }
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      e.preventDefault() // Prevent default to avoid conflicts
+      if (!isPointerDownRef.current) return
+      
+      const currentTime = performance.now()
+      const timeDelta = currentTime - lastTimeRef.current
+      const velocity = dragDeltaRef.current / timeDelta
+      
+      isPointerDownRef.current = false
+      
+      // Lower threshold and higher momentum for better sensitivity
+      if (Math.abs(velocity) > 0.1) { // Reduced from 0.5
+        const momentumDistance = velocity * 500; // Increased from 300
+        dragDeltaRef.current += momentumDistance
+      }
+      
+      startSnapToNearestCard()
+    }
+
+    // Add event listeners with passive: false to allow preventDefault
+    container.addEventListener('touchstart', handleTouchStart, { passive: false })
+    container.addEventListener('touchmove', handleTouchMove, { passive: false })
+    container.addEventListener('touchend', handleTouchEnd, { passive: false })
+
+    return () => {
+      container.removeEventListener('touchstart', handleTouchStart)
+      container.removeEventListener('touchmove', handleTouchMove)
+      container.removeEventListener('touchend', handleTouchEnd)
+    }
+  }, [])
+
+  // Prevent text selection on mobile
+  useEffect(() => {
+    const preventSelect = (e: Event) => {
+      e.preventDefault()
+    }
+
+    const container = sliderRef.current
+    if (container) {
+      container.addEventListener('selectstart', preventSelect)
+      container.addEventListener('dragstart', preventSelect)
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('selectstart', preventSelect)
+        container.removeEventListener('dragstart', preventSelect)
+      }
+    }
+  }, [])
 
   return (
     <section className="w-full bg-black py-8 sm:py-10 md:py-16 lg:py-20 overflow-hidden">
@@ -313,23 +360,15 @@ export default function EventSlider() {
 
         {/* Slider Container */}
         <div 
-          className="relative touch-pan-x overflow-hidden"
-          onPointerEnter={onPointerEnter}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={onPointerUp}
-          onPointerLeave={onPointerLeave}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-          style={{ 
+          className="relative carousel-container overflow-hidden"
+          style={{
             touchAction: 'pan-x',
             WebkitOverflowScrolling: 'touch'
           }}
         >
           <div 
             ref={sliderRef}
-            className="flex gap-6"
+            className="flex gap-6 carousel-track"
             style={{
               transform: `translateX(${renderTranslateX}px)`,
               touchAction: 'pan-x',
@@ -337,11 +376,15 @@ export default function EventSlider() {
               WebkitUserSelect: 'none',
               WebkitTouchCallout: 'none'
             }}
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            onPointerLeave={onPointerLeave}
           >
             {renderedEvents.map((event, index) => (
-                            <div
+              <div
                 key={`${event.__dup}-${event.id}-${index}`}
-                className="group flex-shrink-0 w-[180px] sm:w-[260px] md:w-[300px] lg:w-[320px] xl:w-[320px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[240px] sm:h-[320px] md:h-[380px] lg:h-[420px]"
+                className="group flex-shrink-0 w-[180px] sm:w-[260px] md:w-[300px] lg:w-[320px] xl:w-[320px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[240px] sm:h-[320px] md:h-[380px] lg:h-[420px] carousel-item"
                 data-card="true"
                 onMouseEnter={(e) => {
                   const video = e.currentTarget.querySelector('video') as HTMLVideoElement | null
