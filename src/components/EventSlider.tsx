@@ -70,6 +70,11 @@ export default function EventSlider() {
   const animationRef = useRef<number | null>(null)
   const lastTimeRef = useRef<number>(0)
 
+  // Video popup state
+  const [isVideoPopupOpen, setIsVideoPopupOpen] = useState<boolean>(false)
+  const [currentVideoUrl, setCurrentVideoUrl] = useState<string>("")
+  const [currentVideoTitle, setCurrentVideoTitle] = useState<string>("")
+
   // Continuous position in px relative to the start of the middle copy
   // Negative values move left. We wrap this value within one copy width.
   const basePositionRef = useRef<number>(0)
@@ -86,23 +91,56 @@ export default function EventSlider() {
   const snapStartTimeRef = useRef<number>(0)
   const snapDurationMsRef = useRef<number>(300)
 
+  // Video popup functions
+  const openVideoPopup = (videoUrl: string, title: string) => {
+    setCurrentVideoUrl(videoUrl)
+    setCurrentVideoTitle(title)
+    setIsVideoPopupOpen(true)
+  }
+
+  const closeVideoPopup = () => {
+    setIsVideoPopupOpen(false)
+    setCurrentVideoUrl("")
+    setCurrentVideoTitle("")
+  }
+
+  // Handle escape key to close popup
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isVideoPopupOpen) {
+        closeVideoPopup()
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [isVideoPopupOpen])
+
   // Set video thumbnails to 7 seconds and handle hover play
   useEffect(() => {
     const videos = document.querySelectorAll('video')
     const cleanupFunctions: (() => void)[] = []
     
     videos.forEach((video) => {
-      // Set initial thumbnail to 7 seconds
-      video.currentTime = 7
+      // Set initial thumbnail to 7 seconds for desktop, 6 seconds for mobile
+      const isMobile = window.innerWidth < 640
+      video.currentTime = isMobile ? 6 : 7
       
-      // Add event listener to restart from 7 seconds when video loops
+      // Add event listener to restart from appropriate time when video loops
       const handleTimeUpdate = () => {
-        if (video.currentTime < 7) {
-          video.currentTime = 7
+        const isMobile = window.innerWidth < 640
+        const targetTime = isMobile ? 6 : 7
+        if (video.currentTime < targetTime) {
+          video.currentTime = targetTime
         }
       }
       
       video.addEventListener('timeupdate', handleTimeUpdate)
+      
+      // Auto-play on mobile
+      if (window.innerWidth < 640) {
+        video.play().catch(() => {})
+      }
       
       // Store cleanup function
       cleanupFunctions.push(() => {
@@ -384,22 +422,29 @@ export default function EventSlider() {
             {renderedEvents.map((event, index) => (
               <div
                 key={`${event.__dup}-${event.id}-${index}`}
-                className="group flex-shrink-0 w-[180px] sm:w-[260px] md:w-[300px] lg:w-[320px] xl:w-[320px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[240px] sm:h-[320px] md:h-[380px] lg:h-[420px] carousel-item"
+                className="group flex-shrink-0 w-[180px] sm:w-[260px] md:w-[300px] lg:w-[320px] xl:w-[320px] relative rounded-xl sm:rounded-2xl overflow-hidden h-[240px] sm:h-[320px] md:h-[380px] lg:h-[420px] carousel-item cursor-pointer"
                 data-card="true"
                 onMouseEnter={(e) => {
-                  const video = e.currentTarget.querySelector('video') as HTMLVideoElement | null
-                  if (video) {
-                    video.currentTime = 7
-                    video.play().catch(() => {})
+                  // Only handle hover on desktop
+                  if (window.innerWidth >= 640) {
+                    const video = e.currentTarget.querySelector('video') as HTMLVideoElement | null
+                    if (video) {
+                      video.currentTime = 7
+                      video.play().catch(() => {})
+                    }
                   }
                 }}
                 onMouseLeave={(e) => {
-                  const video = e.currentTarget.querySelector('video') as HTMLVideoElement | null
-                  if (video) {
-                    video.pause()
-                    video.currentTime = 7
+                  // Only handle hover on desktop
+                  if (window.innerWidth >= 640) {
+                    const video = e.currentTarget.querySelector('video') as HTMLVideoElement | null
+                    if (video) {
+                      video.pause()
+                      video.currentTime = 7
+                    }
                   }
                 }}
+                onClick={() => openVideoPopup(event.videoUrl, event.title)}
               >
                 {/* Video Background */}
                 <video
@@ -419,14 +464,7 @@ export default function EventSlider() {
                   className="absolute top-3 left-3 z-10 flex items-center gap-2 text-white bg-white/20 backdrop-blur-md rounded-full px-6 py-4 b hover:bg-white/30 transition-all duration-300 opacity-0 group-hover:opacity-100"
                   onClick={(e) => {
                     e.stopPropagation()
-                    const card = (e.currentTarget.closest('[data-card="true"]') as HTMLElement) || undefined
-                    const v = card?.querySelector('video') as HTMLVideoElement | null
-                    if (v) {
-                      v.play().catch(() => {})
-                      // Try fullscreen if available
-                      const el = v as HTMLElement
-                      el.requestFullscreen?.()
-                    }
+                    openVideoPopup(event.videoUrl, event.title)
                   }}
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -457,6 +495,48 @@ export default function EventSlider() {
           ))}
         </div>
       </div>
+
+      {/* Video Popup */}
+      {isVideoPopupOpen && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={closeVideoPopup}
+        >
+          {/* Background Overlay */}
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+          
+          {/* Video Container - Shorts Size and Fullscreen */}
+          <div 
+            className="relative bg-black rounded-3xl overflow-hidden w-full h-full max-w-[400px] max-h-[80vh] aspect-[9/16]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeVideoPopup}
+              className="absolute top-4 right-4 z-10 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors"
+              aria-label="Close video"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            {/* Video Player - Full Container */}
+            <div className="w-full h-full">
+              <video
+                className="w-full h-full object-cover"
+                controls
+                autoPlay
+                muted
+                style={{ borderRadius: '1.5rem' }}
+              >
+                <source src={currentVideoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
