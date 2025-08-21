@@ -38,14 +38,14 @@ const Hero = () => {
   const headlineLines = ["Make Your Choices From Awareness, Not Ignorance"];
 
   return (
-    <section className="relative min-h-[90vh] flex items-center">
+    <section className="relative min-h-[65vh] md:min-h-[90vh] flex items-center">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 ">
         <Image
           src="/images/bbg1.png"
           alt="Hero Background"
           fill
-          className="object-cover sm:object-cover object-center sm:object-center"
+          className="object-cover md:object-cover"
           style={{
             objectPosition: 'center 2%'
           }}

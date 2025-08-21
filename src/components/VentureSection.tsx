@@ -41,17 +41,6 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Prevent F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
-      if (
-        e.key === 'F12' ||
-        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
-        (e.ctrlKey && e.key === 'u') ||
-        (e.ctrlKey && e.key === 's')
-      ) {
-        e.preventDefault()
-        return false
-      }
-      
       // Close video popup with Escape key
       if (e.key === 'Escape' && showPopup) {
         closeVideoPopup()
@@ -86,12 +75,6 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
       <section 
         className="w-full bg-white py-4 sm:py-6 md:py-8 lg:py-10"
         onContextMenu={(e) => e.preventDefault()}
-        style={{
-          userSelect: 'none',
-          WebkitUserSelect: 'none',
-          MozUserSelect: 'none',
-          msUserSelect: 'none'
-        }}
       >
         <div className="max-w-[1420px] mx-auto px-4 sm:px-6 flex flex-col">
           {/* Header */}
@@ -112,14 +95,13 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
               src="/images/bbg2.png"
               alt="Mr. Pankaj Harwansh"
               fill
-              className="object-cover object-center pointer-events-none"
+              className="object-cover object-center"
               style={{
                 objectPosition: 'center 1%',
                 userSelect: 'none',
                 WebkitUserSelect: 'none',
                 MozUserSelect: 'none',
-                msUserSelect: 'none',
-                pointerEvents: 'none'
+                msUserSelect: 'none'
               }}
               sizes="(max-width: 768px) 100vw, 60vw"
               draggable={false}
@@ -158,13 +140,12 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     alt="Venture 4"
                     width={200}
                     height={90}
-                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48 pointer-events-none"
+                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
                     style={{
                       userSelect: 'none',
                       WebkitUserSelect: 'none',
                       MozUserSelect: 'none',
-                      msUserSelect: 'none',
-                      pointerEvents: 'none'
+                      msUserSelect: 'none'
                     }}
                     draggable={false}
                     onContextMenu={(e) => e.preventDefault()}
@@ -197,13 +178,12 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     alt="Venture 2"
                     width={180}
                     height={90}
-                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48 pointer-events-none"
+                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
                     style={{
                       userSelect: 'none',
                       WebkitUserSelect: 'none',
                       MozUserSelect: 'none',
-                      msUserSelect: 'none',
-                      pointerEvents: 'none'
+                      msUserSelect: 'none'
                     }}
                     draggable={false}
                     onContextMenu={(e) => e.preventDefault()}
@@ -217,13 +197,12 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     alt="Venture 1"
                     width={180}
                     height={90}
-                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48 pointer-events-none"
+                    className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
                     style={{
                       userSelect: 'none',
                       WebkitUserSelect: 'none',
                       MozUserSelect: 'none',
-                      msUserSelect: 'none',
-                      pointerEvents: 'none'
+                      msUserSelect: 'none'
                     }}
                     draggable={false}
                     onContextMenu={(e) => e.preventDefault()}
@@ -251,7 +230,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                 >
                   <video 
                     ref={videoRef}
-                    className="w-full h-full object-cover pointer-events-none"
+                    className="w-full h-full object-cover"
                     style={{
                       borderRadius: '1rem',
                       WebkitBorderRadius: '1rem',
@@ -259,8 +238,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                       userSelect: 'none',
                       WebkitUserSelect: 'none',
                       MozUserSelect: 'none',
-                      msUserSelect: 'none',
-                      pointerEvents: 'none'
+                      msUserSelect: 'none'
                     }}
                     muted
                     autoPlay

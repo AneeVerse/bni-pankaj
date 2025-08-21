@@ -15,10 +15,10 @@ const Navbar = () => {
       className="sticky top-0 z-50 bg-black text-white px-4 sm:px-6 shadow-lg"
       style={{ fontFamily: 'var(--font-poppins)' }}
     >
-      <div className="max-w-[1230px] mx-auto h-16 md:h-18 flex items-center">
+      <div className="max-w-[1230px] mx-auto h-22 md:h-18 flex items-center">
         {/* Left Section - Brand */}
         <div className="flex-shrink-0 mb-2">
-          <Link href="/" className=" text-white text-xl sm:text-2xl md:text-[2.5rem] font-normal tracking-wider hover:opacity-90 sacramento-regular" style={{ letterSpacing: '0.05em' }}>
+          <Link href="/" className=" text-white ml-2 text-2xl sm:text-2xl md:text-[2.5rem] font-normal tracking-wider hover:opacity-90 sacramento-regular" style={{ letterSpacing: '0.05em' }}>
             pankaj harwansh
           </Link>
         </div>
@@ -45,20 +45,20 @@ const Navbar = () => {
           <div className="flex-shrink-0 ml-4 sm:ml-6 md:ml-8">
             <Link
               href="/contact"
-              className="bg-[#3470cc] text-white font-medium py-2 px-3 sm:py-2.5 sm:px-4 md:py-2 md:px-5 rounded-md hover:bg-white hover:text-black transition-colors text-xs sm:text-sm md:text-base"
+              className="bg-[#3470cc] hidden sm:block text-white font-medium py-2 px-3 sm:py-2.5 sm:px-4 md:py-2 md:px-5 rounded-md hover:bg-white hover:text-black transition-colors text-xs sm:text-sm md:text-base"
             >
               CONTACT
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden ml-3 sm:ml-4">
+          <div className="md:hidden mr-6 sm:ml-8">
             <button
               className="text-white hover:text-white/80"
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-7 h-7" fill="none" stroke="#2ea3f2" viewBox="0 0 24 24">
                 {isMobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
