@@ -191,21 +191,15 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-6 sm:pt-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 sm:space-y-6 md:space-y-0">
             
-            {/* Left Side - Language and Copyright */}
-            <div className="flex flex-col space-y-3 sm:space-y-4">
-            
-            
-              {/* Copyright and Links */}
-              <div className="flex flex-col md:flex-row md:items-center md:space-x-6 space-y-2 md:space-y-0 text-xs sm:text-sm text-gray-400">
-                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-                <span>© 2024. All rights reserved.</span>
-              </div>
-              
-              {/* Address */}
-              <p className="text-xs sm:text-sm text-gray-400">
-                9051 Mira Mesa Blvd P.O. Box 281228, San Diego, CA 92128
-              </p>
+            {/* Left Side - Copyright */}
+            <div className="flex-shrink-0">
+              <span className="text-xs sm:text-sm text-gray-400">© 2025 Pankaj Harwansh. All rights reserved.</span>
+            </div>
+
+            {/* Center - Privacy Policy and Terms of Service */}
+            <div className="flex flex-col md:flex-row md:items-center md:space-x-6 space-y-2 md:space-y-0 text-xs sm:text-sm text-gray-400">
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
             </div>
 
             {/* Right Side - Mobile: Social Media, Desktop: Aneeverse Credit */}
