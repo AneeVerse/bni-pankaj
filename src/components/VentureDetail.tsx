@@ -59,7 +59,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
            <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0 overflow-hidden rounded-2xl sm:rounded-3xl">
 
       {/* Background Gradient - Subtle angled effect */}
-      <div className="absolute w-[80%] h-[60%] left-[5%] top-[-10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-55deg] z-15 hidden sm:block  blur-lg"></div> 
+      <div className="absolute w-[100%] h-[40%] left-[5%] top-[-2%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-55deg] z-15 hidden sm:block  blur-lg"></div> 
 
             {/* Section 1 - Expert Guidance Text (Top Right) - Curved on Bottom Left - 3/5 width - MOBILE FIRST */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl rounded-br-3xl md:col-span-3 z-25 order-1 md:order-2">
@@ -227,7 +227,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
             
       {/* Background Gradient - Subtle angled effect */}
-      <div className="absolute w-[70%] h-[60%] left-[26%] top-[10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-130deg] z-15 hidden sm:block  blur-lg"></div> 
+      <div className="absolute w-[100%] h-[60%] left-[26%] top-[50%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-130deg] z-15 hidden sm:block  blur-lg"></div> 
 
             {/* Section 1 - Expert Guidance Text (Top Left) - Curved on Bottom Right - 3/5 width */}
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-br-3xl rounded-tl-3xl rounded-bl-3xl md:col-span-3 z-25">
@@ -394,7 +394,7 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
            
       {/* Background Gradient - Subtle angled effect */}
-      <div className="absolute w-[80%] h-[60%] left-[5%] top-[-10%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-55deg] z-15 hidden sm:block  blur-lg"></div> 
+      <div className="absolute w-[100%] h-[40%] left-[5%] top-[-2%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-55deg] z-15 hidden sm:block  blur-lg"></div> 
             {/* Section 1 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) */}
             <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl rounded-br-3xl overflow-hidden md:col-span-2 z-30 order-2 md:order-1">
               <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative z-30">

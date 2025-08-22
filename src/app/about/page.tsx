@@ -21,7 +21,7 @@ export default function About() {
             </section>
 
             {/* Pankaj's Image */}
-            <div className="flex justify-center mb-40 -mt-5">
+            <div className="flex justify-center mb-40 -mt-5 bg-white">
                 <div className="relative w-full  max-w-[70vw] max-h-[70vh] aspect-[3/2] rounded-3xl overflow-hidden ">
                     <Image
                         src="/images/bbg1.png"
