@@ -10,9 +10,9 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="md:min-h-screen">
       <Navbar />
-      <Hero />
+      <Hero height="90vh" />
       <FeaturedOn />
       <VentureSection videoUrl="/video/venture.mp4" />
       <EventSlider />

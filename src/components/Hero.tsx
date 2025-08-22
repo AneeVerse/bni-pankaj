@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const Hero = () => {
+const Hero = ({ height = "65vh" }: { height?: string }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [showSubheadline, setShowSubheadline] = useState(false);
   const [showButton, setShowButton] = useState(false);
@@ -38,7 +38,7 @@ const Hero = () => {
   const headlineLines = ["Make Your Choices From Awareness, Not Ignorance"];
 
   return (
-    <section className="relative min-h-[65vh] md:min-h-[90vh] flex items-center">
+    <section className={`relative min-h-[65vh] md:min-h-[${height}] flex items-center`}>
       {/* Background Image */}
       <div className="absolute inset-0 z-0 ">
         <Image
