@@ -27,13 +27,17 @@ export default function CTASection() {
 
             {/* Author attribution */}
             <div className="flex items-center justify-center gap-4">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-gradient-to-br from-purple-500 to-pink-500 p-1">
-                <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
-                  <span className="text-white text-xl sm:text-2xl font-bold">TR</span>
-                </div>
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden">
+                <Image
+                  src="/images/cta-logo.avif"
+                  alt="Pankaj Harwansh"
+                  width={64}
+                  height={64}
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
               <div className="text-left">
-                <p className="text-xl sm:text-2xl font-semibold">Tony Robbins</p>
+                <p className="lg:text-[15px] sm:text-2xl font-semibold">Pankaj Harwansh</p>
               </div>
             </div>
           </div>
