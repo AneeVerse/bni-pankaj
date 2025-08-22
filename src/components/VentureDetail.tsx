@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useState, useRef, useEffect, useCallback } from "react"
 
 interface VentureDetailProps {
@@ -166,9 +167,12 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
                 {/* Buttons - Stacked vertically with better styling */}
                 <div className="flex flex-col gap-3">
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
+                  <Link 
+                    href="/company/bni"
+                    className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl text-center"
+                  >
                     Visit a BNI Chapter Meeting
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -334,9 +338,12 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
                 {/* Buttons - Stacked vertically with better styling */}
                 <div className="flex flex-col gap-3">
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
+                  <Link 
+                    href="/company/corporate-connections"
+                    className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl text-center"
+                  >
                     Join the Executive Circle
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -432,9 +439,12 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
 
                 {/* Buttons - Stacked vertically with better styling */}
                 <div className="flex flex-col gap-3">
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl">
+                  <Link 
+                    href="/company/tab"
+                    className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl text-center"
+                  >
                     Apply for TAB Membership
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
