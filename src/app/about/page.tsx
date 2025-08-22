@@ -7,15 +7,15 @@ import CTASection from '@/components/CTASection';
 
 export default function About() {
     return (
-        <div className="md:min-h-screen">
+        <div className="min-h-screen">
             <Navbar />
-            <Hero height="30vh" />
+            <Hero variant="about" />
 
             {/* Quote Section */}
             <section className="py-16 md:py-24 bg-white">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center -mt-10">
                     <blockquote className="text-2xl md:text-2xl lg:text-3xl  font-semibold text-gray-800 leading-relaxed">
-                        "Make sure all the choices you make in life come from a point of awareness and not ignorance."
+                        &ldquo;Make sure all the choices you make in life come from a point of awareness and not ignorance.&rdquo;
                     </blockquote>
                 </div>
             </section>
@@ -57,17 +57,17 @@ export default function About() {
                                 The start of a bigger story
                             </h2>
                             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                                Pankaj doesn't come from wealth.
+                                Pankaj doesn&apos;t come from wealth.
                             </p>
                             <p className="text-lg text-gray-600 leading-relaxed">
-                                He believes that life is an incredible journey, filled with moments of deep reflection and transformation. Through his work with BNI and various business networks, Pankaj has discovered that true success isn't just about financial achievements, but about creating meaningful connections and helping others realize their potential. His journey from humble beginnings to becoming a respected business leader and motivational speaker demonstrates that with awareness, purpose, and dedication, anyone can create extraordinary results in their life.
+                                He believes that life is an incredible journey, filled with moments of deep reflection and transformation. Through his work with BNI and various business networks, Pankaj has discovered that true success isn&apos;t just about financial achievements, but about creating meaningful connections and helping others realize their potential. His journey from humble beginnings to becoming a respected business leader and motivational speaker demonstrates that with awareness, purpose, and dedication, anyone can create extraordinary results in their life.
                             </p>
                         </div>
                         <div className="flex justify-center">
                             <div className=" relative w-full max-w-md  max-h-[60vh] aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
                                 <Image
                                     src="/images/about/about1.avif"
-                                    alt="Pankaj's Journey"
+                                    alt="Pankaj&apos;s Journey"
                                     fill
                                     className="object-cover"
                                     priority
@@ -101,10 +101,10 @@ export default function About() {
                                 What he learned that day is creating means everything.
                             </p>
                             <p className="text-lg text-gray-600 leading-relaxed">
-                                In his father's last precious moments he saw a failure he became angry - and stayed that way. But it is Tony who meant strength once. And if strangers could care, he could too.
+                                In his father&apos;s last precious moments he saw a failure he became angry - and stayed that way. But it is Tony who meant strength once. And if strangers could care, he could too.
                             </p>
                             <p className="text-base text-gray-600 leading-relaxed mt-4">
-                                This was the catalyst for Tony becoming a practical psychologist. He committed himself to learning what actually causes one person to think another to remain stuck. Gathering knowledge about success from the world's best he set out to help people become the best versions of themselves - in every area of life.
+                                This was the catalyst for Tony becoming a practical psychologist. He committed himself to learning what actually causes one person to think another to remain stuck. Gathering knowledge about success from the world&apos;s best he set out to help people become the best versions of themselves - in every area of life.
                             </p>
                         </div>
                     </div>
@@ -120,7 +120,7 @@ export default function About() {
                                 A life dedicated to a greater purpose
                             </h2>
                             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                                Pankaj's mission remains to give back in any he continues to do what he does
+                                Pankaj&apos;s mission remains to give back in any he continues to do what he does
                             </p>
                             <p className="text-lg text-gray-600 leading-relaxed">
                                 Today, Pankaj continues to inspire many through his work as a leader at BNI Navi Mumbai, where he has dedicated himself to building connections and creating opportunities for business professionals. His work extends beyond networking - he believes in transforming lives through awareness and conscious decision-making. Through his speaking engagements and mentorship, Pankaj helps individuals and organizations realize their true potential and create lasting positive impact in their communities.

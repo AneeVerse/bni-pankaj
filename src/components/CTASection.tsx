@@ -22,7 +22,7 @@ export default function CTASection() {
           <div className="text-center text-white max-w-4xl mt-25">
             {/* Quote */}
             <blockquote className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-[600] leading-tight mb-8 sm:mb-12" style={{ letterSpacing: '-0.07em', wordSpacing: '0.01em', lineHeight: '1.1' }}>
-              "I decided that I was going <br /> to find a way, somehow, someday, to give back <br /> and pay it forward."
+              &ldquo;I decided that I was going <br /> to find a way, somehow, someday, to give back <br /> and pay it forward.&rdquo;
             </blockquote>
 
             {/* Author attribution */}

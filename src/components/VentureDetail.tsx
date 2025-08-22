@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 
 interface VentureDetailProps {
   videoUrl?: string
@@ -9,7 +9,7 @@ interface VentureDetailProps {
 }
 
 export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailProps = {}) {
-  const [isPlaying, setIsPlaying] = useState(false)
+  // const [isPlaying, setIsPlaying] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const popupVideoRef = useRef<HTMLVideoElement>(null)
@@ -19,17 +19,17 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
     // Pause the main video when opening popup
     if (videoRef.current) {
       videoRef.current.pause()
-      setIsPlaying(false)
+      // setIsPlaying(false)
     }
   }
 
-  const closeVideoPopup = () => {
+  const closeVideoPopup = useCallback(() => {
     setShowPopup(false)
     // Pause the popup video when closing
     if (popupVideoRef.current) {
       popupVideoRef.current.pause()
     }
-  }
+  }, [])
 
   // Add keyboard support for closing popup
   useEffect(() => {
@@ -110,9 +110,9 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
                       autoPlay
                       loop
                       playsInline
-                      onPlay={() => setIsPlaying(true)}
-                      onPause={() => setIsPlaying(false)}
-                      onEnded={() => setIsPlaying(false)}
+                      // onPlay={() => setIsPlaying(true)}
+                      // onPause={() => setIsPlaying(false)}
+                      // onEnded={() => setIsPlaying(false)}
                     >
                       <source src={videoUrl} type="video/mp4" />
                       Your browser does not support the video tag.
@@ -278,9 +278,9 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
                       autoPlay
                       loop
                       playsInline
-                      onPlay={() => setIsPlaying(true)}
-                      onPause={() => setIsPlaying(false)}
-                      onEnded={() => setIsPlaying(false)}
+                      // onPlay={() => setIsPlaying(true)}
+                      // onPause={() => setIsPlaying(false)}
+                      // onEnded={() => setIsPlaying(false)}
                     >
                       <source src={videoUrl} type="video/mp4" />
                       Your browser does not support the video tag.
@@ -464,9 +464,9 @@ export default function VentureDetail({ videoUrl, onVideoPlay }: VentureDetailPr
                       autoPlay
                       loop
                       playsInline
-                      onPlay={() => setIsPlaying(true)}
-                      onPause={() => setIsPlaying(false)}
-                      onEnded={() => setIsPlaying(false)}
+                      // onPlay={() => setIsPlaying(true)}
+                      // onPause={() => setIsPlaying(false)}
+                      // onEnded={() => setIsPlaying(false)}
                     >
                       <source src={videoUrl} type="video/mp4" />
                       Your browser does not support the video tag.

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface EventCard {
@@ -73,7 +73,7 @@ export default function EventSlider() {
   // Video popup state
   const [isVideoPopupOpen, setIsVideoPopupOpen] = useState<boolean>(false)
   const [currentVideoUrl, setCurrentVideoUrl] = useState<string>("")
-  const [currentVideoTitle, setCurrentVideoTitle] = useState<string>("")
+  // const [currentVideoTitle, setCurrentVideoTitle] = useState<string>("")
 
   // Continuous position in px relative to the start of the middle copy
   // Negative values move left. We wrap this value within one copy width.
@@ -92,16 +92,16 @@ export default function EventSlider() {
   const snapDurationMsRef = useRef<number>(300)
 
   // Video popup functions
-  const openVideoPopup = (videoUrl: string, title: string) => {
+  const openVideoPopup = (videoUrl: string, _title: string) => {
     setCurrentVideoUrl(videoUrl)
-    setCurrentVideoTitle(title)
+    // setCurrentVideoTitle(title)
     setIsVideoPopupOpen(true)
   }
 
   const closeVideoPopup = () => {
     setIsVideoPopupOpen(false)
     setCurrentVideoUrl("")
-    setCurrentVideoTitle("")
+    // setCurrentVideoTitle("")
   }
 
   // Handle escape key to close popup
@@ -250,7 +250,7 @@ export default function EventSlider() {
     dragDeltaRef.current = e.clientX - dragStartXRef.current
   }
 
-  const startSnapToNearestCard = () => {
+  const startSnapToNearestCard = useCallback(() => {
     // Merge drag delta into the base position and animate to the nearest card
     basePositionRef.current += dragDeltaRef.current
     dragDeltaRef.current = 0
@@ -271,7 +271,7 @@ export default function EventSlider() {
     snapStartRef.current = basePositionRef.current
     snapTargetRef.current = snapped
     snapStartTimeRef.current = performance.now()
-  }
+  }, [slideSize])
 
   const onPointerUp = (e: React.PointerEvent) => {
     if (!isPointerDownRef.current) return
@@ -339,7 +339,7 @@ export default function EventSlider() {
       container.removeEventListener('touchmove', handleTouchMove)
       container.removeEventListener('touchend', handleTouchEnd)
     }
-  }, [])
+  }, [startSnapToNearestCard])
 
   // Prevent text selection on mobile
   useEffect(() => {

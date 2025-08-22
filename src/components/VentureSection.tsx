@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 
 interface VentureSectionProps {
   videoUrl?: string
@@ -9,7 +9,7 @@ interface VentureSectionProps {
 }
 
 export default function VentureSection({ videoUrl, onVideoPlay }: VentureSectionProps = {}) {
-  const [isPlaying, setIsPlaying] = useState(false)
+  // const [isPlaying, setIsPlaying] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const popupVideoRef = useRef<HTMLVideoElement>(null)
@@ -21,17 +21,17 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
     // Pause the main video when opening popup
     if (videoRef.current) {
       videoRef.current.pause()
-      setIsPlaying(false)
+      // setIsPlaying(false)
     }
   }
 
-  const closeVideoPopup = () => {
+  const closeVideoPopup = useCallback(() => {
     setShowPopup(false)
     // Pause the popup video when closing
     if (popupVideoRef.current) {
       popupVideoRef.current.pause()
     }
-  }
+  }, [])
 
   // Disable right-click and prevent image saving
   useEffect(() => {
@@ -244,9 +244,9 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     autoPlay
                     loop
                     playsInline
-                    onPlay={() => setIsPlaying(true)}
-                    onPause={() => setIsPlaying(false)}
-                    onEnded={() => setIsPlaying(false)}
+                                          // onPlay={() => setIsPlaying(true)}
+                      // onPause={() => setIsPlaying(false)}
+                      // onEnded={() => setIsPlaying(false)}
                     onContextMenu={(e) => e.preventDefault()}
                   >
                     <source src={videoUrl} type="video/mp4" />

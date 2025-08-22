@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const Hero = ({ height = "65vh" }: { height?: string }) => {
+const Hero = ({ variant = "home" }: { variant?: "home" | "about" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [showSubheadline, setShowSubheadline] = useState(false);
   const [showButton, setShowButton] = useState(false);
@@ -37,8 +37,16 @@ const Hero = ({ height = "65vh" }: { height?: string }) => {
   // Headline lines for animation
   const headlineLines = ["Make Your Choices From Awareness, Not Ignorance"];
 
+  // Get responsive classes based on variant
+  const getHeightClasses = () => {
+    if (variant === "about") {
+      return "min-h-[65vh] lg:min-h-[30vh]"; // Mobile: 65vh, Desktop: 30vh
+    }
+    return "min-h-[65vh] lg:min-h-[90vh]"; // Mobile: 65vh, Desktop: 90vh
+  };
+
   return (
-    <section className={`relative min-h-[65vh] md:min-h-[${height}] flex items-center`}>
+    <section className={`relative ${getHeightClasses()} flex items-center`}>
       {/* Background Image */}
       <div className="absolute inset-0 z-0 ">
         <Image
