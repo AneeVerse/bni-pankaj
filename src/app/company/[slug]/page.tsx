@@ -72,7 +72,7 @@ export default function CompanyPage({ params }: CompanyPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <Navbar />
       
       {/* Main Company Section with VentureDetail Layout */}
@@ -159,109 +159,173 @@ export default function CompanyPage({ params }: CompanyPageProps) {
           
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-[80px] font-bold text-white mb-6" style={{ letterSpacing: '-0.08em', wordSpacing: '0.01em' }}>
               How it works
             </h2>
-            <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto">
+            <p className="text-white text-lg md:text-lg max-w-3xl mx-auto -mb-10">
               The {company.title} System has 4 fully integrated parts.
             </p>
           </div>
 
-          {/* Interlocking Cards Grid */}
-          <div className="relative max-w-5xl mx-auto">
-            
-            {/* Card 1 - Top Left (Immersion) */}
-            <div className="absolute top-0 left-0 w-[45%] md:w-[48%] z-20">
-              <div className="bg-blue-600 rounded-3xl p-8 md:p-12 min-h-[200px] md:min-h-[240px] flex flex-col items-center justify-center text-center relative">
-                <div className="text-white mb-4">
-                  <svg className="w-12 h-12 md:w-16 md:h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
-                  </svg>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white">Network</h3>
-                
-                {/* Bottom connector */}
-                <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-16 h-12 bg-black rounded-full z-30"></div>
-                
-                {/* Right connector */}
-                <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 w-12 h-16 bg-black rounded-full z-30"></div>
-              </div>
-            </div>
 
-            {/* Card 2 - Top Right (Coaching) */}
-            <div className="absolute top-0 right-0 w-[45%] md:w-[48%] z-20">
-              <div className="bg-blue-600 rounded-3xl p-8 md:p-12 min-h-[200px] md:min-h-[240px] flex flex-col items-center justify-center text-center relative">
-                <div className="text-white mb-4">
-                  <svg className="w-12 h-12 md:w-16 md:h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white">Success</h3>
-                
-                {/* Bottom connector */}
-                <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-16 h-12 bg-black rounded-full z-30"></div>
-                
-                {/* Left connector */}
-                <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-12 h-16 bg-black rounded-full z-30"></div>
-              </div>
-            </div>
-
-            {/* Card 3 - Bottom Left (Daily Tools) */}
-            <div className="absolute bottom-0 left-0 w-[45%] md:w-[48%] z-20" style={{ top: '200px' }}>
-              <div className="bg-blue-600 rounded-3xl p-8 md:p-12 min-h-[200px] md:min-h-[240px] flex flex-col items-center justify-center text-center relative">
-                <div className="text-white mb-4">
-                  <svg className="w-12 h-12 md:w-16 md:h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                  </svg>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white">Growth</h3>
-                
-                {/* Top connector */}
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-16 h-12 bg-black rounded-full z-30"></div>
-                
-                {/* Right connector */}
-                <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 w-12 h-16 bg-black rounded-full z-30"></div>
-              </div>
-            </div>
-
-            {/* Card 4 - Bottom Right (Community) */}
-            <div className="absolute bottom-0 right-0 w-[45%] md:w-[48%] z-20" style={{ top: '200px' }}>
-              <div className="bg-blue-600 rounded-3xl p-8 md:p-12 min-h-[200px] md:min-h-[240px] flex flex-col items-center justify-center text-center relative">
-                <div className="text-white mb-4">
-                  <svg className="w-12 h-12 md:w-16 md:h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A2.99 2.99 0 0 0 17.14 7H16c-.8 0-1.54.37-2.03.99L12 10l-1.97-2.01A2.99 2.99 0 0 0 8 7H6.86c-1.31 0-2.41.83-2.82 2.37L1.5 16H4v6h4v-6h2v6h4zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5z"/>
-                  </svg>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white">Community</h3>
-                
-                {/* Top connector */}
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-16 h-12 bg-black rounded-full z-30"></div>
-                
-                {/* Left connector */}
-                <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-12 h-16 bg-black rounded-full z-30"></div>
-              </div>
-            </div>
-
-            {/* Center Connecting Cross */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-              {/* Horizontal bar */}
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 w-24 md:w-32 h-8 md:h-12 bg-black rounded-full"></div>
-              {/* Vertical bar */}
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 w-8 md:w-12 h-24 md:h-32 bg-black rounded-full"></div>
-            </div>
-
-            {/* Spacer for mobile layout */}
-            <div className="h-[440px] md:h-[480px]"></div>
+          {/* Interlocking Cards Design Image */}
+          <div className=" mb-50 flex justify-center max-w-full mx-auto select-none pointer-events-none" style={{ userSelect: 'none', outline: 'none' }}>
+            <Image
+              src="/images/about/design.png"
+              alt="How it works - Interlocking system design"
+              width={1200}
+              height={600}
+              className="w-full max-w-5xl h-auto object-contain select-none pointer-events-none"
+              style={{ userSelect: 'none', outline: 'none' }}
+              draggable={false}
+            />
           </div>
-
-          {/* Bottom CTA */}
-          <div className="text-center mt-16">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-              {company.buttonText}
-            </button>
           </div>
-        </div>
-      </section>
+          </section>
+          <section className="w-full bg-white py-16 md:py-24 ">
+          <div className="  bg-white flex justify-center max-w-full mx-auto select-none pointer-events-none" style={{ userSelect: 'none', outline: 'none' }}>
+            <Image
+              src="/images/company/company-overlay.avif"
+              alt="How it works - Interlocking system design"
+              width={1100}
+              height={500}
+              className="w-full max-w-[945px] h-auto object-contain select-none pointer-events-none -mt-80 rounded-2xl"
+              style={{ userSelect: 'none', outline: 'none' }}
+              draggable={false}
+            />
+          </div>
+          </section>
+
+          {/* She's Unstoppable Summit Section */}
+          <section className="w-full bg-white py-16 md:py-24">
+            <div className="max-w-[1080px] mx-auto px-4 sm:px-6">
+              
+              {/* Header */}
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                  A Free Virtual Event by Sage & Tony Robbins
+                </h2>
+                <p className="text-xl md:text-2xl text-gray-700 font-semibold">
+                  August 20-22, 2025
+                </p>
+              </div>
+
+              {/* Main Content */}
+              <div className="max-w-4xl mx-auto space-y-8">
+                
+                {/* Opening Question */}
+                <div className="text-center space-y-4">
+                  <p className="text-lg md:text-xl text-gray-800 leading-relaxed">
+                    Are you a woman who constantly pours into others, always checking boxes and pushing through, yet lately, something feels… missing?
+                  </p>
+                  <p className="text-lg md:text-xl text-gray-800 leading-relaxed">
+                    Perhaps you're not looking for more to do, but for more that's true. More meaning, more presence, more you.
+                  </p>
+                </div>
+
+                {/* Event Description */}
+                <div className="space-y-6">
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    If you feel a quiet yearning for a deeper connection with your authentic self, then the She's Unstoppable Summit 2025 is your invitation to pause, catch your breath, and finally catch up with yourself.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    This free, 3-day virtual event, hosted by Sage Robbins, is designed specifically for women ready to reconnect with their inner power and align with their deepest knowing.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed font-semibold">
+                    From August 20-22, 2025, join thousands of women worldwide from 2-4pm ET daily for a transformative experience to awaken the unstoppable woman already within you.
+                  </p>
+                </div>
+
+                {/* Are You Ready Section */}
+                <div className="bg-gray-50 rounded-2xl p-8 space-y-6">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 text-center">
+                    Are You Ready to Answer the Call for More?
+                  </h3>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    In a world that constantly demands more from women—more effort, more sacrifice, more holding it all together—it's easy to lose touch with your own needs and desires.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    You might be excelling in your career, managing a bustling household, or tirelessly supporting your loved ones, but beneath the surface, a quiet question lingers: "What do I need now?" This isn't a sign of weakness or being "behind"; it's a powerful awakening.
+                  </p>
+                  <p className="text-xl font-bold text-gray-900 text-center">
+                    You're not behind. You're becoming!
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    The She's Unstoppable Summit is a profound answer to that call. It's an opportunity to shed the expectations that no longer serve you and embrace a path that feels authentic and true. It's about moving beyond the endless to-do lists and discovering a deeper sense of purpose and presence.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    If you're ready to embrace your personal growth journey and cultivate a life that truly reflects your inner self, then this event is for you. It's time to stop pushing through and start flowing with grace and strength, allowing your true self to emerge.
+                  </p>
+                </div>
+
+                {/* What You'll Experience Section */}
+                <div className="space-y-8">
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
+                    What You'll Experience at the She's Unstoppable Summit
+                  </h3>
+                  <p className="text-lg text-gray-700 leading-relaxed text-center">
+                    Over three transformative days, you'll delve into key areas that will help you reclaim your authentic self during the powerful journey of the She's Unstoppable Summit.
+                  </p>
+
+                  {/* Experience Points */}
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-bold text-gray-900">Remember Who You Are</h4>
+                      <p className="text-gray-700">
+                        Reconnect with the woman beneath the roles, responsibilities, and expectations—and come home to your truth.
+                      </p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-bold text-gray-900">Rise from a Kinder Place</h4>
+                      <p className="text-gray-700">
+                        Move through life's transitions with grace, not grit. Discover how softness and strength can live side by side.
+                      </p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-bold text-gray-900">Show Up for Yourself</h4>
+                      <p className="text-gray-700">
+                        Trade self-silencing for self-honoring. Learn to speak with clarity, choose with courage, and act with alignment.
+                      </p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-bold text-gray-900">Be Connected in Sisterhood</h4>
+                      <p className="text-gray-700">
+                        Surround yourself with women who reflect your wholeness back to you—and remind you that you don't have to do it all alone.
+                      </p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-bold text-gray-900">Reignite What You've Set Aside</h4>
+                      <p className="text-gray-700">
+                        Call back the parts of yourself you've put on hold—your joy, your creativity, your voice, your peace—and welcome them home.
+                      </p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-bold text-gray-900">Leave with What You Need</h4>
+                      <p className="text-gray-700">
+                        Regain your clarity, calm, and your next step that feels true. You won't leave the same—and you won't leave empty-handed.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <div className="text-center pt-8">
+                  <button className="bg-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors duration-300 shadow-lg">
+                    Save My Free Seat for the She's Unstoppable Summit!
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        
+
 
       <Footer />
     </div>
@@ -292,3 +356,4 @@ export async function generateStaticParams() {
     { slug: 'corporate-connections' },
   ]
 }
+
