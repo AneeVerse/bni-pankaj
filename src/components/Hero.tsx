@@ -3,10 +3,47 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const Hero = ({ variant = "home" }: { variant?: "home" | "about" }) => {
+const Hero = ({ variant = "home" }: { variant?: "home" | "about" | "contact" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [showSubheadline, setShowSubheadline] = useState(false);
   const [showButton, setShowButton] = useState(false);
+
+  // Get content based on variant
+  const getContent = () => {
+    switch (variant) {
+      case "about":
+        return {
+          headline: "Make Your Choices From Awareness, Not Ignorance",
+          subheadline: "Join a thriving community inspired to grow in life, work, and purpose.",
+          buttonText: "Connect With Pankaj Today"
+        };
+      case "contact":
+        return {
+          headline: "Let's Connect and Create\nImpact Together",
+          subheadline: "Ready to transform your business and life? Reach out and let's start a meaningful conversation.",
+          buttonText: "Get In Touch Today"
+        };
+      default:
+        return {
+          headline: "Make Your Choices From Awareness, Not Ignorance",
+          subheadline: "Join a thriving community inspired to grow in life, work, and purpose.",
+          buttonText: "Connect With Pankaj Today"
+        };
+    }
+  };
+
+  const content = getContent();
+  
+  // Headline lines for animation (using dynamic content, split by line breaks)
+  const headlineLines = content.headline.split('\n');
+
+  // Get responsive classes based on variant
+  const getHeightClasses = () => {
+    if (variant === "about" || variant === "contact") {
+      return "min-h-[65vh] lg:min-h-[30vh]"; // Mobile: 65vh, Desktop: 30vh
+    }
+    return "min-h-[65vh] lg:min-h-[90vh]"; // Mobile: 65vh, Desktop: 90vh
+  };
 
   useEffect(() => {
     // Trigger animations after component mounts
@@ -15,7 +52,6 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" }) => {
     }, 100);
     
     // Calculate total animation time for headline
-    const headlineLines = ["Make Your Choices From Awareness, Not Ignorance"];
     const lastLineIdx = headlineLines.length - 1;
     const lastCharIdx = headlineLines[lastLineIdx].length - 1;
     // Animation: 0.4s initial + 0.5s per line + 0.05s per char
@@ -32,18 +68,7 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" }) => {
       clearTimeout(timer);
       clearTimeout(subTimer);
     }
-  }, []);
-
-  // Headline lines for animation
-  const headlineLines = ["Make Your Choices From Awareness, Not Ignorance"];
-
-  // Get responsive classes based on variant
-  const getHeightClasses = () => {
-    if (variant === "about") {
-      return "min-h-[65vh] lg:min-h-[30vh]"; // Mobile: 65vh, Desktop: 30vh
-    }
-    return "min-h-[65vh] lg:min-h-[90vh]"; // Mobile: 65vh, Desktop: 90vh
-  };
+  }, [variant]);
 
   return (
     <section className={`relative ${getHeightClasses()} flex items-center`}>
@@ -101,7 +126,7 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" }) => {
                 transitionDelay: showSubheadline ? '0s' : '0.6s'
               }}
             >
-              Join a thriving community inspired to grow in life, work, and purpose.
+              {content.subheadline}
             </div>
 
             {/* Button */}
@@ -114,7 +139,7 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" }) => {
               }}
             >
               <button className="bg-[#3470cc] text-white font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-full hover:bg-white hover:text-black transition-all duration-200">
-                Connect With Pankaj Today
+                {content.buttonText}
               </button>
             </div>
           </div>
