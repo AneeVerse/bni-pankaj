@@ -83,6 +83,7 @@ export default function EventSlider() {
   const isPointerDownRef = useRef<boolean>(false)
   const dragStartXRef = useRef<number>(0)
   const dragDeltaRef = useRef<number>(0)
+  const hasDraggedRef = useRef<boolean>(false)
 
   // Smooth snap animation state
   const isSnappingRef = useRef<boolean>(false)
@@ -242,12 +243,17 @@ export default function EventSlider() {
     isPointerDownRef.current = true
     dragStartXRef.current = e.clientX
     dragDeltaRef.current = 0
+    hasDraggedRef.current = false
     ;(e.target as HTMLElement).setPointerCapture?.(e.pointerId)
   }
 
   const onPointerMove = (e: React.PointerEvent) => {
     if (!isPointerDownRef.current) return
     dragDeltaRef.current = e.clientX - dragStartXRef.current
+    // Mark as dragged if moved more than 5px
+    if (Math.abs(dragDeltaRef.current) > 5) {
+      hasDraggedRef.current = true
+    }
   }
 
   const startSnapToNearestCard = useCallback(() => {
@@ -278,12 +284,20 @@ export default function EventSlider() {
     isPointerDownRef.current = false
     ;(e.target as HTMLElement).releasePointerCapture?.(e.pointerId)
     startSnapToNearestCard()
+    // Reset drag state after a small delay to allow click events to process
+    setTimeout(() => {
+      hasDraggedRef.current = false
+    }, 100)
   }
 
   const onPointerLeave = () => {
     if (!isPointerDownRef.current) return
     isPointerDownRef.current = false
     startSnapToNearestCard()
+    // Reset drag state after a small delay
+    setTimeout(() => {
+      hasDraggedRef.current = false
+    }, 100)
   }
 
   // Add touch event listeners with proper options to handle passive event listener issue
@@ -297,6 +311,7 @@ export default function EventSlider() {
         isPointerDownRef.current = true
         dragStartXRef.current = e.touches[0].clientX
         dragDeltaRef.current = 0
+        hasDraggedRef.current = false
         lastTimeRef.current = performance.now()
       }
     }
@@ -308,6 +323,10 @@ export default function EventSlider() {
       const currentX = e.touches[0].clientX
       const deltaX = currentX - dragStartXRef.current
       dragDeltaRef.current = deltaX
+      // Mark as dragged if moved more than 5px
+      if (Math.abs(deltaX) > 5) {
+        hasDraggedRef.current = true
+      }
     }
 
     const handleTouchEnd = (e: TouchEvent) => {
@@ -327,6 +346,10 @@ export default function EventSlider() {
       }
       
       startSnapToNearestCard()
+      // Reset drag state after a small delay
+      setTimeout(() => {
+        hasDraggedRef.current = false
+      }, 100)
     }
 
     // Add event listeners with passive: false to allow preventDefault
@@ -444,7 +467,12 @@ export default function EventSlider() {
                     }
                   }
                 }}
-                onClick={() => openVideoPopup(event.videoUrl, event.title)}
+                onClick={() => {
+                  // Only open popup if user didn't drag
+                  if (!hasDraggedRef.current) {
+                    openVideoPopup(event.videoUrl, event.title)
+                  }
+                }}
               >
                 {/* Video Background */}
                 <video
