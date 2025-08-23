@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
+import EventSlider from '@/components/EventSlider'
+import CTASection from '@/components/CTASection'
 
 // Company data structure
 const companyData = {
@@ -322,7 +324,8 @@ export default function CompanyPage({ params }: CompanyPageProps) {
             </div>
           </section>
 
-        
+        <EventSlider />
+        <CTASection />
 
 
       <Footer />
