@@ -4,6 +4,7 @@ import Footer from '@/components/Footer'
 import Image from 'next/image'
 import EventSlider from '@/components/EventSlider'
 import CTASection from '@/components/CTASection'
+import Link from 'next/link'
 
 // Company data structure
 const companyData = {
@@ -305,126 +306,197 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
           </div>
           </section>
 
-          {/* She's Unstoppable Summit Section */}
+          {/* Company-Specific Content Section */}
           <section className="w-full bg-white py-16 md:py-24 max-w-[1080px] mx-auto -mt-35">
             <div className="max-w-[900px] mx-auto px-4 sm:px-6">
               
               {/* Header */}
               <div className="text-left mb-16">
                 <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold text-gray-900 mb-4">
-                  A Free Virtual Event by Sage & Tony Robbins | August 20-22, 2025
+                  {slug === 'bni' && "Transform Your Business Network Into Your Most Powerful Revenue Engine"}
+                  {slug === 'corporate-connections' && "Where India's Most Influential Leaders Shape The Future Of Business"}
+                  {slug === 'tab' && "Stop Making Critical Business Decisions In Isolation"}
                 </h2>
-              
+                <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
+                  {slug === 'bni' && "Join BNI Navi Mumbai – Where Business Relationships Create Extraordinary Results"}
+                  {slug === 'corporate-connections' && "Join CorporateConnections® Navi Mumbai – The Exclusive Network For Decision-Makers Who Move Markets"}
+                  {slug === 'tab' && "Join TAB Maharashtra - Where Business Owners Get The Strategic Guidance They Can't Find Anywhere Else"}
+                </p>
               </div>
 
               {/* Main Content */}
               <div className="max-w-[900px] mx-auto space-y-8">
                 
-                {/* Opening Question */}
-                <div className="text-left space-y-4 -mt-10">
-                  <p className="text-lg md:text-xl text-gray-800 leading-relaxed">
-                    Are you a woman who constantly pours into others, always checking boxes and pushing through, yet lately, something feels… missing?
-                  </p>
-                  <p className="text-lg md:text-xl text-gray-800 leading-relaxed">
-                    Perhaps you&apos;re not looking for more to do, but for more that&apos;s true. More meaning, more presence, more you.
-                  </p>
+                {/* ABOUT Section */}
+                <div className="text-left space-y-6">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900">ABOUT</h3>
+                  
+                  {slug === 'bni' && (
+                    <>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        You're leaving money on the table every single day.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        While you're grinding away trying to find new customers through expensive ads and cold outreach, successful business owners in Navi Mumbai have discovered a smarter way to grow. They're using the power of structured networking to generate qualified leads, trusted referrals, and measurable business results week after week, month after month.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        BNI Navi Mumbai is not your typical networking group. We're part of BNI (Business Network International), the world's largest business networking and referral organization, and we've built one of the fastest-growing and most dynamic regions in India.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Here's what makes us different: We operate on a proven system. Every week, business owners from diverse, non competing industries meet with one clear purpose to pass qualified business referrals to each other. This isn't casual networking over coffee. This is strategic, measurable, results-driven business development.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Our members have generated crores worth of business for each other. That's not hype that's documented, trackable results from entrepreneurs, professionals, and business owners who understand that the fastest way to grow is through the trusted recommendations of people who know your work.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Under the leadership of Executive Director Pankaj Harwansh, our multiple thriving chapters create a platform where businesses meet real opportunities. When you join BNI Navi Mumbai, you're not just expanding your network you're plugging into a proven system that turns relationships into revenue.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        The "Givers Gain" philosophy drives everything we do. The more business you give to fellow members, the more business flows back to you. It's word-of-mouth marketing with structure, accountability, and measurable results.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Whether you're a startup looking to establish credibility, an established business ready to scale, or a professional seeking to expand your influence, BNI Navi Mumbai provides the tools, training, and community to help you succeed. This is where connections become opportunities, and opportunities become success stories every single day.
+                      </p>
+                    </>
+                  )}
+
+                  {slug === 'corporate-connections' && (
+                    <>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Most networking events are a waste of your time.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        As a CEO, founder, or senior executive, you've sat through countless business gatherings filled with small talk, business card exchanges, and people who simply can't operate at your level. You leave frustrated, knowing that your time – your most precious resource – was squandered on connections that lead nowhere.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        CorporateConnections® Navi Mumbai changes everything.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        We're not another networking group. We're the exclusive platform where India's top business leaders, decision-makers, and influential executives gather to create real value. Under the visionary leadership of Executive Director Pankaj Harwansh, we've built something extraordinary – a curated environment where only the most accomplished leaders gain access.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        This is peer-to-peer networking at the highest level. Every conversation is strategic. Every connection is powerful. Every opportunity is transformative.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Our members don't just grow their businesses – they expand their influence, enhance their leadership capabilities, and create lasting impact in their industries and communities. Through private forums, exclusive events, and cross-border business opportunities, you'll engage with leaders who think bigger, move faster, and achieve more.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        The difference is in the curation. We maintain strict membership criteria because dilution destroys value. When you're surrounded by CEOs, founders, and executives who've already proven their excellence, the conversations naturally elevate to match the caliber of minds in the room.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        As part of the globally recognized CorporateConnections® network, our Navi Mumbai region gives you access to international business opportunities and global leadership networks that can transform not just your business, but your entire industry perspective.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        This isn't networking – this is strategic alliance building at the executive level. Where visionary leaders connect, collaborate, and succeed together.
+                      </p>
+                    </>
+                  )}
+
+                  {slug === 'tab' && (
+                    <>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Running a business is the loneliest job in the world.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Every day, you make decisions that affect your company's future, your employees' livelihoods, and your family's security. But who do you turn to for unbiased, strategic advice? Your employees look to you for answers. Your family wants you to succeed but doesn't understand the complexities. Your competitors aren't sharing their secrets.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        You're making million-dollar decisions with incomplete information.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        The Alternative Board (TAB) Maharashtra changes this forever. We're not consultants selling you solutions. We're not coaches with theoretical frameworks. We're a confidential peer advisory board where successful business owners, CEOs, and entrepreneurs come together to solve real problems with real experience.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Here's how it works: Every month, you sit around a table with 8-12 other business leaders who've faced similar challenges. They've navigated economic downturns, scaled operations, managed difficult employees, and built successful exits. When you present a challenge, you get perspectives from leaders who've actually been there.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Under the guidance of Regional Head Pankaj Harwansh, TAB Maharashtra combines the power of peer wisdom with proven business tools and strategic frameworks used by thousands of successful companies worldwide. You're not just getting advice you're getting battle-tested strategies from the global TAB network.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        The magic happens in the confidentiality. Members sign strict confidentiality agreements, creating a safe space where you can share your real challenges, your actual numbers, and your genuine concerns without fear of judgment or competition.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Plus, you get one-on-one business coaching sessions that provide personalized guidance and accountability between board meetings. This isn't group therapy – this is strategic business acceleration.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Our members don't just solve problems faster – they identify opportunities sooner, make better decisions consistently, and build more valuable businesses systematically.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Stop navigating your business journey alone. Join leaders who've discovered that collective wisdom beats individual struggle every single time.
+                      </p>
+                    </>
+                  )}
                 </div>
 
-                {/* Event Description */}
+                {/* READY TO Section */}
                 <div className="space-y-6">
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    If you feel a quiet yearning for a deeper connection with your authentic self, then the She&apos;s Unstoppable Summit 2025 is your invitation to pause, catch your breath, and finally catch up with yourself.
-                  </p>
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    This free, 3-day virtual event, hosted by Sage Robbins, is designed specifically for women ready to reconnect with their inner power and align with their deepest knowing.
-                  </p>
-                  <p className="text-lg text-gray-700 leading-relaxed font-semibold">
-                    From August 20-22, 2025, join thousands of women worldwide from 2-4pm ET daily for a transformative experience to awaken the unstoppable woman already within you.
-                  </p>
-                </div>
-
-                {/* Are You Ready Section */}
-                <div className=" space-y-6">
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-900 text-left">
-                    Are You Ready to Answer the Call for More?
+                    {slug === 'bni' && "READY TO TURN YOUR NETWORK INTO YOUR NET WORTH?"}
+                    {slug === 'corporate-connections' && "READY TO ELEVATE YOUR LEADERSHIP NETWORK?"}
+                    {slug === 'tab' && "READY TO MAKE BETTER BUSINESS DECISIONS WITH PROVEN PEER GUIDANCE?"}
                   </h3>
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    In a world that constantly demands more from women—more effort, more sacrifice, more holding it all together—it&apos;s easy to lose touch with your own needs and desires.
-                  </p>
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    You might be excelling in your career, managing a bustling household, or tirelessly supporting your loved ones, but beneath the surface, a quiet question lingers: &ldquo;What do I need now?&rdquo; This isn&apos;t a sign of weakness or being &ldquo;behind&rdquo;; it&apos;s a powerful awakening.
-                  </p>
-                  <p className="text-xl font-bold text-gray-900 text-left">
-                    You&apos;re not behind. You&apos;re becoming!
-                  </p>
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    The She&apos;s Unstoppable Summit is a profound answer to that call. It&apos;s an opportunity to shed the expectations that no longer serve you and embrace a path that feels authentic and true. It&apos;s about moving beyond the endless to-do lists and discovering a deeper sense of purpose and presence.
-                  </p>
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    If you&apos;re ready to embrace your personal growth journey and cultivate a life that truly reflects your inner self, then this event is for you. It&apos;s time to stop pushing through and start flowing with grace and strength, allowing your true self to emerge.
-                  </p>
-                </div>
-
-                {/* What You'll Experience Section */}
-                <div className="space-y-8">
-                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 text-left">
-                    What You&apos;ll Experience at the She&apos;s Unstoppable Summit
-                  </h3>
-                  <p className="text-lg text-gray-700 leading-relaxed text-left">
-                    Over three transformative days, you&apos;ll delve into key areas that will help you reclaim your authentic self during the powerful journey of the She&apos;s Unstoppable Summit.
-                  </p>
-
-                  {/* Experience Points */}
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="space-y-4">
-                      <h4 className="text-xl font-bold text-gray-900">Remember Who You Are</h4>
-                      <p className="text-gray-700">
-                        Reconnect with the woman beneath the roles, responsibilities, and expectations—and come home to your truth.
+                  
+                  {slug === 'bni' && (
+                    <>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Join hundreds of successful business owners who've discovered the power of structured referral marketing.
                       </p>
-                    </div>
-
-                    <div className="space-y-4">
-                      <h4 className="text-xl font-bold text-gray-900">Rise from a Kinder Place</h4>
-                      <p className="text-gray-700">
-                        Move through life&apos;s transitions with grace, not grit. Discover how softness and strength can live side by side.
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Reserve your spot at our next chapter meeting and see the BNI system in action.
                       </p>
-                    </div>
-
-                    <div className="space-y-4">
-                      <h4 className="text-xl font-bold text-gray-900">Show Up for Yourself</h4>
-                      <p className="text-gray-700">
-                        Trade self-silencing for self-honoring. Learn to speak with clarity, choose with courage, and act with alignment.
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Contact Executive Director Pankaj Harwansh today to learn how BNI Navi Mumbai can transform your business growth.
                       </p>
-                    </div>
+                    </>
+                  )}
 
-                    <div className="space-y-4">
-                      <h4 className="text-xl font-bold text-gray-900">Be Connected in Sisterhood</h4>
-                      <p className="text-gray-700">
-                        Surround yourself with women who reflect your wholeness back to you—and remind you that you don&apos;t have to do it all alone.
+                  {slug === 'corporate-connections' && (
+                    <>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Join the exclusive circle of CEOs, founders, and senior executives who are shaping the future of business in Navi Mumbai and beyond.
                       </p>
-                    </div>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Apply for membership consideration and discover what happens when top leaders collaborate.
+                      </p>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Contact Executive Director Pankaj Harwansh to begin your confidential membership evaluation.
+                      </p>
+                    </>
+                  )}
 
-                    <div className="space-y-4">
-                      <h4 className="text-xl font-bold text-gray-900">Reignite What You&apos;ve Set Aside</h4>
-                      <p className="text-gray-700">
-                        Call back the parts of yourself you&apos;ve put on hold—your joy, your creativity, your voice, your peace—and welcome them home.
+                  {slug === 'tab' && (
+                    <>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Join successful business owners who've discovered the power of confidential peer advisory boards.
                       </p>
-                    </div>
-
-                    <div className="space-y-4">
-                      <h4 className="text-xl font-bold text-gray-900">Leave with What You Need</h4>
-                      <p className="text-gray-700">
-                        Regain your clarity, calm, and your next step that feels true. You won&apos;t leave the same—and you won&apos;t leave empty-handed.
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Reserve your seat at our next board meeting and experience the TAB difference firsthand.
                       </p>
-                    </div>
-                  </div>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Contact Regional Head Pankaj Harwansh to learn how TAB Maharashtra can accelerate your business growth.
+                      </p>
+                    </>
+                  )}
                 </div>
 
                 {/* CTA Button */}
                 <div className="text-left pt-8">
-                  <button className="bg-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors duration-300 shadow-lg">
-                    Save My Free Seat for the She&apos;s Unstoppable Summit!
-                  </button>
+                  <Link href="/contact">
+                    <button className="bg-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors duration-300 shadow-lg">
+                      {slug === 'bni' && "CONTACT US NOW"}
+                      {slug === 'corporate-connections' && "APPLY FOR MEMBERSHIP"}
+                      {slug === 'tab' && "SCHEDULE YOUR BOARD VISIT"}
+                    </button>
+                  </Link>
+                </div>
+
+                {/* Footer Note */}
+                <div className="text-center pt-4">
+                  <p className="text-sm text-gray-600 font-medium">
+                    {slug === 'bni' && "Limited seats available, serious business owners only."}
+                    {slug === 'corporate-connections' && "Membership by invitation and qualification only, Executive level leaders exclusively."}
+                    {slug === 'tab' && "Membership by application only, Established business owners exclusively."}
+                  </p>
                 </div>
 
               </div>
