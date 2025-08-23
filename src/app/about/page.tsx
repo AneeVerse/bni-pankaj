@@ -15,7 +15,7 @@ export default function About() {
             <section className="py-16 md:py-24 bg-white">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center -mt-10">
                     <blockquote className="text-2xl md:text-2xl lg:text-3xl  font-semibold text-gray-800 leading-relaxed">
-                        &ldquo;Success in business isn't about having all the answers, it's about connecting with the right people who can help you find them. I've dedicated my career to creating those connections.&rdquo;
+                        &ldquo;Success in business isn&apos;t about having all the answers, it&apos;s about connecting with the right people who can help you find them. I&apos;ve dedicated my career to creating those connections.&rdquo;
                     </blockquote>
                 </div>
             </section>
@@ -59,7 +59,7 @@ export default function About() {
                             </h2>
                           
                             <p className="text-lg text-gray-600 leading-relaxed">
-                            As Regional Head of TAB Maharashtra, Pankaj has transformed how business owners approach critical decision making. He understands that running a business can be isolating, with leaders often making million dollar decisions without trusted advisors. Through confidential peer advisory boards, Pankaj creates safe spaces where CEOs and entrepreneurs can share real challenges and receive battle tested solutions from fellow business leaders. His approach combines the collective wisdom of successful peers with proven business frameworks, ensuring members don't just solve problems faster they build more valuable, sustainable businesses.
+                            As Regional Head of TAB Maharashtra, Pankaj has transformed how business owners approach critical decision making. He understands that running a business can be isolating, with leaders often making million dollar decisions without trusted advisors. Through confidential peer advisory boards, Pankaj creates safe spaces where CEOs and entrepreneurs can share real challenges and receive battle tested solutions from fellow business leaders. His approach combines the collective wisdom of successful peers with proven business frameworks, ensuring members don&apos;t just solve problems faster they build more valuable, sustainable businesses.
 
                             </p>
                         </div>
@@ -100,7 +100,7 @@ export default function About() {
                             </h2>
                            
                             <p className="text-base text-gray-600 leading-relaxed mt-4">
-                            Leading CorporateConnections® Navi Mumbai, Pankaj has mastered the art of high-level executive networking. He recognizes that top business leaders need more than casual networking – they need strategic alliances with peers who operate at their level. Pankaj carefully curates exclusive membership, ensuring every connection is meaningful and every conversation drives real value. His vision has created a platform where CEOs, founders, and senior executives don't just expand their networks – they elevate their influence, enhance their leadership capabilities, and access cross-border opportunities that transform entire industries.
+                            Leading CorporateConnections® Navi Mumbai, Pankaj has mastered the art of high-level executive networking. He recognizes that top business leaders need more than casual networking – they need strategic alliances with peers who operate at their level. Pankaj carefully curates exclusive membership, ensuring every connection is meaningful and every conversation drives real value. His vision has created a platform where CEOs, founders, and senior executives don&apos;t just expand their networks – they elevate their influence, enhance their leadership capabilities, and access cross-border opportunities that transform entire industries.
 
                             </p>
                         </div>
@@ -118,7 +118,7 @@ export default function About() {
                             </h2>
                           
                             <p className="text-lg text-gray-600 leading-relaxed">
-                            As Executive Director of BNI Navi Mumbai, Pankaj has built one of the fastest-growing regions in India's business networking landscape. He believes in the power of structured referral marketing and has proven that when business owners follow the "Givers Gain" philosophy with consistency and intent, extraordinary results follow. Under his leadership, BNI Navi Mumbai members have generated crores worth of business for each other, demonstrating that word-of-mouth marketing, when systematized and measured, becomes the most powerful growth engine any business can have.
+                            As Executive Director of BNI Navi Mumbai, Pankaj has built one of the fastest-growing regions in India&apos;s business networking landscape. He believes in the power of structured referral marketing and has proven that when business owners follow the &quot;Givers Gain&quot; philosophy with consistency and intent, extraordinary results follow. Under his leadership, BNI Navi Mumbai members have generated crores worth of business for each other, demonstrating that word-of-mouth marketing, when systematized and measured, becomes the most powerful growth engine any business can have.
 
                             </p>
                         </div>

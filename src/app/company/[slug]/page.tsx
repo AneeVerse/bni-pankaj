@@ -334,28 +334,28 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
                   {slug === 'bni' && (
                     <>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        You're leaving money on the table every single day.
+                        You&apos;re leaving money on the table every single day.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        While you're grinding away trying to find new customers through expensive ads and cold outreach, successful business owners in Navi Mumbai have discovered a smarter way to grow. They're using the power of structured networking to generate qualified leads, trusted referrals, and measurable business results week after week, month after month.
+                        While you&apos;re grinding away trying to find new customers through expensive ads and cold outreach, successful business owners in Navi Mumbai have discovered a smarter way to grow. They&apos;re using the power of structured networking to generate qualified leads, trusted referrals, and measurable business results week after week, month after month.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        BNI Navi Mumbai is not your typical networking group. We're part of BNI (Business Network International), the world's largest business networking and referral organization, and we've built one of the fastest-growing and most dynamic regions in India.
+                        BNI Navi Mumbai is not your typical networking group. We&apos;re part of BNI (Business Network International), the world&apos;s largest business networking and referral organization, and we&apos;ve built one of the fastest-growing and most dynamic regions in India.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Here's what makes us different: We operate on a proven system. Every week, business owners from diverse, non competing industries meet with one clear purpose to pass qualified business referrals to each other. This isn't casual networking over coffee. This is strategic, measurable, results-driven business development.
+                        Here&apos;s what makes us different: We operate on a proven system. Every week, business owners from diverse, non competing industries meet with one clear purpose to pass qualified business referrals to each other. This isn&apos;t casual networking over coffee. This is strategic, measurable, results-driven business development.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Our members have generated crores worth of business for each other. That's not hype that's documented, trackable results from entrepreneurs, professionals, and business owners who understand that the fastest way to grow is through the trusted recommendations of people who know your work.
+                        Our members have generated crores worth of business for each other. That&apos;s not hype that&apos;s documented, trackable results from entrepreneurs, professionals, and business owners who understand that the fastest way to grow is through the trusted recommendations of people who know your work.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Under the leadership of Executive Director Pankaj Harwansh, our multiple thriving chapters create a platform where businesses meet real opportunities. When you join BNI Navi Mumbai, you're not just expanding your network you're plugging into a proven system that turns relationships into revenue.
+                        Under the leadership of Executive Director Pankaj Harwansh, our multiple thriving chapters create a platform where businesses meet real opportunities. When you join BNI Navi Mumbai, you&apos;re not just expanding your network you&apos;re plugging into a proven system that turns relationships into revenue.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        The "Givers Gain" philosophy drives everything we do. The more business you give to fellow members, the more business flows back to you. It's word-of-mouth marketing with structure, accountability, and measurable results.
+                        The &quot;Givers Gain&quot; philosophy drives everything we do. The more business you give to fellow members, the more business flows back to you. It&apos;s word-of-mouth marketing with structure, accountability, and measurable results.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Whether you're a startup looking to establish credibility, an established business ready to scale, or a professional seeking to expand your influence, BNI Navi Mumbai provides the tools, training, and community to help you succeed. This is where connections become opportunities, and opportunities become success stories every single day.
+                        Whether you&apos;re a startup looking to establish credibility, an established business ready to scale, or a professional seeking to expand your influence, BNI Navi Mumbai provides the tools, training, and community to help you succeed. This is where connections become opportunities, and opportunities become success stories every single day.
                       </p>
                     </>
                   )}
@@ -366,28 +366,28 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
                         Most networking events are a waste of your time.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        As a CEO, founder, or senior executive, you've sat through countless business gatherings filled with small talk, business card exchanges, and people who simply can't operate at your level. You leave frustrated, knowing that your time – your most precious resource – was squandered on connections that lead nowhere.
+                        As a CEO, founder, or senior executive, you&apos;ve sat through countless business gatherings filled with small talk, business card exchanges, and people who simply can&apos;t operate at your level. You leave frustrated, knowing that your time – your most precious resource – was squandered on connections that lead nowhere.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
                         CorporateConnections® Navi Mumbai changes everything.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        We're not another networking group. We're the exclusive platform where India's top business leaders, decision-makers, and influential executives gather to create real value. Under the visionary leadership of Executive Director Pankaj Harwansh, we've built something extraordinary – a curated environment where only the most accomplished leaders gain access.
+                        We&apos;re not another networking group. We&apos;re the exclusive platform where India&apos;s top business leaders, decision-makers, and influential executives gather to create real value. Under the visionary leadership of Executive Director Pankaj Harwansh, we&apos;ve built something extraordinary – a curated environment where only the most accomplished leaders gain access.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
                         This is peer-to-peer networking at the highest level. Every conversation is strategic. Every connection is powerful. Every opportunity is transformative.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Our members don't just grow their businesses – they expand their influence, enhance their leadership capabilities, and create lasting impact in their industries and communities. Through private forums, exclusive events, and cross-border business opportunities, you'll engage with leaders who think bigger, move faster, and achieve more.
+                        Our members don&apos;t just grow their businesses – they expand their influence, enhance their leadership capabilities, and create lasting impact in their industries and communities. Through private forums, exclusive events, and cross-border business opportunities, you&apos;ll engage with leaders who think bigger, move faster, and achieve more.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        The difference is in the curation. We maintain strict membership criteria because dilution destroys value. When you're surrounded by CEOs, founders, and executives who've already proven their excellence, the conversations naturally elevate to match the caliber of minds in the room.
+                        The difference is in the curation. We maintain strict membership criteria because dilution destroys value. When you&apos;re surrounded by CEOs, founders, and executives who&apos;ve already proven their excellence, the conversations naturally elevate to match the caliber of minds in the room.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
                         As part of the globally recognized CorporateConnections® network, our Navi Mumbai region gives you access to international business opportunities and global leadership networks that can transform not just your business, but your entire industry perspective.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        This isn't networking – this is strategic alliance building at the executive level. Where visionary leaders connect, collaborate, and succeed together.
+                        This isn&apos;t networking – this is strategic alliance building at the executive level. Where visionary leaders connect, collaborate, and succeed together.
                       </p>
                     </>
                   )}
@@ -398,31 +398,31 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
                         Running a business is the loneliest job in the world.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Every day, you make decisions that affect your company's future, your employees' livelihoods, and your family's security. But who do you turn to for unbiased, strategic advice? Your employees look to you for answers. Your family wants you to succeed but doesn't understand the complexities. Your competitors aren't sharing their secrets.
+                        Every day, you make decisions that affect your company&apos;s future, your employees&apos; livelihoods, and your family&apos;s security. But who do you turn to for unbiased, strategic advice? Your employees look to you for answers. Your family wants you to succeed but doesn&apos;t understand the complexities. Your competitors aren&apos;t sharing their secrets.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        You're making million-dollar decisions with incomplete information.
+                        You&apos;re making million-dollar decisions with incomplete information.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        The Alternative Board (TAB) Maharashtra changes this forever. We're not consultants selling you solutions. We're not coaches with theoretical frameworks. We're a confidential peer advisory board where successful business owners, CEOs, and entrepreneurs come together to solve real problems with real experience.
+                        The Alternative Board (TAB) Maharashtra changes this forever. We&apos;re not consultants selling you solutions. We&apos;re not coaches with theoretical frameworks. We&apos;re a confidential peer advisory board where successful business owners, CEOs, and entrepreneurs come together to solve real problems with real experience.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Here's how it works: Every month, you sit around a table with 8-12 other business leaders who've faced similar challenges. They've navigated economic downturns, scaled operations, managed difficult employees, and built successful exits. When you present a challenge, you get perspectives from leaders who've actually been there.
+                        Here&apos;s how it works: Every month, you sit around a table with 8-12 other business leaders who&apos;ve faced similar challenges. They&apos;ve navigated economic downturns, scaled operations, managed difficult employees, and built successful exits. When you present a challenge, you get perspectives from leaders who&apos;ve actually been there.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Under the guidance of Regional Head Pankaj Harwansh, TAB Maharashtra combines the power of peer wisdom with proven business tools and strategic frameworks used by thousands of successful companies worldwide. You're not just getting advice you're getting battle-tested strategies from the global TAB network.
+                        Under the guidance of Regional Head Pankaj Harwansh, TAB Maharashtra combines the power of peer wisdom with proven business tools and strategic frameworks used by thousands of successful companies worldwide. You&apos;re not just getting advice you&apos;re getting battle-tested strategies from the global TAB network.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
                         The magic happens in the confidentiality. Members sign strict confidentiality agreements, creating a safe space where you can share your real challenges, your actual numbers, and your genuine concerns without fear of judgment or competition.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Plus, you get one-on-one business coaching sessions that provide personalized guidance and accountability between board meetings. This isn't group therapy – this is strategic business acceleration.
+                        Plus, you get one-on-one business coaching sessions that provide personalized guidance and accountability between board meetings. This isn&apos;t group therapy – this is strategic business acceleration.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Our members don't just solve problems faster – they identify opportunities sooner, make better decisions consistently, and build more valuable businesses systematically.
+                        Our members don&apos;t just solve problems faster – they identify opportunities sooner, make better decisions consistently, and build more valuable businesses systematically.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Stop navigating your business journey alone. Join leaders who've discovered that collective wisdom beats individual struggle every single time.
+                        Stop navigating your business journey alone. Join leaders who&apos;ve discovered that collective wisdom beats individual struggle every single time.
                       </p>
                     </>
                   )}
@@ -439,7 +439,7 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
                   {slug === 'bni' && (
                     <>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Join hundreds of successful business owners who've discovered the power of structured referral marketing.
+                        Join hundreds of successful business owners who&apos;ve discovered the power of structured referral marketing.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
                         Reserve your spot at our next chapter meeting and see the BNI system in action.
@@ -467,7 +467,7 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
                   {slug === 'tab' && (
                     <>
                       <p className="text-lg text-gray-700 leading-relaxed">
-                        Join successful business owners who've discovered the power of confidential peer advisory boards.
+                        Join successful business owners who&apos;ve discovered the power of confidential peer advisory boards.
                       </p>
                       <p className="text-lg text-gray-700 leading-relaxed">
                         Reserve your seat at our next board meeting and experience the TAB difference firsthand.
