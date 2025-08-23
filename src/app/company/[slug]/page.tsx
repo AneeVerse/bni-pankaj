@@ -86,7 +86,7 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
           <div className="relative grid grid-cols-1 md:grid-cols-5 gap-0 overflow-hidden rounded-3xl">
 
             {/* Background Gradient - Subtle angled effect */}
-            <div className="absolute w-[100%] h-[40%] left-[26%] top-[80%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-130deg] z-15 hidden sm:block blur-lg"></div> 
+            <div className="absolute w-[100%] h-[40%] left-[10%] top-[40%] bg-gradient-to-bl from-[transparent] via-[#ffffff] to-[#ffffff] rounded-full transform rotate-[-130deg] z-15 hidden sm:block  blur-lg"></div> 
 
             {/* Section 1 - Company Title (Top Left) - Curved on Bottom Right - 3/5 width */}
             <div className="relative bg-[#000000] rounded-tr-3xl rounded-br-3xl rounded-tl-3xl rounded-bl-3xl md:col-span-3 z-25">

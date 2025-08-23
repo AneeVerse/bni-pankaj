@@ -87,7 +87,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
              style={{ gridGap: '0px' }}>
           
          {/* Background Gradient - Subtle angled effect */}
-          <div className="absolute w-[38%] h-[38%] left-[48%] top-[50%] bg-gradient-to-bl from-[#3973cb] via-[#3973cb] to-[#3973cb] rounded-full transform rotate-[-50deg] z-15 hidden sm:block opacity-100 blur-lg"></div> 
+          <div className="absolute w-[38%] h-[38%] left-[48%] top-[48%] bg-gradient-to-bl from-[#3973cb] via-[#3973cb] via-[#3973cb] to-[transparent/90] rounded-full transform rotate-[-60deg] z-15 hidden sm:block opacity-100 blur-lg"></div> 
 
           {/* Section 1 - Photo (Top Left) - Curved on Top Right, Bottom Right, and Bottom Left - 4/6 width */}
           <div className="relative bg-white rounded-tr-2xl rounded-br-2xl rounded-bl-2xl sm:rounded-tr-3xl sm:rounded-br-3xl sm:rounded-bl-3xl overflow-hidden md:col-span-4 z-10 min-h-[300px] sm:min-h-[400px] md:h-[480px] lg:h-[540px]">
