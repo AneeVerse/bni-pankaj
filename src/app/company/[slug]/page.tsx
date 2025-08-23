@@ -197,24 +197,22 @@ export default function CompanyPage({ params }: CompanyPageProps) {
           </section>
 
           {/* She's Unstoppable Summit Section */}
-          <section className="w-full bg-white py-16 md:py-24">
-            <div className="max-w-[1080px] mx-auto px-4 sm:px-6">
+          <section className="w-full bg-white py-16 md:py-24 max-w-[1080px] mx-auto -mt-35">
+            <div className="max-w-[900px] mx-auto px-4 sm:px-6">
               
               {/* Header */}
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                  A Free Virtual Event by Sage & Tony Robbins
+              <div className="text-left mb-16">
+                <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold text-gray-900 mb-4">
+                  A Free Virtual Event by Sage & Tony Robbins | August 20-22, 2025
                 </h2>
-                <p className="text-xl md:text-2xl text-gray-700 font-semibold">
-                  August 20-22, 2025
-                </p>
+              
               </div>
 
               {/* Main Content */}
-              <div className="max-w-4xl mx-auto space-y-8">
+              <div className="max-w-[900px] mx-auto space-y-8">
                 
                 {/* Opening Question */}
-                <div className="text-center space-y-4">
+                <div className="text-left space-y-4 -mt-10">
                   <p className="text-lg md:text-xl text-gray-800 leading-relaxed">
                     Are you a woman who constantly pours into others, always checking boxes and pushing through, yet lately, something feels… missing?
                   </p>
@@ -237,8 +235,8 @@ export default function CompanyPage({ params }: CompanyPageProps) {
                 </div>
 
                 {/* Are You Ready Section */}
-                <div className="bg-gray-50 rounded-2xl p-8 space-y-6">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 text-center">
+                <div className=" space-y-6">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 text-left">
                     Are You Ready to Answer the Call for More?
                   </h3>
                   <p className="text-lg text-gray-700 leading-relaxed">
@@ -247,7 +245,7 @@ export default function CompanyPage({ params }: CompanyPageProps) {
                   <p className="text-lg text-gray-700 leading-relaxed">
                     You might be excelling in your career, managing a bustling household, or tirelessly supporting your loved ones, but beneath the surface, a quiet question lingers: "What do I need now?" This isn't a sign of weakness or being "behind"; it's a powerful awakening.
                   </p>
-                  <p className="text-xl font-bold text-gray-900 text-center">
+                  <p className="text-xl font-bold text-gray-900 text-left">
                     You're not behind. You're becoming!
                   </p>
                   <p className="text-lg text-gray-700 leading-relaxed">
@@ -260,10 +258,10 @@ export default function CompanyPage({ params }: CompanyPageProps) {
 
                 {/* What You'll Experience Section */}
                 <div className="space-y-8">
-                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 text-left">
                     What You'll Experience at the She's Unstoppable Summit
                   </h3>
-                  <p className="text-lg text-gray-700 leading-relaxed text-center">
+                  <p className="text-lg text-gray-700 leading-relaxed text-left">
                     Over three transformative days, you'll delve into key areas that will help you reclaim your authentic self during the powerful journey of the She's Unstoppable Summit.
                   </p>
 
@@ -314,7 +312,7 @@ export default function CompanyPage({ params }: CompanyPageProps) {
                 </div>
 
                 {/* CTA Button */}
-                <div className="text-center pt-8">
+                <div className="text-left pt-8">
                   <button className="bg-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors duration-300 shadow-lg">
                     Save My Free Seat for the She's Unstoppable Summit!
                   </button>
