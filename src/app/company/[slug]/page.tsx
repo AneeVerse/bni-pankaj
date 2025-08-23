@@ -63,11 +63,12 @@ const companyData = {
 }
 
 interface CompanyPageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
-export default function CompanyPage({ params }: CompanyPageProps) {
-  const company = companyData[params.slug as keyof typeof companyData]
+export default async function CompanyPage({ params }: CompanyPageProps) {
+  const { slug } = await params
+  const company = companyData[slug as keyof typeof companyData]
 
   if (!company) {
     notFound()
@@ -219,14 +220,14 @@ export default function CompanyPage({ params }: CompanyPageProps) {
                     Are you a woman who constantly pours into others, always checking boxes and pushing through, yet lately, something feels… missing?
                   </p>
                   <p className="text-lg md:text-xl text-gray-800 leading-relaxed">
-                    Perhaps you're not looking for more to do, but for more that's true. More meaning, more presence, more you.
+                    Perhaps you&apos;re not looking for more to do, but for more that&apos;s true. More meaning, more presence, more you.
                   </p>
                 </div>
 
                 {/* Event Description */}
                 <div className="space-y-6">
                   <p className="text-lg text-gray-700 leading-relaxed">
-                    If you feel a quiet yearning for a deeper connection with your authentic self, then the She's Unstoppable Summit 2025 is your invitation to pause, catch your breath, and finally catch up with yourself.
+                    If you feel a quiet yearning for a deeper connection with your authentic self, then the She&apos;s Unstoppable Summit 2025 is your invitation to pause, catch your breath, and finally catch up with yourself.
                   </p>
                   <p className="text-lg text-gray-700 leading-relaxed">
                     This free, 3-day virtual event, hosted by Sage Robbins, is designed specifically for women ready to reconnect with their inner power and align with their deepest knowing.
@@ -242,29 +243,29 @@ export default function CompanyPage({ params }: CompanyPageProps) {
                     Are You Ready to Answer the Call for More?
                   </h3>
                   <p className="text-lg text-gray-700 leading-relaxed">
-                    In a world that constantly demands more from women—more effort, more sacrifice, more holding it all together—it's easy to lose touch with your own needs and desires.
+                    In a world that constantly demands more from women—more effort, more sacrifice, more holding it all together—it&apos;s easy to lose touch with your own needs and desires.
                   </p>
                   <p className="text-lg text-gray-700 leading-relaxed">
-                    You might be excelling in your career, managing a bustling household, or tirelessly supporting your loved ones, but beneath the surface, a quiet question lingers: "What do I need now?" This isn't a sign of weakness or being "behind"; it's a powerful awakening.
+                    You might be excelling in your career, managing a bustling household, or tirelessly supporting your loved ones, but beneath the surface, a quiet question lingers: &ldquo;What do I need now?&rdquo; This isn&apos;t a sign of weakness or being &ldquo;behind&rdquo;; it&apos;s a powerful awakening.
                   </p>
                   <p className="text-xl font-bold text-gray-900 text-left">
-                    You're not behind. You're becoming!
+                    You&apos;re not behind. You&apos;re becoming!
                   </p>
                   <p className="text-lg text-gray-700 leading-relaxed">
-                    The She's Unstoppable Summit is a profound answer to that call. It's an opportunity to shed the expectations that no longer serve you and embrace a path that feels authentic and true. It's about moving beyond the endless to-do lists and discovering a deeper sense of purpose and presence.
+                    The She&apos;s Unstoppable Summit is a profound answer to that call. It&apos;s an opportunity to shed the expectations that no longer serve you and embrace a path that feels authentic and true. It&apos;s about moving beyond the endless to-do lists and discovering a deeper sense of purpose and presence.
                   </p>
                   <p className="text-lg text-gray-700 leading-relaxed">
-                    If you're ready to embrace your personal growth journey and cultivate a life that truly reflects your inner self, then this event is for you. It's time to stop pushing through and start flowing with grace and strength, allowing your true self to emerge.
+                    If you&apos;re ready to embrace your personal growth journey and cultivate a life that truly reflects your inner self, then this event is for you. It&apos;s time to stop pushing through and start flowing with grace and strength, allowing your true self to emerge.
                   </p>
                 </div>
 
                 {/* What You'll Experience Section */}
                 <div className="space-y-8">
                   <h3 className="text-3xl md:text-4xl font-bold text-gray-900 text-left">
-                    What You'll Experience at the She's Unstoppable Summit
+                    What You&apos;ll Experience at the She&apos;s Unstoppable Summit
                   </h3>
                   <p className="text-lg text-gray-700 leading-relaxed text-left">
-                    Over three transformative days, you'll delve into key areas that will help you reclaim your authentic self during the powerful journey of the She's Unstoppable Summit.
+                    Over three transformative days, you&apos;ll delve into key areas that will help you reclaim your authentic self during the powerful journey of the She&apos;s Unstoppable Summit.
                   </p>
 
                   {/* Experience Points */}
@@ -279,7 +280,7 @@ export default function CompanyPage({ params }: CompanyPageProps) {
                     <div className="space-y-4">
                       <h4 className="text-xl font-bold text-gray-900">Rise from a Kinder Place</h4>
                       <p className="text-gray-700">
-                        Move through life's transitions with grace, not grit. Discover how softness and strength can live side by side.
+                        Move through life&apos;s transitions with grace, not grit. Discover how softness and strength can live side by side.
                       </p>
                     </div>
 
@@ -293,21 +294,21 @@ export default function CompanyPage({ params }: CompanyPageProps) {
                     <div className="space-y-4">
                       <h4 className="text-xl font-bold text-gray-900">Be Connected in Sisterhood</h4>
                       <p className="text-gray-700">
-                        Surround yourself with women who reflect your wholeness back to you—and remind you that you don't have to do it all alone.
+                        Surround yourself with women who reflect your wholeness back to you—and remind you that you don&apos;t have to do it all alone.
                       </p>
                     </div>
 
                     <div className="space-y-4">
-                      <h4 className="text-xl font-bold text-gray-900">Reignite What You've Set Aside</h4>
+                      <h4 className="text-xl font-bold text-gray-900">Reignite What You&apos;ve Set Aside</h4>
                       <p className="text-gray-700">
-                        Call back the parts of yourself you've put on hold—your joy, your creativity, your voice, your peace—and welcome them home.
+                        Call back the parts of yourself you&apos;ve put on hold—your joy, your creativity, your voice, your peace—and welcome them home.
                       </p>
                     </div>
 
                     <div className="space-y-4">
                       <h4 className="text-xl font-bold text-gray-900">Leave with What You Need</h4>
                       <p className="text-gray-700">
-                        Regain your clarity, calm, and your next step that feels true. You won't leave the same—and you won't leave empty-handed.
+                        Regain your clarity, calm, and your next step that feels true. You won&apos;t leave the same—and you won&apos;t leave empty-handed.
                       </p>
                     </div>
                   </div>
@@ -316,7 +317,7 @@ export default function CompanyPage({ params }: CompanyPageProps) {
                 {/* CTA Button */}
                 <div className="text-left pt-8">
                   <button className="bg-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors duration-300 shadow-lg">
-                    Save My Free Seat for the She's Unstoppable Summit!
+                    Save My Free Seat for the She&apos;s Unstoppable Summit!
                   </button>
                 </div>
 
@@ -335,7 +336,8 @@ export default function CompanyPage({ params }: CompanyPageProps) {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: CompanyPageProps) {
-  const company = companyData[params.slug as keyof typeof companyData]
+  const { slug } = await params
+  const company = companyData[slug as keyof typeof companyData]
   
   if (!company) {
     return {

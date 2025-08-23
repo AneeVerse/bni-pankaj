@@ -93,9 +93,8 @@ export default function EventSlider() {
   const snapDurationMsRef = useRef<number>(300)
 
   // Video popup functions
-  const openVideoPopup = (videoUrl: string, _title: string) => {
+  const openVideoPopup = (videoUrl: string) => {
     setCurrentVideoUrl(videoUrl)
-    // setCurrentVideoTitle(title)
     setIsVideoPopupOpen(true)
   }
 
@@ -470,7 +469,7 @@ export default function EventSlider() {
                 onClick={() => {
                   // Only open popup if user didn't drag
                   if (!hasDraggedRef.current) {
-                    openVideoPopup(event.videoUrl, event.title)
+                    openVideoPopup(event.videoUrl)
                   }
                 }}
               >
@@ -492,7 +491,7 @@ export default function EventSlider() {
                   className="absolute top-3 left-3 z-10 flex items-center gap-2 text-white bg-white/20 backdrop-blur-md rounded-full px-6 py-4 b hover:bg-white/30 transition-all duration-300 opacity-0 group-hover:opacity-100"
                   onClick={(e) => {
                     e.stopPropagation()
-                    openVideoPopup(event.videoUrl, event.title)
+                    openVideoPopup(event.videoUrl)
                   }}
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>

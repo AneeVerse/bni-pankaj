@@ -46,12 +46,11 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" | "contact" }) 
   };
 
   useEffect(() => {
-    // Trigger animations after component mounts
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);
     
-    // Calculate total animation time for headline
+    // Calculate total delay for subheadline and button animations
     const lastLineIdx = headlineLines.length - 1;
     const lastCharIdx = headlineLines[lastLineIdx].length - 1;
     // Animation: 0.4s initial + 0.5s per line + 0.05s per char
@@ -68,7 +67,7 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" | "contact" }) 
       clearTimeout(timer);
       clearTimeout(subTimer);
     }
-  }, [variant]);
+  }, [variant, headlineLines]);
 
   return (
     <section className={`relative ${getHeightClasses()} flex items-center`}>
