@@ -28,17 +28,18 @@ const Navbar = () => {
           <div className="flex items-center ml-auto">
             {/* Navigation Links - Desktop Only */}
             <div className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm">
-              <Link href="/" className="text-white hover:text-white transition-colors font-semibold">
-                Home
+            <Link href="/company/tab" className="text-white hover:text-white transition-colors font-semibold">
+                TAB
+              </Link>
+              <Link href="/company/corporate-connections" className="text-white hover:text-white transition-colors font-semibold">
+                CORPORATE CONNECTIONS
+              </Link>
+
+              <Link href="/company/bni" className="text-white hover:text-white transition-colors font-semibold">
+                BNI
               </Link>
               <Link href="/about" className="text-white hover:text-white transition-colors font-semibold">
-                About
-              </Link>
-              <Link href="/events" className="text-white hover:text-white transition-colors font-semibold">
-                Events
-              </Link>
-              <Link href="/publications" className="text-white hover:text-white transition-colors font-semibold">
-                Publications
+                ABOUT
               </Link>
             </div>
 
@@ -116,32 +117,32 @@ const Navbar = () => {
           {/* Menu Items */}
           <div className="px-4 py-8 space-y-6">
             <Link
-              href="/"
+              href="/company/bni"
               className="block text-white text-xl font-medium py-3 hover:text-yellow-300 transition-colors border-b border-white/10"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Home
+              BNI
+            </Link>
+            <Link
+              href="/company/corporate-connections"
+              className="block text-white text-xl font-medium py-3 hover:text-yellow-300 transition-colors border-b border-white/10"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              CORPORATE CONNECTIONS
+            </Link>
+            <Link
+              href="/company/tab"
+              className="block text-white text-xl font-medium py-3 hover:text-yellow-300 transition-colors border-b border-white/10"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              TAB
             </Link>
             <Link
               href="/about"
               className="block text-white text-xl font-medium py-3 hover:text-yellow-300 transition-colors border-b border-white/10"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              About
-            </Link>
-            <Link
-              href="/events"
-              className="block text-white text-xl font-medium py-3 hover:text-yellow-300 transition-colors border-b border-white/10"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Events
-            </Link>
-            <Link
-              href="/publications"
-              className="block text-white text-xl font-medium py-3 hover:text-yellow-300 transition-colors border-b border-white/10"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Publications
+              ABOUT
             </Link>
             
             {/* Contact Button */}

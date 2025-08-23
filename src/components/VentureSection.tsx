@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useState, useRef, useEffect, useCallback } from "react"
 
 interface VentureSectionProps {
@@ -87,7 +88,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
              style={{ gridGap: '0px' }}>
           
          {/* Background Gradient - Subtle angled effect */}
-          <div className="absolute w-[38%] h-[38%] left-[48%] top-[48%] bg-gradient-to-bl from-[#3973cb] via-[#3973cb] via-[#3973cb] to-[transparent/90] rounded-full transform rotate-[-60deg] z-15 hidden sm:block opacity-100 blur-lg"></div> 
+          <div className="absolute w-[38%] h-[38%] left-[50%] top-[46%] bg-gradient-to-bl from-[#3973cb] via-[#3973cb] via-[#3973cb] to-[transparent/90] rounded-full transform rotate-[-60deg] z-15 hidden sm:block opacity-100 blur-lg"></div> 
 
           {/* Section 1 - Photo (Top Left) - Curved on Top Right, Bottom Right, and Bottom Left - 4/6 width */}
           <div className="relative bg-white rounded-tr-2xl rounded-br-2xl rounded-bl-2xl sm:rounded-tr-3xl sm:rounded-br-3xl sm:rounded-bl-3xl overflow-hidden md:col-span-4 z-10 min-h-[300px] sm:min-h-[400px] md:h-[480px] lg:h-[540px]">
@@ -118,11 +119,12 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                   Every turning point in life starts with a single step: awareness. That&apos;s where real change happens. Discover honest conversations, practical tools, and a space where your questions are welcome no matter how big or small. Transform the way you think, feel, and succeed.
                 </p>
 
-                <button
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-900 w-fit px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-4 rounded-full font-semibold text-xs sm:text-xs md:text-sm transition-colors shadow-sm"
+                <Link
+                  href="/contact"
+                  className="bg-[#3470cc] hover:bg-white hover:text-black text-white w-fit px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-4 rounded-full font-semibold text-xs sm:text-xs md:text-sm transition-colors shadow-sm border border-[#3470cc] hover:border-gray-300"
                 >
                   Start Your Journey
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -218,7 +220,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
           {/* Section 4 - Video (Bottom Right) - Curved on Top Left and Bottom Left - 2/6 width */}
           <div className="relative bg-white rounded-tl-2xl rounded-bl-2xl sm:rounded-tl-3xl sm:rounded-bl-3xl md:col-span-2 overflow-hidden z-10 order-1 md:order-4">
                         {videoUrl ? (
-              <div className="relative w-full h-full min-h-[180px] sm:min-h-[200px] md:h-[250px] lg:h-[280px] flex items-center justify-center z-30">
+              <div className="relative w-full h-full min-h-[180px] sm:min-h-[200px] md:h-[250px] lg:h-[243px] flex items-center justify-center z-30">
                 {/* Video Container with Unified Gradient Integration */}
                 <div 
                   className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden"

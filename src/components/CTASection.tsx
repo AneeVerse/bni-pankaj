@@ -5,7 +5,7 @@ export default function CTASection() {
     <section className="relative w-full min-h-[70vh] sm:min-h-[80vh] lg:min-h-[75vh] overflow-hidden rounded-none">
       {/* Background image */}
       <Image
-        src="/images/cta.avif"
+        src="/images/cta1.png"
         alt="Tony Robbins inspirational quote"
         fill
         priority
@@ -29,7 +29,7 @@ export default function CTASection() {
             <div className="flex items-center justify-center gap-4">
               <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden">
                 <Image
-                  src="/images/cta-logo.avif"
+                  src="/images/cta-logo-2.png"
                   alt="Pankaj Harwansh"
                   width={64}
                   height={64}

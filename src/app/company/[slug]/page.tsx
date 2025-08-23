@@ -14,6 +14,8 @@ const companyData = {
     additionalInfo: "Our members passed over ₹100 crores in referrals last year. Because when everyone succeeds, everyone wins. One referral can change your entire year.",
     logo: "/images/venture/ff445e7d753b31b4df15ae1abb0ec9a02f4d3b94.png",
     logoAlt: "BNI Logo",
+    companyImage: "/images/company/bni.jpeg",
+    companyImageAlt: "BNI Company",
     buttonText: "Visit a BNI Chapter Meeting",
     backgroundColor: "#efefef",
     textColor: "text-gray-900",
@@ -22,7 +24,25 @@ const companyData = {
       "Network of trusted business professionals",
       "Over ₹100 crores in referrals passed last year",
       "Systematic word-of-mouth marketing"
-    ]
+    ],
+    interlockingCards: {
+      card1: {
+        title: "CONNECT",
+        description: "Weekly chapter meetings where business owners from non-competing industries build trust and share referrals in a structured, professional environment."
+      },
+      card2: {
+        title: "COLLABORATE",
+        description: "Members work together through one-to-ones, training sessions, and relationship-building activities that deepen professional bonds and business understanding."
+      },
+      card3: {
+        title: "CONTRIBUTE",
+        description: "Each member actively gives qualified referrals to fellow members, following our core philosophy of 'Givers Gain' to create mutual business growth."
+      },
+      card4: {
+        title: "CELEBRATE",
+        description: "Track measurable results as members generate crores worth of business for each other through consistent, word-of-mouth marketing that works."
+      }
+    }
   },
   tab: {
     title: "THE ALTERNATIVE BOARD",
@@ -31,6 +51,8 @@ const companyData = {
     additionalInfo: "Members report 23% average revenue growth and clearer long-term vision within 12 months. Because great leaders make great decisions when they have the right support.",
     logo: "/images/venture/tab.png",
     logoAlt: "The Alternative Board Logo",
+    companyImage: "/images/company/tab.jpeg",
+    companyImageAlt: "TAB Company",
     buttonText: "Apply for TAB Membership",
     backgroundColor: "#efefef",
     textColor: "text-gray-900",
@@ -40,7 +62,25 @@ const companyData = {
       "One-on-one coaching included",
       "23% average revenue growth",
       "Clearer long-term vision"
-    ]
+    ],
+    interlockingCards: {
+      card1: {
+        title: "CONVENE",
+        description: "Monthly confidential peer advisory board meetings where 8-12 business owners share challenges, opportunities, and strategic decisions in a trusted env"
+      },
+      card2: {
+        title: "COACH",
+        description: "One-on-one business coaching sessions with experienced facilitators who provide personalized guidance, accountability, and proven business fram"
+      },
+      card3: {
+        title: "COLLABORATE",
+        description: "Collective problem-solving where diverse business perspectives combine to generate breakthrough solutions and innovative strategies for rea"
+      },
+      card4: {
+        title: "CATALYZE",
+        description: "Access to global TAB network resources, tools, and insights that accelerate decision-making and transform business vision into measurable results."
+      }
+    }
   },
   "corporate-connections": {
     title: "CORPORATE CONNECTIONS",
@@ -49,6 +89,8 @@ const companyData = {
     additionalInfo: "Skip the small talk. Build relationships that matter. Access opportunities that transform your business and expand your influence across industries.",
     logo: "/images/venture/d7ddf110031b054df193d8ae5b7aab1295e2887a.png",
     logoAlt: "Corporate Connections Logo",
+    companyImage: "/images/company/CC.jpg",
+    companyImageAlt: "Corporate Connections Company",
     buttonText: "Join the Executive Circle",
     backgroundColor: "#efefef",
     textColor: "text-gray-900",
@@ -58,7 +100,25 @@ const companyData = {
       "Cross-industry opportunities",
       "Transform business relationships",
       "Access to industry leaders"
-    ]
+    ],
+    interlockingCards: {
+      card1: {
+        title: "CURATE",
+        description: "Exclusive membership limited to top-tier CEOs, founders, and senior executives who meet strict criteria for leadership excellence and business achievement."
+      },
+      card2: {
+        title: "CONNECT",
+        description: "Private forums and intimate networking sessions where decision-makers engage in strategic peer-to-peer conversations that matter at the highest levels of business."
+      },
+      card3: {
+        title: "COLLABORATE",
+        description: "Cross-border business opportunities, joint ventures, and transformative partnerships that leverage the collective expertise and resources of global leaders."
+      },
+      card4: {
+        title: "CULTIVATE",
+        description: "Ongoing leadership development and influence expansion through exclusive events, mentorship opportunities, and access to international business networks."
+      }
+    }
   }
 }
 
@@ -125,8 +185,8 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
                   }}
                 >
                   <Image
-                    src="/images/company/company-left-img.avif"
-                    alt="Company Image"
+                    src={company.companyImage}
+                    alt={company.companyImageAlt}
                     fill
                     className="object-cover"
                     style={{
@@ -171,10 +231,10 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
           </div>
 
 
-          {/* Interlocking Cards Design Image */}
-          <div className=" mb-50 flex justify-center max-w-full mx-auto select-none pointer-events-none" style={{ userSelect: 'none', outline: 'none' }}>
+          {/* Interlocking Cards Design Image with Text Overlays */}
+          <div className="relative mb-50 flex justify-center max-w-full mx-auto select-none pointer-events-none" style={{ userSelect: 'none', outline: 'none' }}>
             <Image
-              src="/images/about/design.png"
+              src="/images/about/designnew.png"
               alt="How it works - Interlocking system design"
               width={1200}
               height={600}
@@ -182,13 +242,59 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
               style={{ userSelect: 'none', outline: 'none' }}
               draggable={false}
             />
+            
+            {/* Text Overlays for the 4 Cards */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-full max-w-5xl h-full relative">
+                
+                {/* Card 1 - Top Left */}
+                <div className="absolute top-[9%] left-[10%] w-[32%] pointer-events-none">
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 drop-shadow-lg text-left">
+                    {company.interlockingCards.card1.title}
+                  </h3>
+                  <p className="text-xs md:text-sm lg:text-base text-white leading-relaxed drop-shadow-lg text-left">
+                    {company.interlockingCards.card1.description}
+                  </p>
+                </div>
+
+                {/* Card 2 - Top Right */}
+                <div className="absolute top-[9%] right-[10%] w-[32%] pointer-events-none">
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 drop-shadow-lg text-left">
+                    {company.interlockingCards.card2.title}
+                  </h3>
+                  <p className="text-xs md:text-sm lg:text-base text-white leading-relaxed drop-shadow-lg text-left">
+                    {company.interlockingCards.card2.description}
+                  </p>
+                </div>
+
+                {/* Card 3 - Bottom Left */}
+                <div className={`absolute ${slug === 'corporate-connections' ? 'bottom-[10%]' : 'bottom-[13%]'} left-[10%] w-[32%] pointer-events-none`}>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 drop-shadow-lg text-left">
+                    {company.interlockingCards.card3.title}
+                  </h3>
+                  <p className="text-xs md:text-sm lg:text-base text-white leading-relaxed drop-shadow-lg text-left">
+                    {company.interlockingCards.card3.description}
+                  </p>
+                </div>
+
+                {/* Card 4 - Bottom Right */}
+                <div className={`absolute ${slug === 'corporate-connections' ? 'bottom-[10%]' : 'bottom-[13%]'} right-[10%] w-[32%] pointer-events-none`}>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 drop-shadow-lg text-left">
+                    {company.interlockingCards.card4.title}
+                  </h3>
+                  <p className="text-xs md:text-sm lg:text-base text-white leading-relaxed drop-shadow-lg text-left">
+                    {company.interlockingCards.card4.description}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
           </div>
           </section>
           <section className="w-full bg-white py-16 md:py-24 ">
           <div className="  bg-white flex justify-center max-w-full mx-auto select-none pointer-events-none" style={{ userSelect: 'none', outline: 'none' }}>
             <Image
-              src="/images/company/company-overlay.avif"
+              src={`/images/company/overlay/${slug === 'bni' ? 'bni.png' : slug === 'tab' ? 'tab.png' : 'cc.png'}`}
               alt="How it works - Interlocking system design"
               width={1100}
               height={500}
