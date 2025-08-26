@@ -152,7 +152,7 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
             {/* Section 1 - Company Title (Top Left) - Curved on Bottom Right - 3/5 width */}
             <div className="relative bg-[#000000] rounded-tr-3xl rounded-br-3xl rounded-tl-3xl rounded-bl-3xl md:col-span-3 z-25 -mb-14 lg:-mb-0">
               <div className="p-4 md:p-8 lg:p-10 flex flex-col justify-center min-h-[200px] md:min-h-[250px] relative z-30">
-                <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-8 text-left">
+                <h2 className="text-xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-8 text-left">
                   <span className="font-bold uppercase">{company.title}</span>
                   <br />
                   <span className="font-normal lowercase">{company.subtitle}</span>
@@ -249,41 +249,41 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
               <div className="w-full max-w-5xl h-full relative">
                 
                 {/* Card 1 - Top Left */}
-                <div className="absolute top-[7%] md:top-[9%] left-[10%] w-[32%] pointer-events-none">
-                  <h3 className="text-[10px] md:text-2xl lg:text-3xl font-bold text-white mb-1 md:mb-3 drop-shadow-lg text-left">
+                <div className="absolute top-[12%] md:top-[9%] left-[10%] w-[32%] pointer-events-none">
+                  <h3 className="text-[8px] md:text-2xl lg:text-3xl font-bold text-white mb-1 md:mb-3 drop-shadow-lg text-left">
                     {company.interlockingCards.card1.title}
                   </h3>
-                  <p className="text-[7px] md:text-sm lg:text-base text-white leading-tight md:leading-relaxed drop-shadow-lg text-left">
+                  <p className="text-[6px] md:text-sm lg:text-base text-white leading-tight md:leading-relaxed drop-shadow-lg text-left">
                     {company.interlockingCards.card1.description}
                   </p>
                 </div>
 
                 {/* Card 2 - Top Right */}
-                <div className="absolute top-[7%] md:top-[9%] right-[10%] w-[32%] pointer-events-none">
-                  <h3 className="text-[10px] md:text-2xl lg:text-3xl font-bold text-white mb-1 md:mb-3 drop-shadow-lg text-left">
+                <div className="absolute top-[12%] md:top-[9%] right-[10%] w-[32%] pointer-events-none">
+                  <h3 className="text-[8px] md:text-2xl lg:text-3xl font-bold text-white mb-1 md:mb-3 drop-shadow-lg text-left">
                     {company.interlockingCards.card2.title}
                   </h3>
-                  <p className="text-[7px] md:text-sm lg:text-base text-white leading-tight md:leading-relaxed drop-shadow-lg text-left">
+                  <p className="text-[6px] md:text-sm lg:text-base text-white leading-tight md:leading-relaxed drop-shadow-lg text-left">
                     {company.interlockingCards.card2.description}
                   </p>
                 </div>
 
                 {/* Card 3 - Bottom Left */}
-                <div className={`absolute ${slug === 'corporate-connections' ? 'bottom-[8%]' : 'bottom-[11%]'} md:${slug === 'corporate-connections' ? 'bottom-[10%]' : 'bottom-[13%]'} left-[10%] w-[32%] pointer-events-none`}>
-                  <h3 className="text-[10px] md:text-2xl lg:text-3xl font-bold text-white mb-1 md:mb-3 drop-shadow-lg text-left">
+                <div className={`absolute ${slug === 'corporate-connections' ? 'bottom-[15%]' : 'bottom-[18%]'} md:${slug === 'corporate-connections' ? 'bottom-[10%]' : 'bottom-[13%]'} left-[10%] w-[32%] pointer-events-none`}>
+                  <h3 className="text-[8px] md:text-2xl lg:text-3xl font-bold text-white mb-1 md:mb-3 drop-shadow-lg text-left">
                     {company.interlockingCards.card3.title}
                   </h3>
-                  <p className="text-[7px] md:text-sm lg:text-base text-white leading-tight md:leading-relaxed drop-shadow-lg text-left">
+                  <p className="text-[6px] md:text-sm lg:text-base text-white leading-tight md:leading-relaxed drop-shadow-lg text-left">
                     {company.interlockingCards.card3.description}
                   </p>
                 </div>
 
                 {/* Card 4 - Bottom Right */}
-                <div className={`absolute ${slug === 'corporate-connections' ? 'bottom-[8%]' : 'bottom-[11%]'} md:${slug === 'corporate-connections' ? 'bottom-[10%]' : 'bottom-[13%]'} right-[10%] w-[32%] pointer-events-none`}>
-                  <h3 className="text-[10px] md:text-2xl lg:text-3xl font-bold text-white mb-1 md:mb-3 drop-shadow-lg text-left">
+                <div className={`absolute ${slug === 'corporate-connections' ? 'bottom-[15%]' : 'bottom-[18%]'} md:${slug === 'corporate-connections' ? 'bottom-[10%]' : 'bottom-[13%]'} right-[10%] w-[32%] pointer-events-none`}>
+                  <h3 className="text-[8px] md:text-2xl lg:text-3xl font-bold text-white mb-1 md:mb-3 drop-shadow-lg text-left">
                     {company.interlockingCards.card4.title}
                   </h3>
-                  <p className="text-[7px] md:text-sm lg:text-base text-white leading-tight md:leading-relaxed drop-shadow-lg text-left">
+                  <p className="text-[6px] md:text-sm lg:text-base text-white leading-tight md:leading-relaxed drop-shadow-lg text-left">
                     {company.interlockingCards.card4.description}
                   </p>
                 </div>
