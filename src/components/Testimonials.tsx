@@ -54,7 +54,6 @@ export default function Testimonials() {
     
   ]
 
-
   // Function to determine size based on index pattern
   const getImageSize = (index: number) => {
     // Pattern: Large for positions 0,2,3,7 (left/right columns), Small for others (middle)
@@ -62,7 +61,7 @@ export default function Testimonials() {
     return largePositions.includes(index) ? 'large' : 'small';
   }
 
-  // Breakpoints for responsive masonry
+  // Breakpoints for responsive masonry (desktop only)
   const breakpointColumns = {
     default: 3,
     1100: 3,
@@ -74,16 +73,12 @@ export default function Testimonials() {
     <section className="w-full bg-white py-8 sm:py-10 md:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
-        {/* Masonry Grid Layout with Pattern Control */}
-        <Masonry
-          breakpointCols={breakpointColumns}
-          className="flex -ml-3 sm:-ml-4 md:-ml-6"
-          columnClassName="pl-3 sm:pl-4 md:pl-6"
-        >
+        {/* Mobile: Pinterest-style CSS Columns Grid */}
+        <div className="lg:hidden columns-2 gap-3 sm:gap-4 md:gap-6">
           {testimonials.map((testimonial, index) => {
             const size = getImageSize(index);
             return (
-              <div key={testimonial.id} className="mb-3 sm:mb-4 md:mb-6">
+              <div key={testimonial.id} className="break-inside-avoid mb-3 sm:mb-4 md:mb-6">
                 <div className={`relative overflow-hidden rounded-xl sm:rounded-2xl bg-gray-100 ${
                   size === 'large' 
                     ? 'aspect-[4/5]' // Taller aspect ratio for large images
@@ -93,14 +88,44 @@ export default function Testimonials() {
                     src={testimonial.src}
                     alt={testimonial.alt}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 33vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, 50vw"
                     className="object-cover"
                   />
                 </div>
               </div>
             );
           })}
-        </Masonry>
+        </div>
+
+        {/* Desktop: Masonry Grid Layout with Pattern Control */}
+        <div className="hidden lg:block">
+          <Masonry
+            breakpointCols={breakpointColumns}
+            className="flex -ml-3 sm:-ml-4 md:-ml-6"
+            columnClassName="pl-3 sm:pl-4 md:pl-6"
+          >
+            {testimonials.map((testimonial, index) => {
+              const size = getImageSize(index);
+              return (
+                <div key={testimonial.id} className="mb-3 sm:mb-4 md:mb-6">
+                  <div className={`relative overflow-hidden rounded-xl sm:rounded-2xl bg-gray-100 ${
+                    size === 'large' 
+                      ? 'aspect-[4/5]' // Taller aspect ratio for large images
+                      : 'aspect-[4/3]' // Shorter aspect ratio for small images
+                  }`}>
+                    <Image
+                      src={testimonial.src}
+                      alt={testimonial.alt}
+                      fill
+                      sizes="(max-width: 1200px) 33vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </Masonry>
+        </div>
       </div>
     </section>
   )
