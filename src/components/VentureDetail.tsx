@@ -16,7 +16,7 @@ export default function VentureDetail() {
             <div className="absolute w-[100%] h-[40%] left-[9%] top-[-2%] bg-gradient-to-bl from-[#ffffff] via-[#ffffff] to-[transparent] rounded-full transform rotate-[-55deg] z-15 hidden sm:block  blur-lg"></div> 
             
             {/* Section 1 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) */}
-            <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl rounded-br-3xl overflow-hidden md:col-span-2 z-30 order-2 md:order-1">
+            <div className="relative bg-white rounded-tr-3xl rounded-bl-3xl rounded-br-3xl rounded-tl-3xl overflow-hidden md:col-span-2 z-30 order-2 md:order-1 mb-10 lg:mb-0">
               <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative z-30">
                 <Image
                   src="/images/venture/tab.png"
@@ -63,8 +63,8 @@ export default function VentureDetail() {
             </div>
 
             {/* Section 4 - TAB Company Image (Bottom Right) - Curved on Top Left - 3/5 width */}
-            <div className="relative bg-[#efefef] rounded-tl-3xl rounded-br-3xl rounded-tr-3xl md:col-span-3 overflow-hidden z-10 order-3 md:order-4">
-              <div className="relative w-full h-full min-h-[220px] sm:min-h-[200px] flex items-center justify-center z-30">
+            <div className="relative bg-[#efefef] rounded-tl-3xl rounded-br-3xl rounded-tr-3xl md:col-span-3 overflow-hidden z-10 order-3 md:order-4 -mb-20">
+              <div className="relative w-full h-full min-h-[320px] md:min-h-[220px] flex items-center justify-center z-30">
                 <div className="relative w-full h-11/12 rounded-3xl overflow-hidden -mt-12 -ml-0">
                   <Image
                     src="/images/company/tab.jpeg"
@@ -102,7 +102,7 @@ export default function VentureDetail() {
             </div>
 
             {/* Section 2 - Corporate Connections Logo (Top Right) - Curved on Top Left and Bottom Right - 2/5 width (small box) */}
-            <div className="relative bg-white rounded-tl-3xl rounded-br-3xl rounded-bl-3xl overflow-hidden md:col-span-2 z-30">
+            <div className="relative bg-white rounded-tl-3xl rounded-br-3xl rounded-bl-3xl overflow-hidden md:col-span-2 z-30 mb-10 lg:mb-0">
               <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[250px] relative ">
                 <Image
                   src="/images/venture/d7ddf110031b054df193d8ae5b7aab1295e2887a.png"
@@ -177,8 +177,8 @@ export default function VentureDetail() {
             </div>
 
             {/* Section 2 - BNI Logo (Top Left) - Curved on Top Right and Bottom Left - 2/5 width (small box) - MOBILE SECOND */}
-            <div className="relative bg-white rounded-tr-2xl rounded-bl-2xl rounded-br-2xl rounded-tl-2xl rounded-br-2xl sm:rounded-tr-3xl sm:rounded-bl-3xl sm:rounded-br-3xl overflow-hidden md:col-span-2 z-30 order-2 md:order-1">
-              <div className="p-4 sm:p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[200px] sm:min-h-[250px] relative z-30">
+            <div className="relative bg-white rounded-tr-2xl rounded-bl-2xl rounded-br-2xl rounded-tl-2xl rounded-br-2xl sm:rounded-tr-3xl sm:rounded-bl-3xl sm:rounded-br-3xl overflow-hidden md:col-span-2 z-30 order-2 md:order-1 mb-10 lg:mb-0">
+              <div className="p-4 sm:p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[200px] sm:min-h-[250px] relative z-30 ">
                 <Image
                   src="/images/venture/ff445e7d753b31b4df15ae1abb0ec9a02f4d3b94.png"
                   alt="BNI Logo"
@@ -190,8 +190,8 @@ export default function VentureDetail() {
             </div>
 
             {/* Section 3 - BNI Company Image (Bottom Right) - Curved on Top Left - 3/5 width - MOBILE THIRD */}
-            <div className="relative bg-[#efefef] rounded-tl-2xl sm:rounded-tl-3xl  rounded-br-3xl md:col-span-3 overflow-hidden z-10 order-3 md:order-4">
-              <div className="relative w-full h-full min-h-[220px] sm:min-h-[200px] flex items-center justify-center z-30">
+            <div className="relative bg-[#efefef] rounded-tl-3xl rounded-bl-3xl rounded-br-3xl rounded-tr-3xl md:col-span-3 overflow-hidden z-10 order-3 md:order-4">
+              <div className="relative w-full h-full min-h-[290px] lg:min-h-[220px] flex items-center justify-center z-30">
                 <div className="relative w-full h-11/12 rounded-3xl overflow-hidden -mt-12 -ml-0">
                   <Image
                     src="/images/company/bni.jpeg"
@@ -205,8 +205,8 @@ export default function VentureDetail() {
             </div>
 
             {/* Section 4 - Statistics and Coaching Info (Bottom Left) - Curved on Top Right - 2/5 width - MOBILE FOURTH */}
-            <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl md:col-span-2 z-25 order-4 md:order-3">
-              <div className="px-6 py-5 md:px-8 md:py-6 lg:px-10 lg:py-8 flex flex-col justify-center min-h-[240px] md:min-h-[280px] lg:min-h-[300px] relative z-30">
+            <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl md:col-span-2 z-25 order-4 md:order-3 -mt-20 lg:-mt-0">
+              <div className="px-6 py-5 md:px-8 md:py-6 lg:px-10 lg:py-8 flex flex-col justify-center min-h-[240px] md:min-h-[280px] lg:min-h-[300px] relative z-30 ">
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
                   Word-of-mouth is still the best marketing. But it only works when it&apos;s systematic. BNI gives you a proven weekly structure to generate qualified referrals with trusted business professionals.
                 </p>
