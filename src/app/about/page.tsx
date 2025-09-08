@@ -41,7 +41,7 @@ export default function About() {
              <section className="py-16 md:py-20 bg-gray-50 -mt-25">
                  <div className="max-w-[920px] mx-auto px-4 sm:px-6 text-center">
                      <p className="text-2xl md:text-3xl lg:text-5xl font-[500] text-gray-800 leading-relaxed" style={{ letterSpacing: '-0.08em', wordSpacing: '0.01em', lineHeight: '1.1' }}>
-                     Meet Pankaj Harwansh – The Strategic Connector Behind Maharashtra&apos;s Most Influential Business Networks
+                     Meet Pankaj J Harwnash, The Strategic Connector Behind Maharashtra&apos;s Most Influential Business Networks
                      </p>
                  </div>
              </section>
@@ -54,13 +54,11 @@ export default function About() {
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                         <div className="order-2 md:order-1 text-left">
                             <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
-                            Guiding Business Leaders Through Strategic Peer Advisory
-
+                            Founder & Executive Director
                             </h2>
                           
                             <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                            As Regional Head of TAB Maharashtra, Pankaj has transformed how business owners approach critical decision making. He understands that running a business can be isolating, with leaders often making million dollar decisions without trusted advisors. Through confidential peer advisory boards, Pankaj creates safe spaces where CEOs and entrepreneurs can share real challenges and receive battle tested solutions from fellow business leaders. His approach combines the collective wisdom of successful peers with proven business frameworks, ensuring members don&apos;t just solve problems faster they build more valuable, sustainable businesses.
-
+                            Pankaj J Harwnash is a dynamic business leader with 28+ years in corporate relations, business development, and angel investments. A renowned community builder, he drives growth, innovation, and collaboration across industries.
                             </p>
                         </div>
                         <div className="order-1 md:order-2 flex justify-center">
@@ -95,13 +93,11 @@ export default function About() {
                         </div>
                         <div className="order-2 text-left">
                             <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
-                            Curating Executive Networks That Move Markets
-
+                            Leadership Roles
                             </h2>
                            
                             <p className="text-base text-gray-600 leading-relaxed mt-4">
-                            Leading CorporateConnections® Navi Mumbai, Pankaj has mastered the art of high-level executive networking. He recognizes that top business leaders need more than casual networking – they need strategic alliances with peers who operate at their level. Pankaj carefully curates exclusive membership, ensuring every connection is meaningful and every conversation drives real value. His vision has created a platform where CEOs, founders, and senior executives don&apos;t just expand their networks – they elevate their influence, enhance their leadership capabilities, and access cross-border opportunities that transform entire industries.
-
+                            Executive Director, BNI Navi Mumbai; Executive Director, Corporate Connections Global LLC; Regional Head, The Alternative Board Maharashtra and Goa; Partner, Turtle Care Consulting LLP; Regional Director, Venture Catalyst; Partner, Early Seed Ventures.
                             </p>
                         </div>
                     </div>
@@ -114,12 +110,11 @@ export default function About() {
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                         <div className="order-2 md:order-1 text-left">
                             <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
-                            Building Referral Systems That Generate Measurable Results
+                            Recognition and Mission
                             </h2>
                           
                             <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                            As Executive Director of BNI Navi Mumbai, Pankaj has built one of the fastest-growing regions in India&apos;s business networking landscape. He believes in the power of structured referral marketing and has proven that when business owners follow the &quot;Givers Gain&quot; philosophy with consistency and intent, extraordinary results follow. Under his leadership, BNI Navi Mumbai members have generated crores worth of business for each other, demonstrating that word-of-mouth marketing, when systematized and measured, becomes the most powerful growth engine any business can have.
-
+                            Honored as one of the Business Icons of Navi Mumbai by The Economic Times; awarded Executive Director of the Year 2023-24 by Corporate Connections Global LLC. A believer in Lifelong Learning, his mission is to build a robust business ecosystem in Navi Mumbai, enabling 5,000+ business owners to generate ₹5,000+ crores in referral business each year.
                             </p>
                         </div>
                         <div className="order-1 md:order-2 flex justify-center">

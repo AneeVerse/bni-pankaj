@@ -43,10 +43,10 @@ export default function VentureDetail() {
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl  rounded-tl-3xl md:col-span-2 z-25 order-4 md:order-3">
               <div className="px-6 py-5 md:px-8 md:py-6 lg:px-10 lg:py-8 flex flex-col justify-center min-h-[240px] md:min-h-[280px] lg:min-h-[300px] relative z-30">
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
-                  Your toughest business decisions shouldn&apos;t be made alone. TAB connects you with 10-12 fellow CEOs and business owners in monthly confidential sessions. Share real challenges. Get practical solutions. Plus one-on-one coaching to turn insights into action.
+                  Leading TAB Maharashtra, I help owners, CEOs, and entrepreneurs make better decisions together. Monthly peer boards and one-on-one coaching turn real challenges into clear, confident action.
                 </p>
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
-                  Members report 23% average revenue growth and clearer long-term vision within 12 months. Because great leaders make great decisions when they have the right support.
+                  Members gain sharper vision, stronger execution, and measurable growth because the right perspectives and accountability convert ambition into sustainable results.
                 </p>
 
                 {/* Buttons - Stacked vertically with better styling */}
@@ -133,10 +133,10 @@ export default function VentureDetail() {
             <div className="relative bg-[#efefef]  rounded-tl-3xl rounded-br-3xl rounded-tr-3xl md:col-span-2 z-25">
               <div className="px-6 py-5 md:px-8 md:py-6 lg:px-10 lg:py-8 flex flex-col justify-center min-h-[240px] md:min-h-[280px] lg:min-h-[300px] relative z-30">
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
-                  Your network determines your net worth. But building the right connections takes time you don&apos;t have. Corporate Connections brings together Navi Mumbai&apos;s most influential executives, decision-makers, and industry leaders in private forums.
+                  CorporateConnections Navi Mumbai unites senior leaders to go beyond networking and create transformative opportunities. Our members build high-value relationships and open cross-border doors.
                 </p>
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
-                  Skip the small talk. Build relationships that matter. Access opportunities that transform your business and expand your influence across industries.
+                  Through private forums and curated events, leaders expand influence, solve strategic challenges, and collaborate at scale as the city becomes a global business hub.
                 </p>
 
                 {/* Buttons - Stacked vertically with better styling */}
@@ -208,10 +208,10 @@ export default function VentureDetail() {
             <div className="relative bg-[#efefef] rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl md:col-span-2 z-25 order-4 md:order-3 -mt-20 lg:-mt-0">
               <div className="px-6 py-5 md:px-8 md:py-6 lg:px-10 lg:py-8 flex flex-col justify-center min-h-[240px] md:min-h-[280px] lg:min-h-[300px] relative z-30 ">
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
-                  Word-of-mouth is still the best marketing. But it only works when it&apos;s systematic. BNI gives you a proven weekly structure to generate qualified referrals with trusted business professionals.
+                  I lead BNI Navi Mumbai, one of BNI&apos;s fastest-growing regions, where 700+ members across 19 chapters use a proven weekly structure to generate qualified, trust-based referrals.
                 </p>
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 font-medium text-left max-w-none ml-2">
-                  Our members passed over ₹100 crores in referrals last year. Because when everyone succeeds, everyone wins. One referral can change your entire year.
+                  Together, we&apos;ve enabled ₹2100+ crores in business—powered by Givers Gain®, training, and a culture of credibility that turns relationships into predictable growth.
                 </p>
 
                 {/* Buttons - Stacked vertically with better styling */}

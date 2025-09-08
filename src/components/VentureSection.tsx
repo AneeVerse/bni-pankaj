@@ -80,7 +80,8 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
         <div className="max-w-[1420px] mx-auto px-4 sm:px-6 flex flex-col">
           {/* Header */}
           <div className="mb-2 sm:mb-3">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 mt-8">Mr. Pankaj Harwansh</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-1 mt-8">PANKAJ J HARWNASH</h1>
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 font-semibold">FOUNDER & EXECUTIVE DIRECTOR</p>
           </div>
 
         {/* 2x2 Grid with Interlocking Curves - No Gaps */}
@@ -115,8 +116,8 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
           <div className="relative bg-white rounded-tl-2xl rounded-bl-2xl sm:rounded-tl-3xl sm:rounded-bl-3xl md:col-span-2 z-25">
             <div className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center min-h-[300px] sm:min-h-[360px] md:h-[440px] lg:h-[500px] relative z-30">
               <div className="w-full mx-auto">
-                <p className=" max-w-[350px] text-gray-800 text-xs sm:text-sm md:text-base lg:text-[22x] leading-relaxed mb-6 sm:mb-8 md:mb-10 font-medium">
-                  Every turning point in life starts with a single step: awareness. That&apos;s where real change happens. Discover honest conversations, practical tools, and a space where your questions are welcome no matter how big or small. Transform the way you think, feel, and succeed.
+                <p className=" max-w-[350px] text-gray-800 text-xs sm:text-sm md:text-base lg:text:[22x] leading-relaxed mb-6 sm:mb-8 md:mb-10 font-medium">
+                  Dynamic business leader with 28+ years in corporate relations, business development, and angel investments. A community builder connecting 4,000+ business owners to create opportunities and sustainable growth.
                 </p>
 
                 <Link

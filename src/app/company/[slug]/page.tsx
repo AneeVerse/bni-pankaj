@@ -11,8 +11,8 @@ const companyData = {
   bni: {
     title: "BNI NAVI MUMBAI",
     subtitle: "Structured Referral Engine",
-    description: "Word-of-mouth is still the best marketing. But it only works when it's systematic. BNI gives you a proven weekly structure to generate qualified referrals with trusted business professionals.",
-    additionalInfo: "Our members passed over ₹100 crores in referrals last year. Because when everyone succeeds, everyone wins. One referral can change your entire year.",
+    description: "I lead BNI Navi Mumbai, one of BNI's fastest-growing regions, where 700+ members across 19 chapters use a proven weekly structure to generate qualified, trust-based referrals.",
+    additionalInfo: "Together, we have enabled ₹2100+ crores in business, powered by Givers Gain®, training, and a culture of credibility that turns relationships into predictable growth.",
     logo: "/images/venture/ff445e7d753b31b4df15ae1abb0ec9a02f4d3b94.png",
     logoAlt: "BNI Logo",
     companyImage: "/images/company/bni.jpeg",
@@ -48,8 +48,8 @@ const companyData = {
   tab: {
     title: "THE ALTERNATIVE BOARD",
     subtitle: "Strategic Leadership Circle",
-    description: "Your toughest business decisions shouldn't be made alone. TAB connects you with 10-12 fellow CEOs and business owners in monthly confidential sessions. Share real challenges. Get practical solutions. Plus one-on-one coaching to turn insights into action.",
-    additionalInfo: "Members report 23% average revenue growth and clearer long-term vision within 12 months. Because great leaders make great decisions when they have the right support.",
+    description: "Leading TAB Maharashtra, I help owners, CEOs, and entrepreneurs make better decisions together. Monthly peer boards and one-on-one coaching turn real challenges into clear, confident action.",
+    additionalInfo: "Members gain sharper vision, stronger execution, and measurable growth because the right perspectives and accountability convert ambition into sustainable results.",
     logo: "/images/venture/tab.png",
     logoAlt: "The Alternative Board Logo",
     companyImage: "/images/company/tab.jpeg",
@@ -86,8 +86,8 @@ const companyData = {
   "corporate-connections": {
     title: "CORPORATE CONNECTIONS",
     subtitle: "Executive Influence Network",
-    description: "Your network determines your net worth. But building the right connections takes time you don't have. Corporate Connections brings together Navi Mumbai's most influential executives, decision-makers, and industry leaders in private forums.",
-    additionalInfo: "Skip the small talk. Build relationships that matter. Access opportunities that transform your business and expand your influence across industries.",
+    description: "CorporateConnections Navi Mumbai unites senior leaders to go beyond networking and create transformative opportunities. Our members build high-value relationships and open cross-border doors.",
+    additionalInfo: "Through private forums and curated events, leaders expand influence, solve strategic challenges, and collaborate at scale as the city becomes a global business hub.",
     logo: "/images/venture/d7ddf110031b054df193d8ae5b7aab1295e2887a.png",
     logoAlt: "Corporate Connections Logo",
     companyImage: "/images/company/CC.jpg",
@@ -295,7 +295,7 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
           <section className="w-full bg-white py-12 md:py-24 ">
           <div className="  bg-white flex justify-center max-w-full mx-auto select-none pointer-events-none" style={{ userSelect: 'none', outline: 'none' }}>
             <Image
-              src={`/images/company/overlay/${slug === 'bni' ? 'bni.png' : slug === 'tab' ? 'tab.png' : 'cc.png'}`}
+              src={`/images/company/overlay/${slug === 'bni' ? 'bni.png' : slug === 'tab' ? 'tab.png' : 'cc1.jpeg'}`}
               alt="How it works - Interlocking system design"
               width={1100}
               height={500}
@@ -334,28 +334,16 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
                   {slug === 'bni' && (
                     <>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        You&apos;re leaving money on the table every single day.
+                        BNI Navi Mumbai is one of the fastest-growing regions of the world&apos;s largest referral network.
                       </p>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        While you&apos;re grinding away trying to find new customers through expensive ads and cold outreach, successful business owners in Navi Mumbai have discovered a smarter way to grow. They&apos;re using the power of structured networking to generate qualified leads, trusted referrals, and measurable business results week after week, month after month.
+                        700+ members across 19 chapters meet weekly to exchange qualified referrals using a proven structure.
                       </p>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        BNI Navi Mumbai is not your typical networking group. We&apos;re part of BNI (Business Network International), the world&apos;s largest business networking and referral organization, and we&apos;ve built one of the fastest-growing and most dynamic regions in India.
+                        Together we have generated over ₹ 2100 crores in business, driven by the Givers Gain philosophy.
                       </p>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Here&apos;s what makes us different: We operate on a proven system. Every week, business owners from diverse, non competing industries meet with one clear purpose to pass qualified business referrals to each other. This isn&apos;t casual networking over coffee. This is strategic, measurable, results-driven business development.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Our members have generated crores worth of business for each other. That&apos;s not hype that&apos;s documented, trackable results from entrepreneurs, professionals, and business owners who understand that the fastest way to grow is through the trusted recommendations of people who know your work.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Under the leadership of Executive Director Pankaj Harwansh, our multiple thriving chapters create a platform where businesses meet real opportunities. When you join BNI Navi Mumbai, you&apos;re not just expanding your network you&apos;re plugging into a proven system that turns relationships into revenue.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        The &quot;Givers Gain&quot; philosophy drives everything we do. The more business you give to fellow members, the more business flows back to you. It&apos;s word-of-mouth marketing with structure, accountability, and measurable results.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Whether you&apos;re a startup looking to establish credibility, an established business ready to scale, or a professional seeking to expand your influence, BNI Navi Mumbai provides the tools, training, and community to help you succeed. This is where connections become opportunities, and opportunities become success stories every single day.
+                        If you are building in Navi Mumbai&apos;s high-growth corridors, this platform turns relationships into revenue.
                       </p>
                     </>
                   )}
@@ -363,31 +351,16 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
                   {slug === 'corporate-connections' && (
                     <>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Most networking events are a waste of your time.
+                        CorporateConnections Navi Mumbai is an exclusive forum for senior leaders and owners.
                       </p>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        As a CEO, founder, or senior executive, you&apos;ve sat through countless business gatherings filled with small talk, business card exchanges, and people who simply can&apos;t operate at your level. You leave frustrated, knowing that your time – your most precious resource – was squandered on connections that lead nowhere.
+                        Members represent companies with a combined turnover of ₹ 75 crores and focus on strategic, high-value relationships.
                       </p>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        CorporateConnections® Navi Mumbai changes everything.
+                        Through private forums and curated events, leaders solve complex challenges, open cross-border opportunities, and expand influence.
                       </p>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        We&apos;re not another networking group. We&apos;re the exclusive platform where India&apos;s top business leaders, decision-makers, and influential executives gather to create real value. Under the visionary leadership of Executive Director Pankaj Harwansh, we&apos;ve built something extraordinary – a curated environment where only the most accomplished leaders gain access.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        This is peer-to-peer networking at the highest level. Every conversation is strategic. Every connection is powerful. Every opportunity is transformative.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Our members don&apos;t just grow their businesses – they expand their influence, enhance their leadership capabilities, and create lasting impact in their industries and communities. Through private forums, exclusive events, and cross-border business opportunities, you&apos;ll engage with leaders who think bigger, move faster, and achieve more.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        The difference is in the curation. We maintain strict membership criteria because dilution destroys value. When you&apos;re surrounded by CEOs, founders, and executives who&apos;ve already proven their excellence, the conversations naturally elevate to match the caliber of minds in the room.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        As part of the globally recognized CorporateConnections® network, our Navi Mumbai region gives you access to international business opportunities and global leadership networks that can transform not just your business, but your entire industry perspective.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        This isn&apos;t networking – this is strategic alliance building at the executive level. Where visionary leaders connect, collaborate, and succeed together.
+                        As Navi Mumbai scales globally, our members collaborate to create impact at scale.
                       </p>
                     </>
                   )}
@@ -395,34 +368,16 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
                   {slug === 'tab' && (
                     <>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Running a business is the loneliest job in the world.
+                        The Alternative Board (TAB) Maharashtra brings business owners, CEOs, and entrepreneurs together in confidential peer advisory boards.
                       </p>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Every day, you make decisions that affect your company&apos;s future, your employees&apos; livelihoods, and your family&apos;s security. But who do you turn to for unbiased, strategic advice? Your employees look to you for answers. Your family wants you to succeed but doesn&apos;t understand the complexities. Your competitors aren&apos;t sharing their secrets.
+                        Monthly board meetings plus one-on-one coaching turn real challenges into clear, confident action.
                       </p>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        You&apos;re making million-dollar decisions with incomplete information.
+                        Members gain sharper vision, stronger execution, and sustainable growth with the right perspectives and accountability.
                       </p>
                       <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        The Alternative Board (TAB) Maharashtra changes this forever. We&apos;re not consultants selling you solutions. We&apos;re not coaches with theoretical frameworks. We&apos;re a confidential peer advisory board where successful business owners, CEOs, and entrepreneurs come together to solve real problems with real experience.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Here&apos;s how it works: Every month, you sit around a table with 8-12 other business leaders who&apos;ve faced similar challenges. They&apos;ve navigated economic downturns, scaled operations, managed difficult employees, and built successful exits. When you present a challenge, you get perspectives from leaders who&apos;ve actually been there.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Under the guidance of Regional Head Pankaj Harwansh, TAB Maharashtra combines the power of peer wisdom with proven business tools and strategic frameworks used by thousands of successful companies worldwide. You&apos;re not just getting advice you&apos;re getting battle-tested strategies from the global TAB network.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        The magic happens in the confidentiality. Members sign strict confidentiality agreements, creating a safe space where you can share your real challenges, your actual numbers, and your genuine concerns without fear of judgment or competition.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Plus, you get one-on-one business coaching sessions that provide personalized guidance and accountability between board meetings. This isn&apos;t group therapy – this is strategic business acceleration.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Our members don&apos;t just solve problems faster – they identify opportunities sooner, make better decisions consistently, and build more valuable businesses systematically.
-                      </p>
-                      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                        Stop navigating your business journey alone. Join leaders who&apos;ve discovered that collective wisdom beats individual struggle every single time.
+                        TAB helps leaders turn vision into reality, not alone, but with a trusted board.
                       </p>
                     </>
                   )}
