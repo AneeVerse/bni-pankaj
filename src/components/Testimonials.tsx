@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Masonry from "react-masonry-css"
+import { useMemo, useState } from "react"
 
 export default function Testimonials() {
   // Testimonial data - automatically assigns sizes based on pattern
@@ -54,6 +55,31 @@ export default function Testimonials() {
     
   ]
 
+  // Tabs
+  const tabs = ["All", "BNI", "TAB", "Corporate"] as const
+  type Tab = typeof tabs[number]
+  const [activeTab, setActiveTab] = useState<Tab>("All")
+
+  // Categorize by filename heuristic; otherwise rotate categories for now
+  const categorizedTestimonials = useMemo(() => {
+    const rotate: Exclude<Tab, "All">[] = ["BNI", "TAB", "Corporate"]
+    return testimonials.map((t, index) => {
+      const lower = t.src.toLowerCase()
+      let category: Exclude<Tab, "All"> | null = null
+      if (lower.includes("bni")) category = "BNI"
+      else if (lower.includes("tab")) category = "TAB"
+      else if (lower.includes("cc") || lower.includes("corporate")) category = "Corporate"
+      // Fallback rotate for now
+      if (!category) category = rotate[index % rotate.length]
+      return { ...t, category }
+    })
+  }, [testimonials])
+
+  const filteredTestimonials = useMemo(() => {
+    if (activeTab === "All") return categorizedTestimonials
+    return categorizedTestimonials.filter(t => t.category === activeTab)
+  }, [activeTab, categorizedTestimonials])
+
   // Function to determine size based on index pattern
   const getImageSize = (index: number) => {
     // Pattern: Large for positions 0,2,3,7 (left/right columns), Small for others (middle)
@@ -72,10 +98,31 @@ export default function Testimonials() {
   return (
     <section className="w-full bg-white py-8 sm:py-10 md:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        
+        {/* Tabs */}
+        <div className="mb-6 sm:mb-8 md:mb-10 flex justify-center">
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 bg-blue-50/80 p-1.5 sm:p-2 rounded-2xl shadow-sm">
+            {tabs.map(tab => {
+              const selected = activeTab === tab
+              return (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-xl text-sm sm:text-base font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:ring-blue-300 ${
+                    selected
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+                  }`}
+                >
+                  {tab === 'Corporate' ? 'Corporate Connection' : tab}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
         {/* Mobile: Pinterest-style CSS Columns Grid */}
         <div className="lg:hidden columns-2 gap-3 sm:gap-4 md:gap-6">
-          {testimonials.map((testimonial, index) => {
+          {filteredTestimonials.map((testimonial, index) => {
             const size = getImageSize(index);
             return (
               <div key={testimonial.id} className="break-inside-avoid mb-3 sm:mb-4 md:mb-6">
@@ -104,7 +151,7 @@ export default function Testimonials() {
             className="flex -ml-3 sm:-ml-4 md:-ml-6"
             columnClassName="pl-3 sm:pl-4 md:pl-6"
           >
-            {testimonials.map((testimonial, index) => {
+            {filteredTestimonials.map((testimonial, index) => {
               const size = getImageSize(index);
               return (
                 <div key={testimonial.id} className="mb-3 sm:mb-4 md:mb-6">
