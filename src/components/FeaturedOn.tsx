@@ -43,7 +43,7 @@ const FeaturedOn = () => {
 
         {/* Logos - Responsive Layout */}
         <div className="flex justify-center items-center">
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-6 sm:gap-6 md:gap-8 lg:gap-10 max-w-md sm:max-w-3xl lg:max-w-6xl xl:max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 sm:gap-5 md:gap-6 lg:gap-8 max-w-md sm:max-w-3xl lg:max-w-6xl xl:max-w-7xl mx-auto">
             {logos.map((logo, index) => (
               <div 
                 key={index} 
@@ -54,7 +54,7 @@ const FeaturedOn = () => {
                   alt={logo.alt}
                   width={120}
                   height={60}
-                  className="h-8 sm:h-10 md:h-12 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="h-8 sm:h-10 md:h-20 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             ))}
