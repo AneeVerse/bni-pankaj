@@ -5,8 +5,9 @@ import Masonry from "react-masonry-css"
 import { useMemo, useState } from "react"
 
 export default function Testimonials() {
-  // Testimonial data - automatically assigns sizes based on pattern
-  const testimonials = [
+  // Testimonial data
+  // Base items (BNI/TAB only). Corporate content is provided from a dedicated folder below.
+  const baseItems = [
     {
       id: 1,
       src: "/images/IMAGES/Copy of DSC00550.JPG",
@@ -52,25 +53,56 @@ export default function Testimonials() {
       src: "/images/IMAGES/Copy of CC3.jpg",
       alt: "Testimonial 9",
     },
-    
   ]
+
+  // Corporate-specific assets (images and videos) used ONLY in Corporate tab
+  const corporateFolderPrefix = "/images/testimonals/CORPORATE CONNECTIONS"
+  const corporateItems = [
+    {
+      id: 101,
+      src: `${corporateFolderPrefix}/CC Experience meet August.mp4`,
+      alt: "Corporate video: Experience meet August",
+      isVideo: true as const,
+    },
+    {
+      id: 102,
+      src: `${corporateFolderPrefix}/WhatsApp Video 2025-07-14 at 17.15.23.mp4`,
+      alt: "Corporate video: WhatsApp clip",
+      isVideo: true as const,
+    },
+    { id: 103, src: `${corporateFolderPrefix}/Screenshot 2025-09-17 153608.png`, alt: "Corporate screenshot 153608" },
+    { id: 104, src: `${corporateFolderPrefix}/CC3.jpg`, alt: "Corporate CC3" },
+    { id: 105, src: `${corporateFolderPrefix}/WhatsApp Image 2025-09-17 at 15.18.09.jpeg`, alt: "Corporate image 15.18.09" },
+    { id: 106, src: `${corporateFolderPrefix}/CC.jpg`, alt: "Corporate CC" },
+    { id: 107, src: `${corporateFolderPrefix}/Screenshot 2025-09-17 153731.png`, alt: "Corporate screenshot 153731" },
+    { id: 108, src: `${corporateFolderPrefix}/WhatsApp Image 2025-09-17 at 15.18.09 (1).jpeg`, alt: "Corporate image 15.18.09 (1)" },
+  ] as const
+
+  const testimonials = [...baseItems, ...corporateItems]
 
   // Tabs
   const tabs = ["All", "BNI", "TAB", "Corporate"] as const
   type Tab = typeof tabs[number]
   const [activeTab, setActiveTab] = useState<Tab>("All")
 
-  // Categorize by filename heuristic; otherwise rotate categories for now
+  // Categorize by filename; ensure Corporate only for the dedicated folder
   const categorizedTestimonials = useMemo(() => {
     const rotate: Exclude<Tab, "All">[] = ["BNI", "TAB", "Corporate"]
     return testimonials.map((t, index) => {
       const lower = t.src.toLowerCase()
       let category: Exclude<Tab, "All"> | null = null
-      if (lower.includes("bni")) category = "BNI"
+      const isFromCorporateFolder = lower.includes("/images/testimonals/corporate connections")
+      if (isFromCorporateFolder) category = "Corporate"
+      else if (lower.includes("bni")) category = "BNI"
       else if (lower.includes("tab")) category = "TAB"
-      else if (lower.includes("cc") || lower.includes("corporate")) category = "Corporate"
       // Fallback rotate for now
       if (!category) category = rotate[index % rotate.length]
+
+      // Explicit overrides
+      // 1) Ensure previously mis-filed item is BNI
+      if (t.id === 3) category = "BNI"
+      // 2) Prevent non-folder images that contain 'cc' or 'corporate' in filename from being marked Corporate
+      if (!isFromCorporateFolder && category === "Corporate") category = "BNI"
       return { ...t, category }
     })
   }, [testimonials])
@@ -131,13 +163,26 @@ export default function Testimonials() {
                     ? 'aspect-[4/5]' // Taller aspect ratio for large images
                     : 'aspect-[4/3]' // Shorter aspect ratio for small images
                 }`}>
-                  <Image
-                    src={testimonial.src}
-                    alt={testimonial.alt}
-                    fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, 50vw"
-                    className="object-cover"
-                  />
+                  {String(testimonial.src).toLowerCase().endsWith('.mp4') ? (
+                    <video
+                      src={testimonial.src}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      controlsList="nodownload noplaybackrate nofullscreen"
+                    />
+                  ) : (
+                    <Image
+                      src={testimonial.src}
+                      alt={testimonial.alt}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, 50vw"
+                      className="object-cover"
+                    />
+                  )}
                 </div>
               </div>
             );
@@ -160,13 +205,26 @@ export default function Testimonials() {
                       ? 'aspect-[4/5]' // Taller aspect ratio for large images
                       : 'aspect-[4/3]' // Shorter aspect ratio for small images
                   }`}>
-                    <Image
-                      src={testimonial.src}
-                      alt={testimonial.alt}
-                      fill
-                      sizes="(max-width: 1200px) 33vw, 33vw"
-                      className="object-cover"
-                    />
+                    {String(testimonial.src).toLowerCase().endsWith('.mp4') ? (
+                      <video
+                        src={testimonial.src}
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        disablePictureInPicture
+                        controlsList="nodownload noplaybackrate nofullscreen"
+                      />
+                    ) : (
+                      <Image
+                        src={testimonial.src}
+                        alt={testimonial.alt}
+                        fill
+                        sizes="(max-width: 1200px) 33vw, 33vw"
+                        className="object-cover"
+                      />
+                    )}
                   </div>
                 </div>
               );
