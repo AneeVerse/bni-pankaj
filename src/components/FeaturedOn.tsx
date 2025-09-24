@@ -43,7 +43,7 @@ const FeaturedOn = () => {
 
         {/* Logos - Responsive Layout */}
         <div className="flex justify-center items-center">
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-8 sm:gap-x-10 md:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-4 sm:gap-y-5 md:gap-y-6 lg:gap-y-8 w-full">
+          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-8 sm:gap-x-10 md:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-4 sm:gap-y-5 md:gap-y-6 lg:gap-y-8 w-full">
             {logos.map((logo, index) => (
               <div 
                 key={index} 
