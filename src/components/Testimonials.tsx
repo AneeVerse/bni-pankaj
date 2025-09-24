@@ -33,11 +33,7 @@ export default function Testimonials() {
       src: "/images/IMAGES/Copy of WhatsApp Image 2025-08-14 at 16.32.08.jpeg",
       alt: "Testimonial 5",
     },
-    {
-      id: 6,
-      src: "/images/IMAGES/Copy of CC.jpg",
-      alt: "Testimonial 6",
-    },
+    
     {
       id: 7,
       src: "/images/IMAGES/Copy of WhatsApp Image 2025-08-14 at 16.32.07.jpeg",
@@ -48,11 +44,7 @@ export default function Testimonials() {
       src: "/images/IMAGES/Copy of WhatsApp Image 2025-08-14 at 16.32.09.jpeg",
       alt: "Testimonial 8",
     },
-    {
-      id: 9,
-      src: "/images/IMAGES/Copy of CC3.jpg",
-      alt: "Testimonial 9",
-    },
+    
   ]
 
   // Corporate-specific assets (images and videos) used ONLY in Corporate tab
