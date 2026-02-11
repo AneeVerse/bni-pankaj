@@ -34,62 +34,24 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
     }
   }, [])
 
-  // Disable right-click and prevent image saving
-  useEffect(() => {
-    const handleContextMenu = (e: MouseEvent) => {
-      e.preventDefault()
-      return false
-    }
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Close video popup with Escape key
-      if (e.key === 'Escape' && showPopup) {
-        closeVideoPopup()
-      }
-    }
-
-    const handleDragStart = (e: DragEvent) => {
-      e.preventDefault()
-      return false
-    }
-
-    const handleSelectStart = (e: Event) => {
-      e.preventDefault()
-      return false
-    }
-
-    // Add event listeners
-    document.addEventListener('contextmenu', handleContextMenu)
-    document.addEventListener('keydown', handleKeyDown)
-    document.addEventListener('dragstart', handleDragStart)
-    document.addEventListener('selectstart', handleSelectStart)
-
-    // Cleanup
-    return () => {
-      document.removeEventListener('contextmenu', handleContextMenu)
-      document.removeEventListener('keydown', handleKeyDown)
-      document.removeEventListener('dragstart', handleDragStart)
-      document.removeEventListener('selectstart', handleSelectStart)
-    }
-  }, [showPopup, closeVideoPopup])
-      return (
-      <section 
-        className="w-full bg-white py-4 sm:py-6 md:py-8 lg:py-10"
-        onContextMenu={(e) => e.preventDefault()}
-      >
-        <div className="max-w-[1420px] mx-auto px-4 sm:px-6 flex flex-col">
-          {/* Header */}
-          <div className="mb-2 sm:mb-3">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-1 mt-8">PANKAJ J HARWNASH</h1>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 font-semibold">FOUNDER & EXECUTIVE DIRECTOR</p>
-          </div>
+  // Removed right-click and selection blocking for SEO compliance
+  return (
+    <section
+      className="w-full bg-white py-4 sm:py-6 md:py-8 lg:py-10"
+    >
+      <div className="max-w-[1420px] mx-auto px-4 sm:px-6 flex flex-col">
+        {/* Header */}
+        <div className="mb-2 sm:mb-3">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-1 mt-8">PANKAJ J HARWNASH</h2>
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 font-semibold">FOUNDER & EXECUTIVE DIRECTOR</p>
+        </div>
 
         {/* 2x2 Grid with Interlocking Curves - No Gaps */}
         <div className="relative grid grid-cols-1 md:grid-cols-6 items-stretch gap-0 overflow-hidden rounded-2xl sm:rounded-3xl"
-             style={{ gridGap: '0px' }}>
-          
-         {/* Background Gradient - Subtle angled effect */}
-          <div className="absolute w-[38%] h-[38%] left-[50%] top-[46%] bg-gradient-to-bl from-[#3973cb] via-[#3973cb] via-[#3973cb] to-[transparent/90] rounded-full transform rotate-[-60deg] z-15 hidden sm:block opacity-100 blur-lg"></div> 
+          style={{ gridGap: '0px' }}>
+
+          {/* Background Gradient - Subtle angled effect */}
+          <div className="absolute w-[38%] h-[38%] left-[50%] top-[46%] bg-gradient-to-bl from-[#3973cb] via-[#3973cb] via-[#3973cb] to-[transparent/90] rounded-full transform rotate-[-60deg] z-15 hidden sm:block opacity-100 blur-lg"></div>
 
           {/* Section 1 - Photo (Top Left) - Curved on Top Right, Bottom Right, and Bottom Left - 4/6 width */}
           <div className="relative bg-white rounded-tr-2xl rounded-br-2xl rounded-bl-2xl sm:rounded-tr-3xl sm:rounded-br-3xl sm:rounded-bl-3xl overflow-hidden md:col-span-4 z-10 min-h-[300px] sm:min-h-[400px] md:h-[480px] lg:h-[540px]">
@@ -100,14 +62,9 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
               className="object-cover object-center"
               style={{
                 objectPosition: 'center 1%',
-                userSelect: 'none',
-                WebkitUserSelect: 'none',
-                MozUserSelect: 'none',
-                msUserSelect: 'none'
               }}
               sizes="(max-width: 768px) 100vw, 60vw"
               draggable={false}
-              onContextMenu={(e) => e.preventDefault()}
             />
 
           </div>
@@ -137,26 +94,20 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
 
               {/* Single Row Layout for Logos - LARGER SIZES */}
               <div className="flex justify-start items-center gap-2 sm:gap-3 md:gap-4 lg:gap-5 pb-2 -ml-2">
-              <div className="flex justify-center flex-shrink-0 mr-2">
+                <div className="flex justify-center flex-shrink-0 mr-2">
                   <Image
                     src="/images/venture/tab.png"
                     alt="Venture 4"
                     width={200}
                     height={90}
                     className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
-                    style={{
-                      userSelect: 'none',
-                      WebkitUserSelect: 'none',
-                      MozUserSelect: 'none',
-                      msUserSelect: 'none'
-                    }}
+                    style={{}}
                     draggable={false}
-                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </div>
-               
-               
-               
+
+
+
                 <div className="flex justify-center flex-shrink-0 -mr-2 sm:-mr-3 md:-mr-2">
                   <Image
                     src="/images/venture/d7ddf110031b054df193d8ae5b7aab1295e2887a.png"
@@ -165,14 +116,9 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     height={90}
                     className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48 pointer-events-none"
                     style={{
-                      userSelect: 'none',
-                      WebkitUserSelect: 'none',
-                      MozUserSelect: 'none',
-                      msUserSelect: 'none',
                       pointerEvents: 'none'
                     }}
                     draggable={false}
-                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </div>
                 <div className="flex justify-center flex-shrink-0 -mr-2 sm:-mr-3 md:-mr-6">
@@ -182,18 +128,12 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     width={180}
                     height={90}
                     className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
-                    style={{
-                      userSelect: 'none',
-                      WebkitUserSelect: 'none',
-                      MozUserSelect: 'none',
-                      msUserSelect: 'none'
-                    }}
+                    style={{}}
                     draggable={false}
-                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </div>
 
-               
+
                 <div className="flex justify-center flex-shrink-0 -ml-2 sm:-ml-3 md:-ml-4">
                   <Image
                     src="/images/venture/3196da117abd22b30b9d753b8a9f6c31b50c4382.png"
@@ -201,29 +141,23 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     width={180}
                     height={90}
                     className="max-w-full h-auto object-contain w-28 sm:w-36 md:w-44 lg:w-48"
-                    style={{
-                      userSelect: 'none',
-                      WebkitUserSelect: 'none',
-                      MozUserSelect: 'none',
-                      msUserSelect: 'none'
-                    }}
+                    style={{}}
                     draggable={false}
-                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </div>
 
-               
-                
+
+
               </div>
             </div>
           </div>
 
           {/* Section 4 - Video (Bottom Right) - Curved on Top Left and Bottom Left - 2/6 width */}
           <div className="relative bg-white rounded-tl-2xl rounded-bl-2xl sm:rounded-tl-3xl sm:rounded-bl-3xl md:col-span-2 overflow-hidden z-10 order-1 md:order-4">
-                        {videoUrl ? (
+            {videoUrl ? (
               <div className="relative w-full h-full min-h-[180px] sm:min-h-[200px] md:h-[250px] lg:h-[243px] flex items-center justify-center z-30">
                 {/* Video Container with Unified Gradient Integration */}
-                <div 
+                <div
                   className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden"
                   style={{
                     borderRadius: '1rem',
@@ -231,33 +165,28 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                     MozBorderRadius: '1rem'
                   }}
                 >
-                  <video 
+                  <video
                     ref={videoRef}
                     className="w-full h-full object-cover"
                     style={{
                       borderRadius: '1rem',
                       WebkitBorderRadius: '1rem',
                       MozBorderRadius: '1rem',
-                      userSelect: 'none',
-                      WebkitUserSelect: 'none',
-                      MozUserSelect: 'none',
-                      msUserSelect: 'none'
                     }}
                     muted
                     autoPlay
                     loop
                     playsInline
-                                          // onPlay={() => setIsPlaying(true)}
-                      // onPause={() => setIsPlaying(false)}
-                      // onEnded={() => setIsPlaying(false)}
-                    onContextMenu={(e) => e.preventDefault()}
+                  // onPlay={() => setIsPlaying(true)}
+                  // onPause={() => setIsPlaying(false)}
+                  // onEnded={() => setIsPlaying(false)}
                   >
                     <source src={videoUrl} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
-                  
 
-                  
+
+
                   {/* Play Button Overlay - Opens Popup */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <button
@@ -265,14 +194,14 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                       onClick={openVideoPopup}
                     >
                       <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 fill-current" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
+                        <path d="M8 5v14l11-7z" />
                       </svg>
                       <span className="sr-only">Open video in popup</span>
                     </button>
                   </div>
-                
-                  
-                  
+
+
+
                 </div>
               </div>
             ) : (
@@ -282,14 +211,14 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                   onClick={onVideoPlay}
                 >
                   <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 fill-current" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
+                    <path d="M8 5v14l11-7z" />
                   </svg>
                   <span className="sr-only">Watch video</span>
                 </button>
 
                 <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 md:bottom-6 md:left-6 text-gray-600 text-xs sm:text-sm md:text-base font-semibold z-10 flex items-center gap-1 sm:gap-2">
                   <svg className="w-3 h-3 sm:w-3 sm:h-3 md:w-4 md:h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
+                    <path d="M8 5v14l11-7z" />
                   </svg>
                   Watch video
                 </div>
@@ -301,9 +230,8 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
 
       {/* Video Popup Modal */}
       {showPopup && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-2 sm:p-4"
-          onContextMenu={(e) => e.preventDefault()}
           onClick={(e) => {
             // Close popup when clicking on the background
             if (e.target === e.currentTarget) {
@@ -318,7 +246,7 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
               className="absolute top-4 right-4 z-30 text-white hover:text-gray-300 transition-colors bg-black/50 hover:bg-black/70 rounded-full p-2 backdrop-blur-sm"
             >
               <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
               </svg>
             </button>
 
@@ -328,17 +256,12 @@ export default function VentureSection({ videoUrl, onVideoPlay }: VentureSection
                 ref={popupVideoRef}
                 className="w-full h-full object-contain rounded-3xl"
                 style={{
-                  userSelect: 'none',
-                  WebkitUserSelect: 'none',
-                  MozUserSelect: 'none',
-                  msUserSelect: 'none',
                   pointerEvents: 'none',
                   borderRadius: '1.5rem'
                 }}
                 controls
                 autoPlay
                 muted={false}
-                onContextMenu={(e) => e.preventDefault()}
               >
                 <source src={videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.

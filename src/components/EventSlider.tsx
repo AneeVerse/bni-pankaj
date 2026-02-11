@@ -22,7 +22,7 @@ const events: EventCard[] = [
   {
     id: 2,
     title: "LEADERSHIP ACADEMY",
-    subtitle: "TONY ROBBINS", 
+    subtitle: "TONY ROBBINS",
     description: "Become a great leader",
     videoUrl: "/video/VIDEOS/Copy of Untitled design 45.mp4"
   },
@@ -120,12 +120,12 @@ export default function EventSlider() {
   useEffect(() => {
     const videos = document.querySelectorAll('video')
     const cleanupFunctions: (() => void)[] = []
-    
+
     videos.forEach((video) => {
       // Set initial thumbnail to 7 seconds for desktop, 6 seconds for mobile
       const isMobile = window.innerWidth < 640
       video.currentTime = isMobile ? 6 : 7
-      
+
       // Add event listener to restart from appropriate time when video loops
       const handleTimeUpdate = () => {
         const isMobile = window.innerWidth < 640
@@ -134,14 +134,14 @@ export default function EventSlider() {
           video.currentTime = targetTime
         }
       }
-      
+
       video.addEventListener('timeupdate', handleTimeUpdate)
-      
+
       // Auto-play on mobile
       if (window.innerWidth < 640) {
-        video.play().catch(() => {})
+        video.play().catch(() => { })
       }
-      
+
       // Store cleanup function
       cleanupFunctions.push(() => {
         video.removeEventListener('timeupdate', handleTimeUpdate)
@@ -243,7 +243,7 @@ export default function EventSlider() {
     dragStartXRef.current = e.clientX
     dragDeltaRef.current = 0
     hasDraggedRef.current = false
-    ;(e.target as HTMLElement).setPointerCapture?.(e.pointerId)
+      ; (e.target as HTMLElement).setPointerCapture?.(e.pointerId)
   }
 
   const onPointerMove = (e: React.PointerEvent) => {
@@ -281,7 +281,7 @@ export default function EventSlider() {
   const onPointerUp = (e: React.PointerEvent) => {
     if (!isPointerDownRef.current) return
     isPointerDownRef.current = false
-    ;(e.target as HTMLElement).releasePointerCapture?.(e.pointerId)
+      ; (e.target as HTMLElement).releasePointerCapture?.(e.pointerId)
     startSnapToNearestCard()
     // Reset drag state after a small delay to allow click events to process
     setTimeout(() => {
@@ -318,7 +318,7 @@ export default function EventSlider() {
     const handleTouchMove = (e: TouchEvent) => {
       e.preventDefault() // Prevent default to avoid conflicts
       if (!isPointerDownRef.current || e.touches.length !== 1) return
-      
+
       const currentX = e.touches[0].clientX
       const deltaX = currentX - dragStartXRef.current
       dragDeltaRef.current = deltaX
@@ -331,19 +331,19 @@ export default function EventSlider() {
     const handleTouchEnd = (e: TouchEvent) => {
       e.preventDefault() // Prevent default to avoid conflicts
       if (!isPointerDownRef.current) return
-      
+
       const currentTime = performance.now()
       const timeDelta = currentTime - lastTimeRef.current
       const velocity = dragDeltaRef.current / timeDelta
-      
+
       isPointerDownRef.current = false
-      
+
       // Lower threshold and higher momentum for better sensitivity
       if (Math.abs(velocity) > 0.1) { // Reduced from 0.5
         const momentumDistance = velocity * 500; // Increased from 300
         dragDeltaRef.current += momentumDistance
       }
-      
+
       startSnapToNearestCard()
       // Reset drag state after a small delay
       setTimeout(() => {
@@ -386,20 +386,20 @@ export default function EventSlider() {
   return (
     <section className="w-full bg-black py-8 sm:py-10 md:py-16 lg:py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        
+
         {/* Header with Navigation */}
         <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
             Events that liberate
           </h2>
-          
+
           <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
             {/* Discover Events Link */}
             <div className="hidden sm:flex items-center text-gray-400 hover:text-white transition-colors cursor-pointer">
               <span className="text-sm md:text-base mr-2">Discover events</span>
               <ChevronRight className="w-4 h-4" />
             </div>
-            
+
             {/* Navigation Arrows */}
             <div className="flex gap-2 sm:gap-3">
               <button
@@ -419,22 +419,19 @@ export default function EventSlider() {
         </div>
 
         {/* Slider Container */}
-        <div 
+        <div
           className="relative carousel-container overflow-hidden"
           style={{
             touchAction: 'pan-x',
             WebkitOverflowScrolling: 'touch'
           }}
         >
-          <div 
+          <div
             ref={sliderRef}
             className="flex gap-6 carousel-track"
             style={{
               transform: `translateX(${renderTranslateX}px)`,
               touchAction: 'pan-x',
-              userSelect: 'none',
-              WebkitUserSelect: 'none',
-              WebkitTouchCallout: 'none'
             }}
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
@@ -452,7 +449,7 @@ export default function EventSlider() {
                     const video = e.currentTarget.querySelector('video') as HTMLVideoElement | null
                     if (video) {
                       video.currentTime = 7
-                      video.play().catch(() => {})
+                      video.play().catch(() => { })
                     }
                   }
                 }}
@@ -482,7 +479,7 @@ export default function EventSlider() {
                 >
                   <source src={event.videoUrl} type="video/mp4" />
                 </video>
-                
+
                 {/* Overlay shade */}
                 <div className="absolute inset-0 bg-black/40" />
 
@@ -494,10 +491,10 @@ export default function EventSlider() {
                     openVideoPopup(event.videoUrl)
                   }}
                 >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                   <span className="text-sm font-medium">Watch</span>
                 </button>
-                
+
 
               </div>
             ))}
@@ -513,11 +510,10 @@ export default function EventSlider() {
                 // Jump to selected index within middle copy
                 basePositionRef.current = -index * slideSize
               }}
-              className={`w-2 h-2 rounded-full transition-colors duration-300 disabled:opacity-50 ${
-                index === activeIndex
+              className={`w-2 h-2 rounded-full transition-colors duration-300 disabled:opacity-50 ${index === activeIndex
                   ? 'bg-white'
                   : 'bg-gray-600 hover:bg-gray-400'
-              }`}
+                }`}
             />
           ))}
         </div>
@@ -525,15 +521,15 @@ export default function EventSlider() {
 
       {/* Video Popup */}
       {isVideoPopupOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
           onClick={closeVideoPopup}
         >
           {/* Background Overlay */}
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
-          
+
           {/* Video Container - Shorts Size and Fullscreen */}
-          <div 
+          <div
             className="relative bg-black rounded-3xl overflow-hidden w-full h-full max-w-[400px] max-h-[80vh] aspect-[9/16]"
             onClick={(e) => e.stopPropagation()}
           >
@@ -547,7 +543,7 @@ export default function EventSlider() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            
+
             {/* Video Player - Full Container */}
             <div className="w-full h-full">
               <video

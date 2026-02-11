@@ -33,7 +33,7 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" | "contact" }) 
   };
 
   const content = getContent();
-  
+
   // Headline lines for animation (using dynamic content, split by line breaks)
   const headlineLines = content.headline.split('\n');
 
@@ -49,20 +49,20 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" | "contact" }) 
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);
-    
+
     // Calculate total delay for subheadline and button animations
     const lastLineIdx = headlineLines.length - 1;
     const lastCharIdx = headlineLines[lastLineIdx].length - 1;
     // Animation: 0.4s initial + 0.5s per line + 0.05s per char
     const totalDelay = 0.4 + (lastLineIdx * 0.5) + (lastCharIdx * 0.05) + 0.5; // extra 0.5s buffer
-    
+
     const subTimer = setTimeout(() => {
       setShowSubheadline(true);
       setTimeout(() => {
         setShowButton(true);
       }, 1000);
     }, totalDelay * 1000);
-    
+
     return () => {
       clearTimeout(timer);
       clearTimeout(subTimer);
@@ -75,7 +75,7 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" | "contact" }) 
       <div className="absolute inset-0 z-0 ">
         <Image
           src="/images/bbg1.png"
-          alt="Hero Background"
+          alt="Pankaj J. Harwansh - Strategic Connector & Business Leader"
           fill
           className="object-cover md:object-cover"
           style={{
@@ -100,10 +100,9 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" | "contact" }) 
                       {line.split('').map((char, charIdx) => (
                         <span
                           key={charIdx}
-                          className={`inline-block transition-all duration-500 ease-out ${
-                            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                          }`}
-                          style={{ 
+                          className={`inline-block transition-all duration-500 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                            }`}
+                          style={{
                             transitionDelay: `${0.4 + ((lineIdx * 0.5) + charIdx * 0.05)}s`
                           }}
                         >
@@ -115,12 +114,11 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" | "contact" }) 
                 </span>
               </h1>
             </div>
-            
+
             {/* Subheadline */}
             <div
-              className={`text-base sm:text-lg md:text-xl text-gray-200 max-w-lg sm:max-w-3xl md:max-w-xl lg:max-w-[590px] leading-relaxed transition-all duration-1000 ease-out ${
-                showSubheadline ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+              className={`text-base sm:text-lg md:text-xl text-gray-200 max-w-lg sm:max-w-3xl md:max-w-xl lg:max-w-[590px] leading-relaxed transition-all duration-1000 ease-out ${showSubheadline ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               style={{
                 transitionDelay: showSubheadline ? '0s' : '0.6s'
               }}
@@ -130,19 +128,18 @@ const Hero = ({ variant = "home" }: { variant?: "home" | "about" | "contact" }) 
 
             {/* Button */}
             <div
-              className={`pt-4 transition-all duration-1000 ease-out ${
-                showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+              className={`pt-4 transition-all duration-1000 ease-out ${showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               style={{
                 transitionDelay: showButton ? '0s' : '0.6s'
               }}
             >
-            
+
             </div>
           </div>
 
-         
-          
+
+
         </div>
       </div>
     </section>
