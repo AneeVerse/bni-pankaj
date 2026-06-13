@@ -134,9 +134,8 @@ export default function Contact() {
                                     <div>
                                         <h3 className="text-lg font-semibold text-gray-900 mb-1">Address</h3>
                                         <p className="text-gray-600">
-                                            Shop No 111 City Light CHS, CBSE School, Plot No.35, near Terna 
-                                            Medical College and Dr International School, Sector 1, Kopar Khairane, New 
-                                            Mumbai, Maharashtra 400709
+                                            7th Floor, Shelton Sapphire, A-707, Palm Beach Rd, Sector 15, 
+                                            CBD Belapur, Navi Mumbai, Maharashtra 400614
                                         </p>
                                     </div>
                                 </div>
@@ -147,7 +146,7 @@ export default function Contact() {
                                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Find Us Here</h3>
                                 <div className="w-full h-64 bg-gray-200 rounded-2xl overflow-hidden">
                                     <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.4089364725974!2d73.00562181533814!3d19.10675098707598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c05d0c7e7a55%3A0x8b8c8b8c8b8c8b8c!2sKopar%20Khairane%2C%20Navi%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                                        src="https://maps.google.com/maps?q=Shelton%20Sapphire%2C%20CBD%20Belapur%2C%20Navi%20Mumbai&t=&z=15&ie=UTF8&iwloc=&output=embed"
                                         width="100%"
                                         height="100%"
                                         style={{ border: 0 }}
